@@ -1,0 +1,169 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="ProfilePage.master.cs" Inherits="FinalProj.ProfilePage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>ClearView</title>
+    <style>
+        .hexagon {
+            position: relative;
+            width: 30px;
+            height: 17.32px;
+            background-color: #ffffff;
+            margin: 8.66px 0;
+            box-shadow: 0 0 20px rgba(0,0,0,0.35);
+        }
+
+            .hexagon:before,
+            .hexagon:after {
+                content: "";
+                position: absolute;
+                z-index: 1;
+                width: 21.21px;
+                height: 21.21px;
+                -webkit-transform: scaleY(0.5774) rotate(-45deg);
+                -ms-transform: scaleY(0.5774) rotate(-45deg);
+                transform: scaleY(0.5774) rotate(-45deg);
+                background-color: inherit;
+                left: 4.3934px;
+                box-shadow: 0 0 20px rgba(0,0,0,0.35);
+            }
+
+            .hexagon:before {
+                top: -10.6066px;
+            }
+
+            .hexagon:after {
+                bottom: -10.6066px;
+            }
+
+            /*cover up extra shadows*/
+            .hexagon span {
+                display: block;
+                position: absolute;
+                top: 0px;
+                left: 0;
+                width: 30px;
+                height: 17.3205px;
+                z-index: 2;
+                background: inherit;
+            }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarnav" aria-controls="navbarnav" aria-expanded="false" aria-label="toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="ml-2 navbar-brand text-center" href="/homepage.aspx">Clear View</a>
+        <div class="hexagon"><span></span></div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarnav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/bookmark.aspx">Bookmarks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/forumPage1.aspx">Forum</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/EventStatus.aspx">Andy<span class="user-points">(25P)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <ul class="list-group">
+                    <li class="list-group-item"><a style="text-decoration:none;" class="text-dark" href="https://www.facebook.com">
+                        <img style="max-height: 20px;" class="img " src="https://image.flaticon.com/icons/svg/124/124010.svg" alt="f icon" />
+                        Facebook</a>
+                    </li>
+                    <li class="list-group-item"><a style="text-decoration:none;" class="text-dark" href="https://www.twitter.com">
+                        <img style="max-height: 20px;" class="img " src="https://image.flaticon.com/icons/svg/124/124021.svg" alt="t icon" />
+                        Twitter</a>
+                    </li>
+                    <li class="list-group-item"><a style="text-decoration:none;" class="text-dark" href="https://www.instagram.com">
+                        <img style="max-height: 20px;" class="img " src="https://image.flaticon.com/icons/svg/2111/2111463.svg" alt="i icon" />
+                        Instagram</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-8">
+                <div class="card">
+                    <img src="" class="card-img-top" alt="...">
+                    <div class="text-center card-body">
+                        <div>
+                            <img src="" class="img img-thumbnail" style="min-height: 50px; min-width: 50px;"><h5 class="card-title">Andy</h5>
+                            <div>
+                                ★★★★☆<p>4 Stars over 52 events</p>
+                            </div>
+                        </div>
+                        <p class="card-text">18 SG ❤ Crack on the wheels and lease in the heels.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button class="btn" data-toggle="modal" data-target="#editProfile"><i class="fas fa-ellipsis-v"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <ul class="list-group" style="border-bottom: 1px solid rgba(0,0,0,.125); display: flex; flex-direction: row;">
+        <li class="list-inline-item mx-0"><a class="btn bg-light text-dark" href="/EventStatus.aspx">Events</a></li>
+        <li class="list-inline-item mx-0"><a class="btn bg-light text-dark" href="/PPGallery.aspx">Gallery</a></li>
+        <li class="list-inline-item mx-0"><a class="btn bg-light text-dark" href="/PPRating.aspx">Rating</a></li>
+        <li class="list-inline-item mx-0"><a class="btn bg-light text-dark" href="/PPPoints.aspx">Points</a></li>
+    </ul>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal fade" id="editProfile" tabindex="-1" role="dialog" aria-labelledby="editProfileLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editProfileLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Edit Profile Modal End -->
+    
+    <div style="min-height:70vh">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    <footer class="small bg-dark text-white">
+        <div class="container py-4">
+            <ul class="list-inline mb-0 text-center">
+                <li class="list-inline-item">&copy; 2017 Web Company, Inc</li>
+                <li class="list-inline-item">All rights reserved,</li>
+                <li class="list-inline-item"><a href="#0">Terms of use and privacy policy.</a></li>
+            </ul>
+            <ul class="list-inline mb-0 text-center">
+                <li class="list-inline-item"><img style="max-height: 15px;" class="img mr-1" src="https://image.flaticon.com/icons/svg/2111/2111463.svg" alt="i icon" />instagram: <a href="#">@clearviewSingapore.</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>
+

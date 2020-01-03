@@ -1,0 +1,93 @@
+﻿body {
+    text-align: center;
+    font-family: Arial;
+}
+#title {
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 5px 0px 5px 0px;
+    background-color: darkred;
+    color: white;
+    font-weight: bold;
+    border-radius: 3px;
+    width: 250px;
+}
+
+#totalStats {
+    font-weight: bold;
+    margin: 0 auto;
+    text-align: right;
+}
+
+#totalParticipate {
+    color: green;
+}
+
+#totalComplete {
+    color: lightgreen;
+}
+
+#totalCreate {
+    color: saddlebrown;
+}
+
+#searchFunctions {
+    margin: 0 auto;
+}
+
+#tbName, #chkboxCreate, #chkboxParticipate, #dropdlAlphabet {
+    padding: 0px 15px 0px 15px;
+}
+
+h3 {
+    text-align: center;
+    background-color: wheat;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+#row1, #row2 {
+    margin: 20px 0 20px 0;
+    padding: 10px 0 10px 0;
+    border-radius: 4px;
+    box-shadow: 0px 1px 5px grey;
+}
+
+#eventdp {
+    width: 90%;
+    border-radius: 4px;
+    margin: 10px 0px 10px 0px;
+}
+
+#dp {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    float: left;
+}
+
+#organiser {
+    text-align: left;
+}
+
+#dateTime {
+    color: dodgerblue;
+    font-weight: bold;
+    text-align: left;
+}
+
+#txtDate {
+    float: left;
+}
+
+#status {
+    color: green;
+    font-weight: bold;
+    text-align: left;
+}
+
+#txtStatus {
+    float: left;
+}
