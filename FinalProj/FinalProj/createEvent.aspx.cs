@@ -66,6 +66,17 @@ namespace FinalProj
                 }
             }
 
+            if (eventDate.Text.ToString() != "")
+            {
+                string date = eventDate.Text.ToString();
+                DateTime dt = Convert.ToDateTime(date);
+
+                if (dt < DateTime.Now)
+                {
+                    errmsg += "Please enter a valid date";
+                }
+
+            }
             
             if (errmsg != "")
             {
