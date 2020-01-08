@@ -130,5 +130,10 @@ namespace FinalProj
            
 
         }
+
+        protected void desc_TextChanged(object sender, EventArgs e)
+        {
+            charCounter.Text = desc.Text.Length.ToString();
+        }
     }
 }

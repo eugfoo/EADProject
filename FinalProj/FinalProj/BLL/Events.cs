@@ -45,5 +45,7 @@ namespace FinalProj.BLL
             int result = dao.Insert(this);
             return result;
         }
+
+
     }
 }
