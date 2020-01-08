@@ -38,44 +38,45 @@
     <div>
         <p class="h1" id="createEventTitle">CREATE YOUR EVENT</p>
     </div>
-    <form>
+    <form runat="server">
         <div class="container" id="formContainer">
             <div class="card">
                 <div class="card-body">
                     <div class="card-title" style="background-color: #22537C; font-family: 'Franklin Gothic'; padding: 1%; color: white; font-size: 1em;">&nbsp;Fill in the Details of the Event*</div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <label for="title">Title:</label>
-                            <input type="text" class="form-control" id="title" placeholder="Project Free Cycle">
+                            <label for="eventTitle">Title:</label>
+                            <asp:TextBox ID="eventTitle" CssClass="form-control" placeholder="Project Free Cycle" runat="server"></asp:TextBox>
                         </div>
 
                     </div>
                     <div class="form-group">
                         <label for="inputAddress">Venue:</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                        <asp:TextBox ID="eventAddress" CssClass="form-control" placeholder="1234 Main St" runat="server"></asp:TextBox>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputCity">Date:</label>
-                            <input type="date" class="form-control" id="inputCity">
+                            <label for="datePicker">Date:</label>
+							<asp:TextBox ID="datePicker" CssClass="form-control" runat="server" type="date"></asp:TextBox>
                         </div>
                         <div class="form-group col-md-3">
                             <label for="startTime">Start Time:</label>
-                            <input type="time" class="form-control" id="startTime">
+                            <asp:TextBox ID="startTime" CssClass="form-control" runat="server" type="time"></asp:TextBox>
                         </div>
                         <div class="form-group col-md-3">
                             <label for="endTime">End Time:</label>
-                            <input type="time" class="form-control" id="endTime">
+                            <asp:TextBox ID="endTime" CssClass="form-control" runat="server" type="time"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="maxAttend">Max Number of Attendees:</label>
-                        <input type="number" class="form-control" id="maxAttend" placeholder="20">
+						<asp:TextBox ID="maxAttend" CssClass="form-control" runat="server" Rows="5" placeholder="20" type="number"></asp:TextBox>
                     </div>
                     <div class="card-title" style="background-color: #22537C; font-family: 'Franklin Gothic'; padding: 1%; color: white; font-size: 1em;">&nbsp;Write a summary of your Event*</div>
                     <div class="form-group">
                         <label for="desc">Description:</label>
-                        <textarea class="form-control" rows="5" id="desc"></textarea>
+						<asp:TextBox ID="desc" CssClass="form-control" runat="server" Height="250" TextMode="MultiLine"></asp:TextBox>
+                        
                     </div>
                     <div class="card-title" style="background-color: #22537C; font-family: 'Franklin Gothic'; padding: 1%; color: white; font-size: 1em;">&nbsp;Add a Photo*</div>
 
@@ -84,23 +85,22 @@
                             <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                         </div>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                aria-describedby="inputGroupFileAddon01">
-                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                            
+							<asp:FileUpload ID="inputGroupFile01" aria-describedby="inputGroupFileAddon01" CssClass="custom-file-input" runat="server" />
+                            <asp:Label ID="Label1" runat="server" for="inputGroupFile01" CssClass="custom-file-label" >Choose File</asp:Label>
                         </div>
                     </div>
                     <div class="card-title" style="background-color: #22537C; font-family: 'Franklin Gothic'; padding: 1%; color: white; font-size: 1em;">&nbsp;Include a Short Note</div>
                     <label for="noteText">Note:</label>
-                    <input type="text" class="form-control" id="noteText">
+                    <asp:TextBox ID="noteText" CssClass="form-control" runat="server"></asp:TextBox>
                     <div class="form-group" style="margin-top:2em;">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="gridCheck">
-                            <label class="form-check-label" for="gridCheck">
-                                Post this on our Instagram
-                            </label>
+							<asp:CheckBox ID="advCheck" CssClass="form-check-input" runat="server" />
+							<asp:Label AssociatedControlID="advCheck" runat="server">Post this on our Instagram</asp:Label>
+
                         </div>
                     </div>
-                    <a href="/createdEvent.aspx"><button type="button" class="btn btn-primary">CREATE</button></a>
+					<asp:Button ID="createBtn" runat="server" CssClass="btn btn-primary" Text="Button" OnClick="createBtn_Click" />
                 </div>
             </div>
         </div>
