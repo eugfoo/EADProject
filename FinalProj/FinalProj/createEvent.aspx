@@ -7,7 +7,7 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
-		\
+		
             color: black;
             max-width: 100%;
             height: auto;
@@ -22,26 +22,77 @@
             margin-top: 1em; 
             background-color: #CB0000;
         }
+		.stuff {
+			width:1110px;
+			height:auto;
+			margin-left: auto;
+			margin-right: auto;
+			text-align:center;
+    	}
+		@media only screen and (max-width: 1199px){
+          
+    		.stuff {
+				width:925px;
+                height:auto;
+    		}
+    		
+        }
+		@media only screen and (max-width: 991px){
+          
+    		.stuff {
+				width:690px;
+                height:auto;
+    		}
+    		
+        }
+		@media only screen and (max-width: 767px){
+          
+    		.stuff {
+				width:510px;
+                height:auto;
+    		}
+    		
+        }
         @media only screen and (max-width: 767px){
             #createEventTitle{
                 font-size:2em;
                 width:350px;
                 height:auto;
             }
+			
+ 
+    		
         }
+
+		
+
+		
+		
         #formContainer{
             margin-bottom:2em;
         }
+
+
+
+    	
+
+    	
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div>
-        <p class="h1" id="createEventTitle">CREATE YOUR EVENT</p>
+        <p class="h1"  id="createEventTitle">CREATE YOUR EVENT</p>
     </div>
+	
+	
+	
     <form runat="server">
+		<asp:Panel ID="PanelError" runat="server" Visible="false" CssClass="stuff alert alert-danger "><asp:Label ID="errmsgTb" runat="server"></asp:Label></asp:Panel>
         <div class="container" id="formContainer">
+			
             <div class="card">
                 <div class="card-body">
+					
                     <div class="card-title" style="background-color: #22537C; font-family: 'Franklin Gothic'; padding: 1%; color: white; font-size: 1em;">&nbsp;Fill in the Details of the Event*</div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
@@ -61,7 +112,7 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label for="startTime">Start Time:</label>
-                            <asp:TextBox ID="startTime" CssClass="form-control" runat="server" type="time"></asp:TextBox>
+                            <asp:TextBox ID="startTime" CssClass="form-control" runat="server" min="07:00:00" max="21:59:00" type="time"></asp:TextBox>
                         </div>
                         <div class="form-group col-md-3">
                             <label for="endTime">End Time:</label>

@@ -66,7 +66,8 @@ namespace FinalProj.DAL
 
             // Step 2 - Instantiate SqlCommand instance to add record 
             //          with INSERT statement
-            string sqlStmt = "INSERT INTO tdEvent(eventTitle, eventVenue, eventDate, eventStartTime, eventEndTime, eventMaxAttendees, eventDesc, eventPic, eventNote, eventAdv) VALUES (@eventTitle, @eventVenue, @eventDate, @eventStartTime, @eventEndTime, @eventMaxAttendees, @eventDesc, @eventPic, @eventNote, @eventAdv)";
+            string sqlStmt = "INSERT INTO tdEvent(eventTitle, eventVenue, eventDate, eventStartTime, eventEndTime, eventMaxAttendees, eventDesc, eventPic, eventNote, eventAdv) " +
+                "VALUES (@eventTitle, @eventVenue, @eventDate, @eventStartTime, @eventEndTime, @eventMaxAttendees, @eventDesc, @eventPic, @eventNote, @eventAdv)";
             sqlCmd = new SqlCommand(sqlStmt, myConn);
 
             // Step 3 : Add each parameterised variable with value

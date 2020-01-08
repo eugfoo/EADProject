@@ -18,48 +18,87 @@ namespace FinalProj
         protected void createBtn_Click(object sender, EventArgs e)
         {
             Events ev = new Events();
+            string errmsg = "";
+            PanelError.Visible = false;
 
-
-            string title = eventTitle.Text.ToString();
-            string venue = eventAddress.Text.ToString();
-            string date = eventDate.Text.ToString();
-            string eventStartTime = startTime.Text.ToString();
-            string eventEndTime = endTime.Text.ToString();
-            int maxAttendees = int.Parse(maxAttend.Text.ToString());
-            string description = desc.Text.ToString();
-            string picture = picChosen.Text.ToString();
-            string note = noteText.Text.ToString();
-            int advertisement = 0;
-            //int hour = 0;
-            //string eventStartTime24 = "";
-            //string eventEndTime24 = "";
-
-
-            if (advCheck.Checked == true)
+            if (eventTitle.Text.ToString() == "")
             {
-                advertisement = 1;
+                errmsg = "Title cannot be empty! <br>";
             }
-            
+            if (eventAddress.Text.ToString() == "")
+            {
+                errmsg += "Address cannot be empty! <br>";
+            }
+            if (eventDate.Text.ToString() == "")
+            {
+                errmsg += "Date cannot be empty! <br>";
+            }
+            if (startTime.Text.ToString() == "")
+            {
+                errmsg += "StartTime cannot be empty! <br>";
+            }
+            if (startTime.Text.ToString() == "")
+            {
+                errmsg += "EndTime cannot be empty! <br>";
+            }
+            if (maxAttend.Text.ToString() == "")
+            {
+                errmsg += "Maximum number of attendees cannot be empty! <br>";
+            }
+            if (errmsg != "")
+            {
+                errmsgTb.Text = errmsg;
+                PanelError.Visible = true;
+                
+            }
+            else
+            {
+                string title = eventTitle.Text.ToString();
+                string venue = eventAddress.Text.ToString();
+                string date = eventDate.Text.ToString();
+                string eventStartTime = startTime.Text.ToString();
+                string eventEndTime = endTime.Text.ToString();
+                int maxAttendees = int.Parse(maxAttend.Text.ToString());
+                string description = desc.Text.ToString();
+                string picture = picChosen.Text.ToString();
+                string note = noteText.Text.ToString();
+                int advertisement = 0;
+                //int hour = 0;
+                //string eventStartTime24 = "";
+                //string eventEndTime24 = "";
 
-            //string startampm = eventStartTime.Substring(6, 2);
-            //string endampm = eventEndTime.Substring(6, 2);
+
+                if (advCheck.Checked == true)
+                {
+                    advertisement = 1;
+                }
 
 
-            //if (startampm == "PM")
-            //{
-            //     hour = int.Parse(eventStartTime.Substring(0, 2)) + 12;
-            //     eventStartTime24 = hour.ToString() + eventStartTime.Substring(2, 3);
-            //}
 
-            //if (endampm == "PM")
-            //{
-            //    hour = int.Parse(eventEndTime.Substring(0, 2)) + 12;
-            //    eventEndTime24 = hour.ToString() + eventEndTime.Substring(2, 3);
-            //}
+                //string startampm = eventStartTime.Substring(6, 2);
+                //string endampm = eventEndTime.Substring(6, 2);
 
 
-            ev = new Events(title, venue, date, eventStartTime, eventEndTime, maxAttendees, description, picture, note, advertisement);
-            int result = ev.AddEvent();
+                //if (startampm == "PM")
+                //{
+                //     hour = int.Parse(eventStartTime.Substring(0, 2)) + 12;
+                //     eventStartTime24 = hour.ToString() + eventStartTime.Substring(2, 3);
+                //}
+
+                //if (endampm == "PM")
+                //{
+                //    hour = int.Parse(eventEndTime.Substring(0, 2)) + 12;
+                //    eventEndTime24 = hour.ToString() + eventEndTime.Substring(2, 3);
+                //}
+
+
+
+
+
+                ev = new Events(title, venue, date, eventStartTime, eventEndTime, maxAttendees, description, picture, note, advertisement);
+                int result = ev.AddEvent();
+            }
+           
 
         }
     }
