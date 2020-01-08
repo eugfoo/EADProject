@@ -61,11 +61,11 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label for="startTime">Start Time:</label>
-                            <input type="text" class="form-control" id="startTime">
+                            <input type="time" class="form-control" id="startTime">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="endTime">End Time:</label>
-                            <input type="text" class="form-control" id="endTime">
+                            <input type="time" class="form-control" id="endTime">
                         </div>
                     </div>
                     <div class="form-group">

@@ -68,6 +68,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Acknowledge.aspx" />
+    <Content Include="App_Data\myDB.mdf" />
+    <Content Include="App_Data\myDB_log.ldf">
+      <DependentUpon>myDB.mdf</DependentUpon>
+    </Content>
     <Content Include="AttendanceEdit.aspx" />
     <Content Include="AttendanceEdit.css" />
     <Content Include="AttendanceSubmitted.aspx" />
@@ -130,6 +134,7 @@
     <Compile Include="AttendanceSubmitted.aspx.designer.cs">
       <DependentUpon>AttendanceSubmitted.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BLL\Events.cs" />
     <Compile Include="bookmark.aspx.cs">
       <DependentUpon>bookmark.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -144,6 +149,7 @@
     <Compile Include="createdEvent.aspx.designer.cs">
       <DependentUpon>createdEvent.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DAL\eventDao.cs" />
     <Compile Include="eventDetailsTabTwo.aspx.cs">
       <DependentUpon>eventDetailsTabTwo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -277,7 +283,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
