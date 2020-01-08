@@ -112,11 +112,11 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label for="startTime">Start Time:</label>
-                            <asp:TextBox ID="startTime" CssClass="form-control" runat="server" min="07:00:00" max="21:59:00" type="time"></asp:TextBox>
+                            <asp:TextBox ID="startTime" CssClass="form-control" runat="server" min="07:00:00" max="22:00:00" type="time"></asp:TextBox>
                         </div>
                         <div class="form-group col-md-3">
                             <label for="endTime">End Time:</label>
-                            <asp:TextBox ID="endTime" CssClass="form-control" runat="server" type="time"></asp:TextBox>
+                            <asp:TextBox ID="endTime" CssClass="form-control" runat="server"  min="07:00:00" max="22:00:00" type="time"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group">

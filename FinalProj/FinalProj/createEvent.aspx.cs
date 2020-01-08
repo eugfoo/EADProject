@@ -17,6 +17,8 @@ namespace FinalProj
 
         protected void createBtn_Click(object sender, EventArgs e)
         {
+            
+
             Events ev = new Events();
             string errmsg = "";
             PanelError.Visible = false;
@@ -45,6 +47,26 @@ namespace FinalProj
             {
                 errmsg += "Maximum number of attendees cannot be empty! <br>";
             }
+            if (startTime.Text.ToString() != "" && endTime.Text.ToString() != "")
+            {
+                string startTimeNumber = "";
+                string endTimeNumber = "";
+                string eventStartTime = startTime.Text.ToString();
+                string eventEndTime = endTime.Text.ToString();
+                string startFrontdigits = eventStartTime.Substring(0, 2);
+                string endFrontdigits = eventEndTime.Substring(0, 2);
+                string startBackdigits = eventStartTime.Substring(3, 2);
+                string endBackdigits = eventEndTime.Substring(3, 2);
+                startTimeNumber = startFrontdigits + startBackdigits;
+                endTimeNumber = endFrontdigits + endBackdigits;
+
+                if (int.Parse(startTimeNumber) > int.Parse(endTimeNumber))
+                {
+                    errmsg += "Please ensure that you entered a valid Start & End Time";
+                }
+            }
+
+            
             if (errmsg != "")
             {
                 errmsgTb.Text = errmsg;
@@ -53,11 +75,11 @@ namespace FinalProj
             }
             else
             {
+                string eventStartTime = startTime.Text.ToString();
+                string eventEndTime = endTime.Text.ToString();
                 string title = eventTitle.Text.ToString();
                 string venue = eventAddress.Text.ToString();
                 string date = eventDate.Text.ToString();
-                string eventStartTime = startTime.Text.ToString();
-                string eventEndTime = endTime.Text.ToString();
                 int maxAttendees = int.Parse(maxAttend.Text.ToString());
                 string description = desc.Text.ToString();
                 string picture = picChosen.Text.ToString();
@@ -90,10 +112,6 @@ namespace FinalProj
                 //    hour = int.Parse(eventEndTime.Substring(0, 2)) + 12;
                 //    eventEndTime24 = hour.ToString() + eventEndTime.Substring(2, 3);
                 //}
-
-
-
-
 
                 ev = new Events(title, venue, date, eventStartTime, eventEndTime, maxAttendees, description, picture, note, advertisement);
                 int result = ev.AddEvent();
