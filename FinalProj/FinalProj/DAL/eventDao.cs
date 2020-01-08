@@ -21,7 +21,7 @@ namespace FinalProj.DAL
             SqlConnection myConn = new SqlConnection(DBConnect);
 
             //Step 2 -  Create a DataAdapter to retrieve data from the database table
-            string sqlStmt = "Select * from tdEvent, Order By eventStartTime";
+            string sqlStmt = "Select * from tdEvent Order By eventStartTime";
             SqlDataAdapter da = new SqlDataAdapter(sqlStmt, myConn);
 
             //Step 3 -  Create a DataSet to store the data to be retrieved
@@ -51,6 +51,45 @@ namespace FinalProj.DAL
             }
 
             return evList;
+        }
+
+        public int Insert(Events ev)
+        {
+            // Execute NonQuery return an integer value
+            int result = 0;
+            SqlCommand sqlCmd = new SqlCommand();
+
+            //Step 1 -  Define a connection to the database by getting
+            //          the connection string from web.config
+            string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
+            SqlConnection myConn = new SqlConnection(DBConnect);
+
+            // Step 2 - Instantiate SqlCommand instance to add record 
+            //          with INSERT statement
+            string sqlStmt = "INSERT INTO tdEvent(eventTitle, eventVenue, eventDate, eventStartTime, eventEndTime, eventMaxAttendees, eventDesc, eventPic, eventNote, eventAdv) VALUES (@eventTitle, @eventVenue, @eventDate, @eventStartTime, @eventEndTime, @eventMaxAttendees, @eventDesc, @eventPic, @eventNote, @eventAdv)";
+            sqlCmd = new SqlCommand(sqlStmt, myConn);
+
+            // Step 3 : Add each parameterised variable with value
+            sqlCmd.Parameters.AddWithValue("@eventTitle", ev.Title);
+            sqlCmd.Parameters.AddWithValue("@eventVenue", ev.Name);
+            sqlCmd.Parameters.AddWithValue("@eventDate", ev.Date);
+            sqlCmd.Parameters.AddWithValue("@eventStartTime", ev.StartTime);
+            sqlCmd.Parameters.AddWithValue("@eventEndTime", ev.EndTime);
+            sqlCmd.Parameters.AddWithValue("@eventMaxAttendees", ev.MaxAttendees);
+            sqlCmd.Parameters.AddWithValue("@eventDesc", ev.Desc);
+            sqlCmd.Parameters.AddWithValue("@eventPic", ev.Pic);
+            sqlCmd.Parameters.AddWithValue("@eventNote", ev.Note);
+            sqlCmd.Parameters.AddWithValue("@eventAdv", ev.Advertisement);
+
+
+            // Step 4 Open connection the execute NonQuery of sql command   
+            myConn.Open();
+            result = sqlCmd.ExecuteNonQuery();
+
+            // Step 5 :Close connection
+            myConn.Close();
+
+            return result;
         }
     }
 }

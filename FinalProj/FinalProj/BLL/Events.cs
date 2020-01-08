@@ -38,5 +38,12 @@ namespace FinalProj.BLL
             Note = eventNote;
             Advertisement = eventAdv;
         }
+
+        public int AddEvent()
+        {
+            eventDao dao = new eventDao();
+            int result = dao.Insert(this);
+            return result;
+        }
     }
 }

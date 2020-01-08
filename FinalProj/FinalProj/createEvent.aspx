@@ -51,13 +51,13 @@
 
                     </div>
                     <div class="form-group">
-                        <label for="inputAddress">Venue:</label>
+                        <label for="eventAddress">Venue:</label>
                         <asp:TextBox ID="eventAddress" CssClass="form-control" placeholder="1234 Main St" runat="server"></asp:TextBox>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="datePicker">Date:</label>
-							<asp:TextBox ID="datePicker" CssClass="form-control" runat="server" type="date"></asp:TextBox>
+                            <label for="eventDate">Date:</label>
+							<asp:TextBox ID="eventDate" CssClass="form-control" runat="server" type="date" format="DD/MM/YYYY"></asp:TextBox>
                         </div>
                         <div class="form-group col-md-3">
                             <label for="startTime">Start Time:</label>
@@ -87,7 +87,7 @@
                         <div class="custom-file">
                             
 							<asp:FileUpload ID="inputGroupFile01" aria-describedby="inputGroupFileAddon01" CssClass="custom-file-input" runat="server" />
-                            <asp:Label ID="Label1" runat="server" for="inputGroupFile01" CssClass="custom-file-label" >Choose File</asp:Label>
+                            <asp:Label ID="picChosen" runat="server" for="inputGroupFile01" CssClass="custom-file-label">Choose File</asp:Label>
                         </div>
                     </div>
                     <div class="card-title" style="background-color: #22537C; font-family: 'Franklin Gothic'; padding: 1%; color: white; font-size: 1em;">&nbsp;Include a Short Note</div>

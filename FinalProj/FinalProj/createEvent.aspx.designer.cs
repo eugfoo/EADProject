@@ -31,13 +31,13 @@ namespace FinalProj {
         protected global::System.Web.UI.WebControls.TextBox eventAddress;
         
         /// <summary>
-        /// datePicker control.
+        /// eventDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox datePicker;
+        protected global::System.Web.UI.WebControls.TextBox eventDate;
         
         /// <summary>
         /// startTime control.
@@ -85,13 +85,13 @@ namespace FinalProj {
         protected global::System.Web.UI.WebControls.FileUpload inputGroupFile01;
         
         /// <summary>
-        /// Label1 control.
+        /// picChosen control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label picChosen;
         
         /// <summary>
         /// noteText control.
