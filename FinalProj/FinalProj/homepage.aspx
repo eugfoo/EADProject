@@ -330,8 +330,8 @@
                 }
 
 				for (var j = 0; j < 42; j++) {
-					
-					if (j < day + startDay - 1) {
+
+					if (j < day + startDay - 1 && tempMonth == month) {
 						days[j].className = "invalidDay"
 					}
 

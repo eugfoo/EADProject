@@ -153,7 +153,7 @@
 
                         </div>
                     </div>
-					<asp:Button ID="createBtn" runat="server" CssClass="btn btn-primary" Text="Button" OnClick="createBtn_Click" />
+					<asp:Button ID="createBtn" runat="server" CssClass="btn btn-primary" Text="Submit" OnClick="createBtn_Click" />
                 </div>
             </div>
         </div>
