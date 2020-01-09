@@ -173,10 +173,10 @@
             margin: 0 auto;
         }
 
-            #calendar tr {
-                height: 2em;
-                line-height: 2em;
-            }
+        #calendar tr {
+            height: 2em;
+            line-height: 2em;
+        }
 
         thead tr {
             color: #e66b6b;
@@ -195,18 +195,24 @@
             -webkit-transition: all 0.2s ease-in;
             transition: all 0.2s ease-in;
         }
+    	.invalidDay {
+    		color:grey;
+		}
+    	.invalidDay:hover {
+    		background-color:#fff;
+			color: grey;
+		}
+        tbody td:hover, .selected {
+            color: #fff;
+            background-color: #2a3246;
+            border: none;
+        }
 
-            tbody td:hover, .selected {
-                color: #fff;
-                background-color: #2a3246;
-                border: none;
-            }
-
-            tbody td:active {
-                -webkit-transform: scale(0.7);
-                -ms-transform: scale(0.7);
-                transform: scale(0.7);
-            }
+        tbody td:active {
+            -webkit-transform: scale(0.7);
+            -ms-transform: scale(0.7);
+            transform: scale(0.7);
+        }
 
         #today {
             background-color: #e66b6b;
@@ -220,10 +226,10 @@
             background: #fff;
         }
 
-            #disabled:hover {
-                background: #fff;
-                color: #c9c9c9;
-            }
+        #disabled:hover {
+            background: #fff;
+            color: #c9c9c9;
+        }
 
         #reset {
             display: block;
@@ -242,16 +248,16 @@
             transition: all 0.3s ease;
         }
 
-            #reset:hover {
-                color: #e66b6b;
-                border-color: #e66b6b;
-            }
+        #reset:hover {
+            color: #e66b6b;
+            border-color: #e66b6b;
+        }
 
-            #reset:active {
-                -webkit-transform: scale(0.8);
-                -ms-transform: scale(0.8);
-                transform: scale(0.8);
-            }
+        #reset:active {
+            -webkit-transform: scale(0.8);
+            -ms-transform: scale(0.8);
+            transform: scale(0.8);
+        }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -296,12 +302,22 @@
             };
 
             Calendar.prototype.drawDays = function () {
-                var startDay = new Date(year, month, 1).getDay(),
-                    //      下面表示这个月总共有几天
-                    nDays = new Date(year, month + 1, 0).getDate(),
+				var startDay = new Date(year, month, 1).getDay(),
+					//      下面表示这个月总共有几天
+					nDays = new Date(year, month + 1, 0).getDate(),
 
-                    n = startDay;
-                //      清除原来的样式和日期
+					n = startDay,
+					//      清除原来的样式和日期
+					tempMonth = today.getMonth(),
+					invalidSelection = false;
+
+				if (today.getFullYear() > year) {
+					tempMonth += 12;
+				}
+				if (tempMonth > month) {
+					invalidSelection = true;
+				}
+				
                 for (var k = 0; k < 42; k++) {
                     days[k].innerHTML = '';
                     days[k].id = '';
@@ -310,15 +326,24 @@
 
                 for (var i = 1; i <= nDays; i++) {
                     days[n].innerHTML = i;
-                    n++;
+					n++;
                 }
 
-                for (var j = 0; j < 42; j++) {
-                    if (days[j].innerHTML === "") {
+				for (var j = 0; j < 42; j++) {
+					
+					if (j < day + startDay - 1) {
+						days[j].className = "invalidDay"
+					}
 
-                        days[j].id = "disabled";
+					if (days[j].innerHTML === "") {
 
-                    } else if (j === day + startDay - 1) {
+						days[j].id = "disabled";
+
+					}
+					if (invalidSelection) {
+						days[j].className = "invalidDay";
+					}
+					else if (j === day + startDay - 1) {
                         if ((this.options && (month === setDate.getMonth()) && (year === setDate.getFullYear())) || (!this.options && (month === today.getMonth()) && (year === today.getFullYear()))) {
                             this.drawHeader(day);
                             days[j].id = "today";
@@ -334,16 +359,20 @@
             };
 
             Calendar.prototype.clickDay = function (o) {
-                var selected = document.getElementsByClassName("selected"),
-                    len = selected.length;
-                if (len !== 0) {
-                    selected[0].className = "";
-                }
-                o.className = "selected";
-                selectedDay = new Date(year, month, o.innerHTML);
-                this.drawHeader(o.innerHTML);
-                this.setCookie('selected_day', 1);
-
+				let clickedDay = new Date(year, month, o.innerHTML);
+				let today12AM = new Date(); // created new var to prevent affecting anythign else
+				today12AM.setHours(0, 0, 0, 0); // sets today to 12 am
+				if (clickedDay >= today12AM) { // ensure that users can't choose dates before current date
+					var selected = document.getElementsByClassName("selected"),
+						len = selected.length;
+					selectedDay = new Date(year, month, o.innerHTML);
+					if (len !== 0) {
+						selected[0].className = "";
+					}
+					o.className = "selected";
+					this.drawHeader(o.innerHTML);
+					this.setCookie('selected_day', 1);
+				} 
             };
 
             Calendar.prototype.preMonth = function () {

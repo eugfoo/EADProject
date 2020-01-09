@@ -120,6 +120,7 @@
                         </div>
                     </div>
                     <div class="form-group">
+						
                         <label for="maxAttend">Max Number of Attendees:</label>
 						<asp:TextBox ID="maxAttend" CssClass="form-control" runat="server" Rows="5" placeholder="20" type="number"></asp:TextBox>
                     </div>
