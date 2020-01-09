@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -88,6 +89,8 @@ namespace FinalProj
             }
             else
             {
+
+
                 string eventStartTime = startTime.Text.ToString();
                 string eventEndTime = endTime.Text.ToString();
                 string title = eventTitle.Text.ToString();
@@ -109,7 +112,20 @@ namespace FinalProj
 
                 }
 
+                if (FileUploadControl.HasFile)
+                {
 
+                    string filename = Path.GetFileName(FileUploadControl.PostedFile.FileName);
+                    FileUploadControl.SaveAs(Server.MapPath("~/Img/" + filename));
+                    picture = filename;
+               
+                    //string strFileName = DateTime.Now.ToString("MM-dd-yyyy_HHmmss");
+                    //string strFileType = System.IO.Path.GetExtension(FileUploadControl.FileName).ToString().ToLower();
+                    //FileUploadControl.SaveAs(Server.MapPath("folderpath" + strFileName + strFileType));
+
+
+
+                }
 
                 //string startampm = eventStartTime.Substring(6, 2);
                 //string endampm = eventEndTime.Substring(6, 2);
@@ -133,6 +149,11 @@ namespace FinalProj
             }
            
 
+        }
+
+        protected void UploadButton_Click(object sender, EventArgs e)
+        {
+           
         }
 
         protected void desc_TextChanged(object sender, EventArgs e)

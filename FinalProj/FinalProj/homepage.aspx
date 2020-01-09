@@ -263,7 +263,7 @@
 			}
 	</style>
 	<script>
-		document.addEventListener('DOMContentLoaded', function () {
+		document.addEventListener('DOMContentLoaded', function () {      //script happens whenver document is load
 			var today = new Date(),
 				year = today.getFullYear(),
 				month = today.getMonth(),
@@ -280,7 +280,7 @@
 			}
 
 			Calendar.prototype.draw = function () {
-				this.getCookie('selected_day');
+				//this.getCookie('selected_day');
 				this.getOptions();
 				this.drawDays();
 				var that = this,
@@ -304,21 +304,21 @@
 				headMonth[0].innerHTML = monthTag[month] + " - " + year;
 			};
 
-			Calendar.prototype.drawDays = function () {
+			Calendar.prototype.drawDays = function () {			//function is called each time users select months back and forth 
 				var startDay = new Date(year, month, 1).getDay(),
-					//      下面表示这个月总共有几天
+	
 					nDays = new Date(year, month + 1, 0).getDate(),
 
 					n = startDay,
-					//      清除原来的样式和日期
+
 					tempMonth = today.getMonth(),
 					invalidSelection = false;
 
-				if (today.getFullYear() > year) {
-					tempMonth += 12;
+				if (today.getFullYear() > year) {   // if current year more than selected year(eg. 2019)
+					tempMonth += 12;				// adds 12 to tempmonth (eg. jan = 0), therefore 12 (Good Analogy is 12Hr & 24Hr Clock)
 				}
-				if (tempMonth > month) {
-					invalidSelection = true;
+				if (tempMonth > month) {			// compares if temp month (which is the current month is more than the selected month)
+					invalidSelection = true;		// sets invalidSelection to true.
 				}
 
 				for (var k = 0; k < 42; k++) {
@@ -334,7 +334,7 @@
 
 				for (var j = 0; j < 42; j++) {
 
-					if (j < day + startDay - 1 && tempMonth == month) {
+					if (j < day + startDay - 1 && tempMonth == month) {		// finds all the dates that are before today's date
 						days[j].className = "invalidDay"
 					}
 
@@ -343,7 +343,7 @@
 						days[j].id = "disabled";
 
 					}
-					if (invalidSelection) {
+					if (invalidSelection) {									// if the the selected month alr happened, program sets all dates for that month as invalid
 						days[j].className = "invalidDay";
 					}
 					else if (j === day + startDay - 1) {
@@ -363,9 +363,9 @@
 
 			Calendar.prototype.clickDay = function (o) {
 				let clickedDay = new Date(year, month, o.innerHTML);
-				let today12AM = new Date(); // created new var to prevent affecting anythign else
-				today12AM.setHours(0, 0, 0, 0); // sets today to 12 am
-				if (clickedDay >= today12AM) { // ensure that users can't choose dates before current date
+				let today12AM = new Date();								// created new var to prevent affecting anythign else
+				today12AM.setHours(0, 0, 0, 0);							// sets today to 12 am
+				if (clickedDay >= today12AM) {							// ensure that users can't choose dates before current date
 					var selected = document.getElementsByClassName("selected"),
 						len = selected.length;
 					selectedDay = new Date(year, month, o.innerHTML);
@@ -374,11 +374,11 @@
 					}
 					o.className = "selected";
 					this.drawHeader(o.innerHTML);
-					this.setCookie('selected_day', 1);
+					//this.setCookie('selected_day', 1);
 				}
 			};
 
-			Calendar.prototype.preMonth = function () {
+			Calendar.prototype.preMonth = function () {			//go back
 				if (month < 1) {
 					month = 11;
 					year = year - 1;
@@ -389,7 +389,7 @@
 				this.drawDays();
 			};
 
-			Calendar.prototype.nextMonth = function () {
+			Calendar.prototype.nextMonth = function () {		//go forward
 				if (month >= 11) {
 					month = 0;
 					year = year + 1;
@@ -410,7 +410,7 @@
 				}
 			};
 
-			Calendar.prototype.reset = function () {
+			Calendar.prototype.reset = function () {		//reset
 				month = today.getMonth();
 				year = today.getFullYear();
 				day = today.getDate();
@@ -418,33 +418,33 @@
 				this.drawDays();
 			};
 
-			Calendar.prototype.setCookie = function (name, expiredays) {
-				if (expiredays) {
-					var date = new Date();
-					date.setTime(date.getTime() + (expiredays * 24 * 60 * 60 * 1000));
-					var expires = "; expires=" + date.toGMTString();
-				} else {
-					var expires = "";
-				}
-				document.cookie = name + "=" + selectedDay + expires + "; path=/";
-			};
+			//Calendar.prototype.setCookie = function (name, expiredays) {
+			//	if (expiredays) {
+			//		var date = new Date();
+			//		date.setTime(date.getTime() + (expiredays * 24 * 60 * 60 * 1000));
+			//		var expires = "; expires=" + date.toGMTString();
+			//	} else {
+			//		var expires = "";
+			//	}
+			//	document.cookie = name + "=" + selectedDay + expires + "; path=/";
+			//};
 
-			Calendar.prototype.getCookie = function (name) {
-				if (document.cookie.length) {
-					var arrCookie = document.cookie.split(';'),
-						nameEQ = name + "=";
-					for (var i = 0, cLen = arrCookie.length; i < cLen; i++) {
-						var c = arrCookie[i];
-						while (c.charAt(0) == ' ') {
-							c = c.substring(1, c.length);
+			//Calendar.prototype.getCookie = function (name) {
+			//	if (document.cookie.length) {
+			//		var arrCookie = document.cookie.split(';'),
+			//			nameEQ = name + "=";
+			//		for (var i = 0, cLen = arrCookie.length; i < cLen; i++) {
+			//			var c = arrCookie[i];
+			//			while (c.charAt(0) == ' ') {
+			//				c = c.substring(1, c.length);
 
-						}
-						if (c.indexOf(nameEQ) === 0) {
-							selectedDay = new Date(c.substring(nameEQ.length, c.length));
-						}
-					}
-				}
-			};
+			//			}
+			//			if (c.indexOf(nameEQ) === 0) {
+			//				selectedDay = new Date(c.substring(nameEQ.length, c.length));
+			//			}
+			//		}
+			//	}
+			//};
 			var calendar = new Calendar();
 
 
