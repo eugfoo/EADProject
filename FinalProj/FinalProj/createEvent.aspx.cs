@@ -98,7 +98,7 @@ namespace FinalProj
                 string date = eventDate.Text.ToString();
                 int maxAttendees = int.Parse(maxAttend.Text.ToString());
                 string description = desc.Text.ToString();
-                string picture = picChosen.Text.ToString();
+                string picture = "";
                 string note = noteText.Text.ToString();
                 int advertisement = 0;
                 //int hour = 0;
@@ -118,6 +118,7 @@ namespace FinalProj
                     string filename = Path.GetFileName(FileUploadControl.PostedFile.FileName);
                     FileUploadControl.SaveAs(Server.MapPath("~/Img/" + filename));
                     picture = filename;
+                    picChosen.Text = filename;
                
                     //string strFileName = DateTime.Now.ToString("MM-dd-yyyy_HHmmss");
                     //string strFileType = System.IO.Path.GetExtension(FileUploadControl.FileName).ToString().ToLower();

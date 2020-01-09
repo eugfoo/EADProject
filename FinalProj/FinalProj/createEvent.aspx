@@ -63,10 +63,6 @@
 			}
 		}
 
-
-
-
-
 		#formContainer {
 			margin-bottom: 2em;
 		}
@@ -81,7 +77,8 @@
 
 	<form runat="server">
 		<asp:Panel ID="PanelError" runat="server" Visible="false" CssClass="stuff alert alert-danger ">
-			<asp:Label ID="errmsgTb" runat="server"></asp:Label></asp:Panel>
+			<asp:Label ID="errmsgTb" runat="server"></asp:Label>
+		</asp:Panel>
 		<div class="container" id="formContainer">
 
 			<div class="card">
@@ -135,9 +132,42 @@
 							<asp:FileUpload ID="FileUploadControl" aria-describedby="inputGroupFileAddon01" CssClass="custom-file-input" runat="server" />
 							<asp:Label ID="picChosen" runat="server" for="inputGroupFile01" CssClass="custom-file-label" Text="Choose File"></asp:Label>
 						</div>--%>
+						<%--function test() {        
+                                    
+									var fileName = '';
+									if (input.files && input.files.length > 1)
+										fileName = (input.getAttribute('data-multiple-caption') || '').replace('{count}', input.files.length);
 
-						<asp:FileUpload ID="FileUploadControl" runat="server" />
-						<asp:Label ID="picChosen" runat="server" Text="" Visible="True"></asp:Label>
+									if (fileName)
+										label.innerText = fileName;
+									else
+										label.innerText = "hi";
+                                    console.log(fileName);
+								};--%>
+						
+						<div class="custom-file">
+							<asp:FileUpload ID="FileUploadControl" CssClass="custom-file-input" runat="server" />
+							<asp:Label ID="picChosen" runat="server" Text="Choose File" CssClass="custom-file-label" Visible="True"></asp:Label>
+						</div>
+
+						<script>
+							var inputs = document.querySelectorAll('.custom-file-input');
+							Array.prototype.forEach.call(inputs, function (input) {
+								var label = document.querySelector('.custom-file-label'),
+									labelVal = "Choose File";
+
+								input.addEventListener('change', function (e) {
+									var fileName = '';
+									if (this.files.length >0)
+										fileName = this.files[0].name;
+
+									if (fileName)
+										label.innerText = fileName;
+									else
+										label.innerHTML = labelVal;
+								});
+							});
+						</script>
 
 					</div>
 					<div class="card-title" style="background-color: #22537C; font-family: 'Franklin Gothic'; padding: 1%; color: white; font-size: 1em;">&nbsp;Include a Short Note</div>
