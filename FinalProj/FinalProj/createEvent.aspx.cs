@@ -76,9 +76,15 @@ namespace FinalProj
                 System.Diagnostics.Debug.WriteLine(dt);
                 if (dt < DateTime.Now.Date)
                 {
-                    errmsg += "Please enter a valid date";
+                    errmsg += "Please enter a valid date <br>";
                 }
 
+            }
+
+
+            if (FileUploadControl.HasFile == false)
+            {
+                errmsg += "Please Upload an Image <br>";
             }
             
             if (errmsg != "")

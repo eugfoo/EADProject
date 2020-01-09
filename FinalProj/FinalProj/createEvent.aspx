@@ -140,8 +140,8 @@
 
 							input.addEventListener('change', function (e) {				// creates an on change function on the input var
 								var fileName = '';
-								if (this.files[length] > 0)								// checks if file is selected. eg. {0: File, length: 1} when file is selected, FileList {length: 0} when file isn't selected
-									fileName = this.files[0][name];						// selects the object with the key "0" and then selects the object that has the key "name"
+								if (this.files["length"] > 0)								// checks if file is selected. eg. {0: File, length: 1} when file is selected, FileList {length: 0} when file isn't selected
+									fileName = this.files[0]["name"];						// selects the object with the key "0" and then selects the object that has the key "name"
 
 								if (fileName !== "")									// if a file was selected, the inner text will be the file's name
 									label.innerText = fileName;
