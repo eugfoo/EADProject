@@ -13,5 +13,9 @@ namespace FinalProj
         {
 
         }
+        protected void createEvent_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("createEvent.aspx");
+        }
     }
 }
