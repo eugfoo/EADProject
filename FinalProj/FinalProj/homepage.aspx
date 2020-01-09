@@ -306,7 +306,7 @@
 
 			Calendar.prototype.drawDays = function () {			//function is called each time users select months back and forth 
 				var startDay = new Date(year, month, 1).getDay(),
-	
+
 					nDays = new Date(year, month + 1, 0).getDate(),
 
 					n = startDay,
@@ -458,64 +458,64 @@
 
 			<div class="row">
 				<div class="col-sm-12 col-md-12 col-lg-8 col-sm-pull-4" id="eventSearch">
-					
-						<div class="p-1 bg-light rounded rounded-pill shadow-sm">
-							<div class="input-group">
-								<input type="search" placeholder="What're you searching for?" aria-describedby="button-addon1" class="form-control border-0 bg-light">
-								<div class="input-group-append">
-									<button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
-								</div>
+
+					<div class="p-1 bg-light rounded rounded-pill shadow-sm">
+						<div class="input-group">
+							<input type="search" placeholder="What're you searching for?" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+							<div class="input-group-append">
+								<button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
 							</div>
 						</div>
+					</div>
 
 
-						<div class="card" style="margin: 1em auto;">
-							<div class="card-header">
-								25th November 2019, 4:15pm
-							</div>
-							<div class="card-body">
-								<h2 class="card-title"><b>PROJECT Beach Cleaning</b> </h2>
-								<p class="card-text" style="margin-bottom: 1%;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+					<div class="card" style="margin: 1em auto;">
+						<div class="card-header">
+							25th November 2019, 4:15pm
+						</div>
+						<div class="card-body">
+							<h2 class="card-title"><b>PROJECT Beach Cleaning</b> </h2>
+							<p class="card-text" style="margin-bottom: 1%;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
 
-								<p style="color: grey; margin-bottom: 1%;">11 Participants Attending</p>
-								<a href="/eventDetailsTabOne.aspx" class="btn btn-primary">View More &rarr;</a>
-							</div>
-							<div class="card-footer text-muted">
-								Posted by
+							<p style="color: grey; margin-bottom: 1%;">11 Participants Attending</p>
+							<a href="/eventDetailsTabOne.aspx" class="btn btn-primary">View More &rarr;</a>
+						</div>
+						<div class="card-footer text-muted">
+							Posted by
                         <a href="#">Kovi Tan</a>
-							</div>
 						</div>
-						<div class="card" style="margin: 1em auto;">
-							<div class="card-header">
-								25th November 2019, 5:45pm
-							</div>
-							<div class="card-body">
-								<h2 class="card-title"><b>Purple Parade!</b></h2>
-								<p class="card-text" style="margin-bottom: 1%;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-								<p style="color: grey; margin-bottom: 1%;">11 Participants Attending</p>
-								<a href="#" class="btn btn-primary">View More &rarr;</a>
-							</div>
-							<div class="card-footer text-muted">
-								Posted by
+					</div>
+					<div class="card" style="margin: 1em auto;">
+						<div class="card-header">
+							25th November 2019, 5:45pm
+						</div>
+						<div class="card-body">
+							<h2 class="card-title"><b>Purple Parade!</b></h2>
+							<p class="card-text" style="margin-bottom: 1%;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+							<p style="color: grey; margin-bottom: 1%;">11 Participants Attending</p>
+							<a href="#" class="btn btn-primary">View More &rarr;</a>
+						</div>
+						<div class="card-footer text-muted">
+							Posted by
                             <a href="#">Andy Lee</a>
-							</div>
 						</div>
-						<div class="card" style="margin: 1em auto;">
-							<div class="card-header">
-								25th Novembe4 2019, 6:00pm
-							</div>
-							<div class="card-body">
-								<h2 class="card-title" style="margin-bottom: 1%;">Post Title</h2>
-								<p class="card-text" style="margin-bottom: 1%;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-								<p style="color: grey; margin-bottom: 1%;">11 Participants Attending</p>
+					</div>
+					<div class="card" style="margin: 1em auto;">
+						<div class="card-header">
+							25th Novembe4 2019, 6:00pm
+						</div>
+						<div class="card-body">
+							<h2 class="card-title" style="margin-bottom: 1%;">Post Title</h2>
+							<p class="card-text" style="margin-bottom: 1%;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+							<p style="color: grey; margin-bottom: 1%;">11 Participants Attending</p>
 
-								<a href="#" class="btn btn-primary">View More &rarr;</a>
-							</div>
-							<div class="card-footer text-muted">
-								Posted by
-            <a href="#">Abdul Azim</a>
-							</div>
+							<a href="#" class="btn btn-primary">View More &rarr;</a>
 						</div>
+						<div class="card-footer text-muted">
+							Posted by
+            <a href="#">Abdul Azim</a>
+						</div>
+					</div>
 				</div>
 
 				<div class="col-sm-12 col-md-12 col-lg-4 order-first order-lg-12">

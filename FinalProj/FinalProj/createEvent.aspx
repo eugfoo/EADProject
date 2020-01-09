@@ -120,54 +120,33 @@
 						<label for="desc">Description:</label>
 
 						<asp:TextBox ID="desc" CssClass="form-control" runat="server" Height="250" TextMode="MultiLine"></asp:TextBox>
-						<%--autopostback="true" ontextchanged="desc_textchanged" // This is to be placed in the tag above--%> 
+						<%--autopostback="true" ontextchanged="desc_textchanged" // This is to be placed in the tag above--%>
 						<%--<asp:Label ID="charCounter" runat="server" Text="."></asp:Label>--%>
-
 					</div>
 					<div class="card-title" style="background-color: #22537C; font-family: 'Franklin Gothic'; padding: 1%; color: white; font-size: 1em;">&nbsp;Add a Photo*</div>
 
 					<div class="input-group" style="margin: 2em auto;">
-						<%--<div class="input-group-prepend">
-							<span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-						</div>
-						<div class="custom-file">
-							<asp:FileUpload ID="FileUploadControl" aria-describedby="inputGroupFileAddon01" CssClass="custom-file-input" runat="server" />
-							<asp:Label ID="picChosen" runat="server" for="inputGroupFile01" CssClass="custom-file-label" Text="Choose File"></asp:Label>
-						</div>--%>
-						<%--function test() {        
-                                    
-									var fileName = '';
-									if (input.files && input.files.length > 1)
-										fileName = (input.getAttribute('data-multiple-caption') || '').replace('{count}', input.files.length);
 
-									if (fileName)
-										label.innerText = fileName;
-									else
-										label.innerText = "hi";
-                                    console.log(fileName);
-								};--%>
-						
+
 						<div class="custom-file">
 							<asp:FileUpload ID="FileUploadControl" CssClass="custom-file-input" runat="server" />
-							<asp:Label ID="picChosen" runat="server" Text="Choose File" CssClass="custom-file-label" Visible="True"></asp:Label>
+							<asp:Label ID="picChosen" runat="server" Text="Choose File" CssClass="custom-file-label"></asp:Label>
 						</div>
 
 						<script>
-							var inputs = document.querySelectorAll('.custom-file-input');		// selects all tags that have custom-file-input class
-							Array.prototype.forEach.call(inputs, function (input) {				// Loops through
-								var label = document.querySelector('.custom-file-label'),
-									labelVal = "Choose File";
+							var input = document.querySelector('.custom-file-input');	// selects element with .custom-file-input class
+							var label = document.querySelector('.custom-file-label'),	// selects element with .custom-file-label class
+								labelVal = "Choose File";								// default value
 
-								input.addEventListener('change', function (e) {
-									var fileName = '';
-									if (this.files.length >0)
-										fileName = this.files[0].name;
+							input.addEventListener('change', function (e) {				// creates an on change function on the input var
+								var fileName = '';
+								if (this.files[length] > 0)								// checks if file is selected. eg. {0: File, length: 1} when file is selected, FileList {length: 0} when file isn't selected
+									fileName = this.files[0][name];						// selects the object with the key "0" and then selects the object that has the key "name"
 
-									if (fileName)
-										label.innerText = fileName;
-									else
-										label.innerHTML = labelVal;
-								});
+								if (fileName !== "")									// if a file was selected, the inner text will be the file's name
+									label.innerText = fileName;
+								else													// if a file wasn't selected, the inner text will be the default value of "Chosen Value"
+									label.innerText = labelVal;
 							});
 						</script>
 
