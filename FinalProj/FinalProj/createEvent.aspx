@@ -115,11 +115,13 @@
 						<label for="maxAttend">Max Number of Attendees:</label>
 						<asp:TextBox ID="maxAttend" CssClass="form-control" runat="server" Rows="5" placeholder="20" type="number"></asp:TextBox>
 					</div>
-					<div class="card-title" style="background-color: #22537C; font-family: 'Franklin Gothic'; padding: 1%; color: white; font-size: 1em;">&nbsp;Write a summary of your Event* (Only 255 words are allowed)</div>
+					<div class="card-title" style="background-color: #22537C; font-family: 'Franklin Gothic'; padding: 1%; color: white; font-size: 1em;">&nbsp;Write a summary of your Event*</div>
 					<div class="form-group">
 						<label for="desc">Description:</label>
-						<asp:TextBox ID="desc" CssClass="form-control" runat="server" Height="250" TextMode="MultiLine" AutoPostBack="True" OnTextChanged="desc_TextChanged"></asp:TextBox>
-						<asp:Label ID="charCounter" runat="server" Text="."></asp:Label>
+
+						<asp:TextBox ID="desc" CssClass="form-control" runat="server" Height="250" TextMode="MultiLine"></asp:TextBox>
+						<%--autopostback="true" ontextchanged="desc_textchanged" // This is to be placed in the tag above--%> 
+						<%--<asp:Label ID="charCounter" runat="server" Text="."></asp:Label>--%>
 
 					</div>
 					<div class="card-title" style="background-color: #22537C; font-family: 'Franklin Gothic'; padding: 1%; color: white; font-size: 1em;">&nbsp;Add a Photo*</div>
@@ -151,8 +153,8 @@
 						</div>
 
 						<script>
-							var inputs = document.querySelectorAll('.custom-file-input');
-							Array.prototype.forEach.call(inputs, function (input) {
+							var inputs = document.querySelectorAll('.custom-file-input');		// selects all tags that have custom-file-input class
+							Array.prototype.forEach.call(inputs, function (input) {				// Loops through
 								var label = document.querySelector('.custom-file-label'),
 									labelVal = "Choose File";
 

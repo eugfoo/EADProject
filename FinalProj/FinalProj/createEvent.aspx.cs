@@ -90,7 +90,6 @@ namespace FinalProj
             else
             {
 
-
                 string eventStartTime = startTime.Text.ToString();
                 string eventEndTime = endTime.Text.ToString();
                 string title = eventTitle.Text.ToString();
@@ -148,8 +147,6 @@ namespace FinalProj
                 int result = ev.AddEvent();
                 Response.Redirect("createdEvent.aspx");
             }
-           
-
         }
 
         protected void UploadButton_Click(object sender, EventArgs e)
@@ -157,10 +154,10 @@ namespace FinalProj
            
         }
 
-        protected void desc_TextChanged(object sender, EventArgs e)
-        {
-            charCounter.Text = desc.Text.Length.ToString();
-        }
+        //protected void desc_TextChanged(object sender, EventArgs e)
+        //{
+        //    charCounter.Text = desc.Text.Length.ToString();
+        //}
 
         
     }
