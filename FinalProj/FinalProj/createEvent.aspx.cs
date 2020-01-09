@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using FinalProj.BLL;
 
+
 namespace FinalProj
 {
     public partial class Personal : System.Web.UI.Page
@@ -62,7 +63,7 @@ namespace FinalProj
 
                 if (int.Parse(startTimeNumber) > int.Parse(endTimeNumber))
                 {
-                    errmsg += "Please ensure that you entered a valid Start & End Time";
+                    errmsg += "Please ensure that you entered a valid Start & End Time <br>";
                 }
             }
 
@@ -70,8 +71,9 @@ namespace FinalProj
             {
                 string date = eventDate.Text.ToString();
                 DateTime dt = Convert.ToDateTime(date);
-
-                if (dt < DateTime.Now)
+                System.Diagnostics.Debug.WriteLine(date);
+                System.Diagnostics.Debug.WriteLine(dt);
+                if (dt < DateTime.Now.Date)
                 {
                     errmsg += "Please enter a valid date";
                 }
@@ -104,6 +106,7 @@ namespace FinalProj
                 if (advCheck.Checked == true)
                 {
                     advertisement = 1;
+
                 }
 
 
@@ -126,6 +129,7 @@ namespace FinalProj
 
                 ev = new Events(title, venue, date, eventStartTime, eventEndTime, maxAttendees, description, picture, note, advertisement);
                 int result = ev.AddEvent();
+                Response.Redirect("createdEvent.aspx");
             }
            
 
@@ -135,5 +139,7 @@ namespace FinalProj
         {
             charCounter.Text = desc.Text.Length.ToString();
         }
+
+        
     }
 }

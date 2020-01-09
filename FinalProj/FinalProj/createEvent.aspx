@@ -108,7 +108,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="eventDate">Date:</label>
-							<asp:TextBox ID="eventDate" CssClass="form-control" runat="server" type="date" format="DD/MM/YYYY"></asp:TextBox>
+							<asp:TextBox ID="eventDate" CssClass="form-control" runat="server" type="date" format="DD-MM-YYYY"></asp:TextBox>
                         </div>
                         <div class="form-group col-md-3">
                             <label for="startTime">Start Time:</label>
