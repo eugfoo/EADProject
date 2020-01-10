@@ -468,14 +468,15 @@
 						</div>
 					</div>
 
+					<% foreach(var element in evList){ %>
 
 					<div class="card" style="margin: 1em auto;">
 						<div class="card-header">
-							25th November 2019, 4:15pm
+							<%= element.Date %>, <%= element.StartTime %>
 						</div>
 						<div class="card-body">
-							<h2 class="card-title"><b>PROJECT Beach Cleaning</b> </h2>
-							<p class="card-text" style="margin-bottom: 1%;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+							<h2 class="card-title"><b><%= element.Title %></b> </h2>
+							<p class="card-text" style="margin-bottom: 1%;"><%= element.Desc %></p>
 
 							<p style="color: grey; margin-bottom: 1%;">11 Participants Attending</p>
 							<a href="/eventDetailsTabOne.aspx" class="btn btn-primary">View More &rarr;</a>
@@ -485,37 +486,7 @@
                         <a href="#">Kovi Tan</a>
 						</div>
 					</div>
-					<div class="card" style="margin: 1em auto;">
-						<div class="card-header">
-							25th November 2019, 5:45pm
-						</div>
-						<div class="card-body">
-							<h2 class="card-title"><b>Purple Parade!</b></h2>
-							<p class="card-text" style="margin-bottom: 1%;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-							<p style="color: grey; margin-bottom: 1%;">11 Participants Attending</p>
-							<a href="#" class="btn btn-primary">View More &rarr;</a>
-						</div>
-						<div class="card-footer text-muted">
-							Posted by
-                            <a href="#">Andy Lee</a>
-						</div>
-					</div>
-					<div class="card" style="margin: 1em auto;">
-						<div class="card-header">
-							25th Novembe4 2019, 6:00pm
-						</div>
-						<div class="card-body">
-							<h2 class="card-title" style="margin-bottom: 1%;">Post Title</h2>
-							<p class="card-text" style="margin-bottom: 1%;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-							<p style="color: grey; margin-bottom: 1%;">11 Participants Attending</p>
-
-							<a href="#" class="btn btn-primary">View More &rarr;</a>
-						</div>
-						<div class="card-footer text-muted">
-							Posted by
-            <a href="#">Abdul Azim</a>
-						</div>
-					</div>
+					<% } %>
 				</div>
 
 				<div class="col-sm-12 col-md-12 col-lg-4 order-first order-lg-12">

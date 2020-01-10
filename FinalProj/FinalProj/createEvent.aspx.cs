@@ -81,7 +81,6 @@ namespace FinalProj
 
             }
 
-
             if (FileUploadControl.HasFile == false)
             {
                 errmsg += "Please Upload an Image <br>";

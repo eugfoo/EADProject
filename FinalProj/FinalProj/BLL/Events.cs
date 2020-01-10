@@ -46,6 +46,11 @@ namespace FinalProj.BLL
             return result;
         }
 
+        public List<Events> GetAllEvents()
+        {
+            eventDao ev = new eventDao();
+            return ev.SelectAll();
+        }
 
     }
 }
