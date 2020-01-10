@@ -261,6 +261,9 @@
 				-ms-transform: scale(0.8);
 				transform: scale(0.8);
 			}
+		.forHide {
+		display:none;
+		}
 	</style>
 	<script>
 		document.addEventListener('DOMContentLoaded', function () {      //script happens whenver document is load
@@ -375,6 +378,8 @@
 					o.className = "selected";
 					this.drawHeader(o.innerHTML);
 					//this.setCookie('selected_day', 1);
+
+					document.getElementById("ContentPlaceHolder1_hidingDate").innerText = document.querySelector(".selected").innerText;
 				}
 			};
 
@@ -486,8 +491,8 @@
 
 					<div id="myEvents" style="margin-bottom:10%;">
 						<% foreach (var element in evList)
-							{ %>
-
+							{ %> 
+						
 						<div class="card" style="margin: 1em auto;">
 							<div class="card-header">
 								<%= element.Date %>, <%= element.StartTime %>
@@ -590,7 +595,7 @@
 							</tbody>
 						</table>
 					</div>
-
+					<asp:TextBox ID="hidingDate" CssClass="forHide" ReadOnly="true" runat="server"></asp:TextBox>
 				</div>
 
 			</div>
