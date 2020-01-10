@@ -19,7 +19,7 @@ namespace FinalProj
             Events ev = new Events();
             evList = ev.GetAllEvents();
 
-            foreach (Events element in evList)
+            foreach (Events element in evList)					// loops through each event list and changes formatting of both time and date
             {
                 int index = element.Date.IndexOf(" ");
                 element.Date = element.Date.Substring(0, index);

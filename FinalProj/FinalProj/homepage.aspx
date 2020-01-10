@@ -449,6 +449,22 @@
 
 
 		}, false);
+
+		function searchFunc() {
+			var input, filter, cards, cardContainer, h2, title, i;
+			input = document.getElementById("myFilter");
+			filter = input.value.toUpperCase();
+			cardContainer = document.getElementById("myEvents");
+			cards = cardContainer.getElementsByClassName("card");
+			for (i = 0; i < cards.length; i++) {
+				title = cards[i].querySelector(".card-body h2.card-title");
+				if (title.innerText.toUpperCase().indexOf(filter) > -1) {
+					cards[i].style.display = "";
+				} else {
+					cards[i].style.display = "none";
+				}
+			}
+		}
 	</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -461,35 +477,37 @@
 
 					<div class="p-1 bg-light rounded rounded-pill shadow-sm">
 						<div class="input-group">
-							<input type="search" placeholder="What're you searching for?" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+							<input type="search" id="myFilter" placeholder="What're you searching for?" onkeyup="searchFunc()" aria-describedby="button-addon1" class="form-control border-0 bg-light">
 							<div class="input-group-append">
 								<button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
 							</div>
 						</div>
 					</div>
 
-					<% foreach(var element in evList){ %>
+					<div id="myEvents" style="margin-bottom:10%;">
+						<% foreach (var element in evList)
+							{ %>
 
-					<div class="card" style="margin: 1em auto;">
-						<div class="card-header">
-							<%= element.Date %>, <%= element.StartTime %>
-						</div>
-						<div class="card-body">
-							<h2 class="card-title"><b><%= element.Title %></b> </h2>
-							<p class="card-text" style="margin-bottom: 1%;"><%= element.Desc %></p>
+						<div class="card" style="margin: 1em auto;">
+							<div class="card-header">
+								<%= element.Date %>, <%= element.StartTime %>
+							</div>
+							<div class="card-body">
+								<h2 class="card-title"><b><%= element.Title %></b> </h2>
+								<p class="card-text" style="margin-bottom: 1%;"><%= element.Desc %></p>
 
-							<p style="color: grey; margin-bottom: 1%;">11 Participants Attending</p>
-							<a href="/eventDetailsTabOne.aspx" class="btn btn-primary">View More &rarr;</a>
-						</div>
-						<div class="card-footer text-muted">
-							Posted by
+								<p style="color: grey; margin-bottom: 1%;">11 Participants Attending</p>
+								<a href="/eventDetailsTabOne.aspx" class="btn btn-primary">View More &rarr;</a>
+							</div>
+							<div class="card-footer text-muted">
+								Posted by
                         <a href="#">Kovi Tan</a>
+							</div>
 						</div>
+						<% } %>
 					</div>
-					<% } %>
 				</div>
-
-				<div class="col-sm-12 col-md-12 col-lg-4 order-first order-lg-12">
+				<div class="col-sm-12 col-md-12 col-lg-4 order-first order-lg-12" style="margin-bottom:10%;">
 					<asp:Button ID="createEvent" CssClass="btn btn-primary createEvent" runat="server" OnClick="createEvent_Click" Text="Create Event" />
 					<div class="elegant-calencar" style="font-size: 10px;">
 						<p id="reset">reset</p>

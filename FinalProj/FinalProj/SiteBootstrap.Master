@@ -83,7 +83,7 @@
     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
     </asp:ContentPlaceHolder>
     
-    <footer class="small bg-dark text-white">
+    <footer class="small bg-dark text-white footer">
         <div class="container py-4">
             <ul class="list-inline mb-0 text-center">
                 <li class="list-inline-item">&copy; 2017 Web Company, Inc</li>
