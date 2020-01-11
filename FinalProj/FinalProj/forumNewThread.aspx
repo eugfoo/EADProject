@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteBootstrap.Master" AutoEventWireup="true" CodeBehind="forumNewThread.aspx.cs" Inherits="myEadp.forumNewThread" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteBootstrap.Master" AutoEventWireup="true" CodeBehind="forumNewThread.aspx.cs" Inherits="FinalProj.forumNewThread" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -120,7 +120,8 @@
                 <div class="form-group">
                     <label for="comment">Content:</label>
                     <asp:TextBox ID="tbContent" runat="server" CssClass="form-control" Height="250px" TextMode="MultiLine"></asp:TextBox>
-                    <asp:HiddenField ID="HFthreadid" runat="server" />
+                    <asp:HiddenField ID="HFDate" runat="server" />
+                    <asp:HiddenField ID="HFthreadId" runat="server" />
                     <br />
                     <%--<textarea class="form-control" id="comment" rows="10" placeholder="Write more about the event..." required></textarea>--%>
                     <asp:Label ID="LblMsg" runat="server"></asp:Label>
@@ -129,7 +130,7 @@
                 <asp:button id="btnSubmit" runat="server" text="Submit" cssclass="btn btn-primary" onclick="btnSubmit_Click" />
                
                <%-- <button type="submit" class="btn btn-primary">Submit</button>--%>
-                <button type="reset" class="btn btn-danger">Reset</button>
+                <button type="reset" class="btn btn-danger">Reset</button> 
             </form>
         </div>
     </div>

@@ -12,6 +12,21 @@
         .post-col {
             min-width: 20em;
         }
+
+        .auto-style1 {
+            max-width: 100%;
+            height: 245px;
+            width: 213px;
+        }
+
+        .auto-style3 {
+            width: 250px;
+        }
+
+        .auto-style4 {
+            min-width: 12em;
+            width: 250px;
+        }
     </style>
     <div class="container my-3">
         <nav class="breadcrumb">
@@ -21,42 +36,58 @@
         </nav>
         <div class="row">
             <div class="col-12">
+                <form id="form1" runat="server">
                 <div class="container">
                     <div class="row text-white bg-info mb-0 p-4 rounded-top">
                         <div class="col-md-9">
-                            <h2 class="h4">Shall we have this event next saturday?</h2>
+                            <h2 class="h4">
+                                                <asp:Label ID="LblTitleBig" runat="server"></asp:Label>
+                                            </h2>
                         </div>
 
                     </div>
                 </div>
+                    <table class="table table-striped table-bordered table-responsive-lg">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col" class="auto-style3"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
 
-                <table class="table table-striped table-bordered table-responsive-lg">
-                    <thead class="thead-light">
-                        <tr>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
+                        <tbody>
+                            <tr>
+                                <td class="auto-style4">
+                                    <div><a href="#0"><strong>GandyHaley</strong></a></div>
+                                </td>
+                                <td class="post-col d-lg-flex justify-content-lg-between">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <span class="font-weight-bold">Post subject:</span>
+                                                <asp:Label ID="LblTitle" runat="server"></asp:Label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <span class="font-weight-bold">Posted:</span>
+                                                <asp:Label ID="LblPostDate" runat="server" Text="02 Apr 2019, 13:33"></asp:Label>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                    <tbody>
-                        <tr>
-                            <td class="author-col">
-                                <div><a href="#0"><strong>GandyHaley</strong></a></div>
-                            </td>
-                            <td class="post-col d-lg-flex justify-content-lg-between">
-                                <div><span class="font-weight-bold">Post subject:</span> Shall we have this event next saturday?</div>
-                                <div><span class="font-weight-bold">Posted: </span>02 Apr 2019, 13:33</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/1200px-Donald_Trump_official_portrait.jpg" class="img-fluid" />
+                                    <div>
+                                    </div>
+                                    <div></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="max-width: 100px;" class="auto-style3">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/1200px-Donald_Trump_official_portrait.jpg" class="auto-style1" />
 
-                                <div><span class="font-weight-bold">Joined: </span>02 Apr 2019, 23:59</div>
-                                <div><span class="font-weight-bold">Posts:</span>123</div>
-                            </td>
-                            <td>
-                                <p>
+                                    <div><span class="font-weight-bold">Joined: </span>02 Apr 2019, 23:59</div>
+                                    <div><span class="font-weight-bold">Posts:</span>123</div>
+                                </td>
+                                <td>
+                                    <%--<p>
                                     "But I must explain to you how all this mistaken idea of denouncing pleasure
                                     and praising pain was born and I will give you a complete account of the system,
                                     and expound the actual teachings of the great explorer of the truth, the 
@@ -71,11 +102,13 @@
                                     from it? But who has any right to find fault with a man who chooses to enjoy a
                                     pleasure that has no annoying consequences, or one who avoids a pain that produces
                                     no resultant pleasure?"
-                                </p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                                </p>--%>
+                                    <asp:Label ID="LblContent" runat="server"></asp:Label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
 
                 <table class="table table-striped table-bordered table-responsive-lg">
                     <tbody>
@@ -112,7 +145,7 @@
                                     <div class="row">
                                         <div class="col-sm-9" style="height: 200px;"></div>
                                         <div class="col-sm-3">
-                                            <div style="margin-top:200px;" class="float-sm-right float-lg-right float-lg-right">
+                                            <div style="margin-top: 200px;" class="float-sm-right float-lg-right float-lg-right">
                                                 <a href="#" class="btn btn-primary"><span><strong>Edit</strong></span></a>
                                                 <a href="#" class="btn btn-danger"><span><strong>Delete</strong></span></a>
                                             </div>

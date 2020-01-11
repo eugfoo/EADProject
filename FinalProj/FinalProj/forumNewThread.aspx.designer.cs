@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace myEadp {
+namespace FinalProj {
     
     
     public partial class forumNewThread {
@@ -49,13 +49,22 @@ namespace myEadp {
         protected global::System.Web.UI.WebControls.TextBox tbContent;
         
         /// <summary>
-        /// HFthreadid control.
+        /// HFDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HFthreadid;
+        protected global::System.Web.UI.WebControls.HiddenField HFDate;
+        
+        /// <summary>
+        /// HFthreadId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HFthreadId;
         
         /// <summary>
         /// LblMsg control.
