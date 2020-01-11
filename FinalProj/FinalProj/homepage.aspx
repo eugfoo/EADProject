@@ -498,11 +498,11 @@
 			<div class="row">
 				<div class="col-sm-12 col-md-12 col-lg-8 col-sm-pull-4" id="eventSearch">
 
-					<div class="p-1 bg-light rounded rounded-pill shadow-sm">
+					<div class="p-1 bg-light rounded rounded-pill ">
 						<div class="input-group">
-							<input type="search" id="myFilter" placeholder="What're you searching for?" onkeyup="searchFunc()" aria-describedby="button-addon1" class="form-control border-0 bg-light">
+							<input type="search" id="myFilter" placeholder="What're you searching for?" onkeyup="searchFunc()" aria-describedby="button-addon1" class="form-control border-1 bg-light">
 							<div class="input-group-append">
-								<button id="button-addon1" type="submit" class="btn btn-link text-primary"><i class="fa fa-search"></i></button>
+								<button id="button-addon1" type="submit" class="btn btn-link text-primary border-1"><i class="fa fa-search"></i></button>
 							</div>
 						</div>
 					</div>
