@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteBootstrap.Master" AutoEventWireup="true" CodeBehind="forumNewThread.aspx.cs" Inherits="FinalProj.forumNewThread" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteBootstrap.Master" AutoEventWireup="true" CodeBehind="forumNewThread.aspx.cs" Inherits="myEadp.forumNewThread" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -67,7 +67,7 @@
             width: 100%;
         }
     </style>
-    <div style="min-height:90vh;" >
+    <div style="min-height: 90vh;">
         <div class="container my-3">
             <nav class="breadcrumb">
                 <a href="forumPage1.aspx" class="breadcrumb-item">Board index</a>
@@ -87,20 +87,22 @@
                 </div>
             </div>
 
-            <form class="mb-3">
+            <form id="form1" runat="server">
                 <div class="form-group">
                     <label for="prefix">Prefix:</label>
-                    <select class="form-control">
-                        <option>[Discussion]</option>
-                        <option>[Info]</option>
-                        <option>[News]</option>
-                        <option>[Help]</option>
-                        <option>[Request]</option>
-                    </select>
+                    <asp:DropDownList ID="DdlPrefix" runat="server" CssClass="form-control">
+                        <asp:ListItem>-- Select --</asp:ListItem>
+                        <asp:ListItem>[Discussion]</asp:ListItem>
+                        <asp:ListItem>[Info]</asp:ListItem>
+                        <asp:ListItem>[News]</asp:ListItem>
+                        <asp:ListItem>[Help]</asp:ListItem>
+                        <asp:ListItem>[Request]</asp:ListItem>
+                    </asp:DropDownList>
                 </div>
                 <div class="form-group">
                     <label for="thread">Title</label>
-                    <input type="text" class="form-control" id="thread" placeholder="What's your title?" required />
+                    <asp:TextBox ID="tbTitle" runat="server" CssClass="form-control"></asp:TextBox>
+
                 </div>
                 <img id='img-upload' />
                 <div class="form-group">
@@ -117,14 +119,19 @@
 
                 <div class="form-group">
                     <label for="comment">Content:</label>
-                    <textarea class="form-control" id="comment" rows="10" placeholder="Write more about the event..." required></textarea>
+                    <asp:TextBox ID="tbContent" runat="server" CssClass="form-control" Height="250px" TextMode="MultiLine"></asp:TextBox>
+                    <asp:HiddenField ID="HFthreadid" runat="server" />
+                    <br />
+                    <%--<textarea class="form-control" id="comment" rows="10" placeholder="Write more about the event..." required></textarea>--%>
+                    <asp:Label ID="LblMsg" runat="server"></asp:Label>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+               
+                <asp:button id="btnSubmit" runat="server" text="Submit" cssclass="btn btn-primary" onclick="btnSubmit_Click" />
+               
+               <%-- <button type="submit" class="btn btn-primary">Submit</button>--%>
                 <button type="reset" class="btn btn-danger">Reset</button>
             </form>
         </div>
     </div>
-
-    <h1>hello git kraken</h1>
 
 </asp:Content>
