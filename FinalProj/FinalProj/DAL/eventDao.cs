@@ -11,7 +11,7 @@ namespace FinalProj.DAL
 {
     public class eventDao
     {
-        public List<Events> SelectAll()
+        public List<Events> SelectAllByDate(DateTime date)
         {
             //Step 1 -  Define a connection to the database by getting
             //          the connection string from web.config
@@ -19,11 +19,13 @@ namespace FinalProj.DAL
             SqlConnection myConn = new SqlConnection(DBConnect);
 
             //Step 2 -  Create a DataAdapter to retrieve data from the database table
-            string sqlStmt = "Select * from tdEvent Order By eventStartTime";
+            string sqlStmt = "Select * from tdEvent Where eventDate = @paraDate Order By eventStartTime";
             SqlDataAdapter da = new SqlDataAdapter(sqlStmt, myConn);
 
-            //Step 3 -  Create a DataSet to store the data to be retrieved
-            DataSet ds = new DataSet();
+			da.SelectCommand.Parameters.AddWithValue("@paraDate", date);
+
+			//Step 3 -  Create a DataSet to store the data to be retrieved
+			DataSet ds = new DataSet();
 
             //Step 4 -  Use the DataAdapter to fill the DataSet with data retrieved
             da.Fill(ds);

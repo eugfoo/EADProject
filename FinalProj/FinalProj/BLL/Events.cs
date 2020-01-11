@@ -46,10 +46,10 @@ namespace FinalProj.BLL
             return result;
         }
 
-        public List<Events> GetAllEvents()
+        public List<Events> GetAllEventsByEDate(DateTime date)
         {
             eventDao ev = new eventDao();
-            return ev.SelectAll();
+            return ev.SelectAllByDate(date);
         }
 
     }

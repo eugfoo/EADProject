@@ -72,9 +72,9 @@
 			clear: both;
 		}
 		/**
- * For IE 6/7 only
- * Include this rule to trigger hasLayout and contain floats.
- */
+		 * For IE 6/7 only
+		 * Include this rule to trigger hasLayout and contain floats.
+		 */
 		.clearfix {
 			*zoom: 1;
 		}
@@ -224,6 +224,13 @@
 			border-radius: 50%;
 		}
 
+		.today {
+			background-color: #e66b6b;
+			color: #fff;
+			font-family: serif;
+			border-radius: 50%;
+		}
+
 		#disabled {
 			cursor: default;
 			background: #fff;
@@ -261,8 +268,9 @@
 				-ms-transform: scale(0.8);
 				transform: scale(0.8);
 			}
+
 		.forHide {
-		display:none;
+			display: none;
 		}
 	</style>
 	<script>
@@ -283,7 +291,8 @@
 			}
 
 			Calendar.prototype.draw = function () {
-				//this.getCookie('selected_day');
+
+				this.getCookie('selected_day');
 				this.getOptions();
 				this.drawDays();
 				var that = this,
@@ -306,6 +315,8 @@
 				e ? headDay[0].innerHTML = e : headDay[0].innerHTML = day;
 				headMonth[0].innerHTML = monthTag[month] + " - " + year;
 			};
+
+
 
 			Calendar.prototype.drawDays = function () {			//function is called each time users select months back and forth 
 				var startDay = new Date(year, month, 1).getDay(),
@@ -337,6 +348,8 @@
 
 				for (var j = 0; j < 42; j++) {
 
+					
+
 					if (j < day + startDay - 1 && tempMonth == month) {		// finds all the dates that are before today's date
 						days[j].className = "invalidDay"
 					}
@@ -353,6 +366,8 @@
 						if ((this.options && (month === setDate.getMonth()) && (year === setDate.getFullYear())) || (!this.options && (month === today.getMonth()) && (year === today.getFullYear()))) {
 							this.drawHeader(day);
 							days[j].id = "today";
+							days[j].className = "today";
+							document.getElementById("ContentPlaceHolder1_hidingDate").innerText = document.querySelector(".today").innerText + document.querySelector(".head-month").innerText;
 						}
 					}
 					if (selectedDay) {
@@ -377,9 +392,12 @@
 					}
 					o.className = "selected";
 					this.drawHeader(o.innerHTML);
-					//this.setCookie('selected_day', 1);
-
-					document.getElementById("ContentPlaceHolder1_hidingDate").innerText = document.querySelector(".selected").innerText;
+					this.setCookie('selected_day', 1);
+					let stringday = document.querySelector(".selected").innerText.length > 1 ? document.querySelector(".selected").innerText : "0" + document.querySelector(".selected").innerText;
+					let stringmonth = month >= 9 ? month + 1 : "0" + (month + 1);
+					document.getElementById("ContentPlaceHolder1_hidingDate").value = stringmonth + "/" + stringday + "/" + year;
+					document.getElementById("ContentPlaceHolder1_hidingDate").innerText = stringmonth + "/" + stringday + "/" + year;
+					document.getElementById("ContentPlaceHolder1_testbtn").click();
 				}
 			};
 
@@ -423,33 +441,33 @@
 				this.drawDays();
 			};
 
-			//Calendar.prototype.setCookie = function (name, expiredays) {
-			//	if (expiredays) {
-			//		var date = new Date();
-			//		date.setTime(date.getTime() + (expiredays * 24 * 60 * 60 * 1000));
-			//		var expires = "; expires=" + date.toGMTString();
-			//	} else {
-			//		var expires = "";
-			//	}
-			//	document.cookie = name + "=" + selectedDay + expires + "; path=/";
-			//};
+			Calendar.prototype.setCookie = function (name, expiredays) {
+				if (expiredays) {
+					var date = new Date();
+					date.setTime(date.getTime() + (expiredays * 24 * 60 * 60 * 1000));
+					var expires = "; expires=" + date.toGMTString();
+				} else {
+					var expires = "";
+				}
+				document.cookie = name + "=" + selectedDay + expires + "; path=/";
+			};
 
-			//Calendar.prototype.getCookie = function (name) {
-			//	if (document.cookie.length) {
-			//		var arrCookie = document.cookie.split(';'),
-			//			nameEQ = name + "=";
-			//		for (var i = 0, cLen = arrCookie.length; i < cLen; i++) {
-			//			var c = arrCookie[i];
-			//			while (c.charAt(0) == ' ') {
-			//				c = c.substring(1, c.length);
+			Calendar.prototype.getCookie = function (name) {
+				if (document.cookie.length) {
+					var arrCookie = document.cookie.split(';'),
+						nameEQ = name + "=";
+					for (var i = 0, cLen = arrCookie.length; i < cLen; i++) {
+						var c = arrCookie[i];
+						while (c.charAt(0) == ' ') {
+							c = c.substring(1, c.length);
 
-			//			}
-			//			if (c.indexOf(nameEQ) === 0) {
-			//				selectedDay = new Date(c.substring(nameEQ.length, c.length));
-			//			}
-			//		}
-			//	}
-			//};
+						}
+						if (c.indexOf(nameEQ) === 0) {
+							selectedDay = new Date(c.substring(nameEQ.length, c.length));
+						}
+					}
+				}
+			};
 			var calendar = new Calendar();
 
 
@@ -489,10 +507,10 @@
 						</div>
 					</div>
 
-					<div id="myEvents" style="margin-bottom:10%;">
+					<div id="myEvents" style="margin-bottom: 10%;">
 						<% foreach (var element in evList)
-							{ %> 
-						
+							{ %>
+
 						<div class="card" style="margin: 1em auto;">
 							<div class="card-header">
 								<%= element.Date %>, <%= element.StartTime %>
@@ -512,7 +530,7 @@
 						<% } %>
 					</div>
 				</div>
-				<div class="col-sm-12 col-md-12 col-lg-4 order-first order-lg-12" style="margin-bottom:10%;">
+				<div class="col-sm-12 col-md-12 col-lg-4 order-first order-lg-12" style="margin-bottom: 10%;">
 					<asp:Button ID="createEvent" CssClass="btn btn-primary createEvent" runat="server" OnClick="createEvent_Click" Text="Create Event" />
 					<div class="elegant-calencar" style="font-size: 10px;">
 						<p id="reset">reset</p>
@@ -595,7 +613,8 @@
 							</tbody>
 						</table>
 					</div>
-					<asp:TextBox ID="hidingDate" CssClass="forHide" ReadOnly="true" runat="server"></asp:TextBox>
+					<asp:TextBox ID="hidingDate" CssClass="forHide" runat="server"></asp:TextBox>
+					<asp:Button ID="testbtn" CssClass="forHide" runat="server" OnClick="DateClicked" CausesValidation="False" />
 				</div>
 
 			</div>
