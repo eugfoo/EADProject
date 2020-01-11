@@ -72,6 +72,14 @@
     <Content Include="App_Data\myDB_log.ldf">
       <DependentUpon>myDB.mdf</DependentUpon>
     </Content>
+    <Content Include="App_Data\myForum.mdf" />
+    <Content Include="App_Data\myForum_log.ldf">
+      <DependentUpon>myForum.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\Threads.mdf" />
+    <Content Include="App_Data\Threads_log.ldf">
+      <DependentUpon>Threads.mdf</DependentUpon>
+    </Content>
     <Content Include="AttendanceEdit.aspx" />
     <Content Include="AttendanceEdit.css" />
     <Content Include="AttendanceSubmitted.aspx" />
