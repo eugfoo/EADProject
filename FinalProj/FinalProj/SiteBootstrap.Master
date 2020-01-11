@@ -55,13 +55,25 @@
                 background: inherit;
             }
     </style>
+	<script>
+		function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+}
+	</script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarnav" aria-controls="navbarnav" aria-expanded="false" aria-label="toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="ml-2 navbar-brand text-center" href="/homepage.aspx">Clear View</a>
+        <a class="ml-2 navbar-brand text-center" href="/homepage.aspx" onclick="deleteAllCookies()">Clear View</a>
         <div class="hexagon"><span></span></div>
         <div class="collapse navbar-collapse justify-content-end" id="navbarnav">
             <ul class="navbar-nav">

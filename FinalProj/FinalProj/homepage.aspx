@@ -274,7 +274,8 @@
 		}
 	</style>
 	<script>
-		document.addEventListener('DOMContentLoaded', function () {      //script happens whenver document is load
+
+		document.addEventListener('DOMContentLoaded', function () {      //script happens whenever document is load
 			var today = new Date(),
 				year = today.getFullYear(),
 				month = today.getMonth(),
@@ -296,13 +297,13 @@
 				this.getOptions();
 				this.drawDays();
 				var that = this,
-					reset = document.getElementById('reset'),
+					//reset = document.getElementById('reset'),
 					pre = document.getElementsByClassName('pre-button'),
 					next = document.getElementsByClassName('next-button');
 
 				pre[0].addEventListener('click', function () { that.preMonth(); });
 				next[0].addEventListener('click', function () { that.nextMonth(); });
-				reset.addEventListener('click', function () { that.reset(); });
+				//reset.addEventListener('click', function () { that.reset(); });
 				while (daysLen--) {
 					days[daysLen].addEventListener('click', function () { that.clickDay(this); });
 				}
@@ -348,7 +349,7 @@
 
 				for (var j = 0; j < 42; j++) {
 
-					
+
 
 					if (j < day + startDay - 1 && tempMonth == month) {		// finds all the dates that are before today's date
 						days[j].className = "invalidDay"
@@ -397,7 +398,7 @@
 					let stringmonth = month >= 9 ? month + 1 : "0" + (month + 1);
 					document.getElementById("ContentPlaceHolder1_hidingDate").value = stringmonth + "/" + stringday + "/" + year;
 					document.getElementById("ContentPlaceHolder1_hidingDate").innerText = stringmonth + "/" + stringday + "/" + year;
-					document.getElementById("ContentPlaceHolder1_testbtn").click();
+					document.getElementById("ContentPlaceHolder1_testbtn").click(); // to click invisible button
 				}
 			};
 
@@ -433,13 +434,13 @@
 				}
 			};
 
-			Calendar.prototype.reset = function () {		//reset
-				month = today.getMonth();
-				year = today.getFullYear();
-				day = today.getDate();
-				this.options = undefined;
-				this.drawDays();
-			};
+			//Calendar.prototype.reset = function () {		//reset
+			//	month = today.getMonth();
+			//	year = today.getFullYear();
+			//	day = today.getDate();
+			//	this.options = undefined;
+			//	this.drawDays();
+			//};
 
 			Calendar.prototype.setCookie = function (name, expiredays) {
 				if (expiredays) {
@@ -468,11 +469,15 @@
 					}
 				}
 			};
+			
+			
 			var calendar = new Calendar();
 
 
 		}, false);
 
+
+			
 		function searchFunc() {
 			var input, filter, cards, cardContainer, h2, title, i;
 			input = document.getElementById("myFilter");
@@ -524,7 +529,7 @@
 							</div>
 							<div class="card-footer text-muted">
 								Posted by
-                        <a href="#">Kovi Tan</a>
+							<a href="#">Kovi Tan</a>
 							</div>
 						</div>
 						<% } %>
@@ -533,7 +538,7 @@
 				<div class="col-sm-12 col-md-12 col-lg-4 order-first order-lg-12" style="margin-bottom: 10%;">
 					<asp:Button ID="createEvent" CssClass="btn btn-primary createEvent" runat="server" OnClick="createEvent_Click" Text="Create Event" />
 					<div class="elegant-calencar" style="font-size: 10px;">
-						<p id="reset">reset</p>
+						<%--			<p id="reset">reset</p>--%>
 						<div id="header" class="clearfix">
 							<div class="pre-button"><</div>
 							<div class="head-info">
@@ -616,6 +621,7 @@
 					<asp:TextBox ID="hidingDate" CssClass="forHide" runat="server"></asp:TextBox>
 					<asp:Button ID="testbtn" CssClass="forHide" runat="server" OnClick="DateClicked" CausesValidation="False" />
 				</div>
+
 
 			</div>
 		</div>

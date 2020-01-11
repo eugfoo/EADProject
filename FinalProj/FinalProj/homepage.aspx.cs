@@ -15,12 +15,11 @@ namespace FinalProj
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			
 			Events ev = new Events();
 			DateTime currentDate;
-			//if (ViewState["VSDate"]==null)
-				currentDate = DateTime.Now.Date;
-			//else
-			//	currentDate = Convert.ToDateTime(ViewState["VSDate"]);
+
+			currentDate = DateTime.Now.Date;
 			evList = ev.GetAllEventsByEDate(currentDate);
 
 			foreach (Events element in evList)                  // loops through each event list and changes formatting of both time and date
@@ -45,13 +44,10 @@ namespace FinalProj
 
 		protected void DateClicked(object sender, EventArgs e)
 		{
-			//ViewState["VSDate"] = hidingDate.Text;
+
 			Events ev = new Events();
 			DateTime currentDate;
-			//if (ViewState["VSDate"]==null)
 			currentDate = Convert.ToDateTime(hidingDate.Text);
-			//else
-			//	currentDate = Convert.ToDateTime(ViewState["VSDate"]);
 			evList = ev.GetAllEventsByEDate(currentDate);
 
 			foreach (Events element in evList)                  // loops through each event list and changes formatting of both time and date
