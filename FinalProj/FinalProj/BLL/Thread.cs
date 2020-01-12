@@ -30,6 +30,7 @@ namespace FinalProj.BLL
             Date = threadDate;
             Image = threadImage;
             Content = threadContent;
+            UserId = userId;
         }
 
       

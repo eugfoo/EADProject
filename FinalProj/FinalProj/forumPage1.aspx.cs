@@ -17,6 +17,7 @@ namespace FinalProj
             if (!IsPostBack)
             {
                 ThreadsRptr();
+                ConfirmedThreadsRptr();
             }
 
         }
@@ -26,7 +27,7 @@ namespace FinalProj
             string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
             using (SqlConnection myConn = new SqlConnection(DBConnect))
             {
-                using (SqlCommand cmd = new SqlCommand("Select TOP 4 * From Threads ORDER BY Id DESC", myConn))
+                using (SqlCommand cmd = new SqlCommand("Select TOP 5 * From Threads ORDER BY Id DESC", myConn))
                 {
                     using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
                     {
@@ -34,6 +35,24 @@ namespace FinalProj
                         sda.Fill(allThreads);
                         rptrThreads.DataSource = allThreads;
                         rptrThreads.DataBind();
+                    }
+                }
+            }
+        }
+
+        private void ConfirmedThreadsRptr()
+        {
+            string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
+            using (SqlConnection myConn = new SqlConnection(DBConnect))
+            {
+                using (SqlCommand cmd = new SqlCommand("Select TOP 5 * From tdEvent ORDER BY Id DESC", myConn))
+                {
+                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    {
+                        DataTable allThreads = new DataTable();
+                        sda.Fill(allThreads);
+                        rptrConfirmedThreads.DataSource = allThreads;
+                        rptrConfirmedThreads.DataBind();
                     }
                 }
             }
