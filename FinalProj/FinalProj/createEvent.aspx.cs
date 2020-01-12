@@ -174,7 +174,6 @@ namespace FinalProj
 
 				}
 
-
 				//string startampm = eventStartTime.Substring(6, 2);
 				//string endampm = eventEndTime.Substring(6, 2);
 
@@ -201,12 +200,6 @@ namespace FinalProj
 		{
 
 		}
-
-		//protected void desc_TextChanged(object sender, EventArgs e)
-		//{
-		//    charCounter.Text = desc.Text.Length.ToString();
-		//}
-
 
 	}
 }
