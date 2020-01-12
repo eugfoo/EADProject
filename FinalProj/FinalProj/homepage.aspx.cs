@@ -15,12 +15,12 @@ namespace FinalProj
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			string testingqwe = "";
 			
 			Events ev = new Events();
 			DateTime currentDate;
 
 			currentDate = DateTime.Now.Date;
+			
 			evList = ev.GetAllEventsByEDate(currentDate);
 
 			foreach (Events element in evList)                  // loops through each event list and changes formatting of both time and date
@@ -38,9 +38,6 @@ namespace FinalProj
 					element.StartTime = element.StartTime + " AM";
 				}
 			}
-
-			
-
 		}
 		
 		protected void DateClicked(object sender, EventArgs e)
