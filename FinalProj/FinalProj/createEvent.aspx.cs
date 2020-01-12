@@ -72,6 +72,24 @@ namespace FinalProj
 				errmsg += "Description cannot be empty! <br>";
 				desc.BorderColor = System.Drawing.Color.Red;
 			}
+
+			if (desc.Text.ToString() != "")
+			{
+				int enterCount = 0, index = 0;
+
+				while (index < desc.Text.Length)
+				{
+					// check if current char is part of a word
+					if (desc.Text[index] == '\r' && desc.Text[index + 1] == '\n')
+						enterCount++;
+					index++;
+				}
+				if (desc.Text.Length > 3000 + enterCount)
+				{
+					errmsg += "Character Limit in Description Exceeded! <br>";
+					desc.BorderColor = System.Drawing.Color.Red;
+				}
+			}
 			if (startTime.Text.ToString() != "" && endTime.Text.ToString() != "")
 			{
 				string startTimeNumber = "";
