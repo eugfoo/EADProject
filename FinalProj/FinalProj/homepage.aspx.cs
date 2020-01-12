@@ -15,6 +15,7 @@ namespace FinalProj
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
+			string testingqwe = "";
 			
 			Events ev = new Events();
 			DateTime currentDate;
@@ -38,10 +39,10 @@ namespace FinalProj
 				}
 			}
 
-
+			
 
 		}
-
+		
 		protected void DateClicked(object sender, EventArgs e)
 		{
 
