@@ -133,7 +133,6 @@ namespace FinalProj
 			}
 			else
 			{
-
 				string eventStartTime = startTime.Text.ToString();
 				string eventEndTime = endTime.Text.ToString();
 				string title = eventTitle.Text.ToString();
@@ -144,10 +143,6 @@ namespace FinalProj
 				string picture = "";
 				string note = noteText.Text.ToString();
 				int advertisement = 0;
-				//int hour = 0;
-				//string eventStartTime24 = "";
-				//string eventEndTime24 = "";
-
 
 				if (advCheck.Checked == true)
 				{
@@ -174,31 +169,12 @@ namespace FinalProj
 
 				}
 
-				//string startampm = eventStartTime.Substring(6, 2);
-				//string endampm = eventEndTime.Substring(6, 2);
-
-
-				//if (startampm == "PM")
-				//{
-				//     hour = int.Parse(eventStartTime.Substring(0, 2)) + 12;
-				//     eventStartTime24 = hour.ToString() + eventStartTime.Substring(2, 3);
-				//}
-
-				//if (endampm == "PM")
-				//{
-				//    hour = int.Parse(eventEndTime.Substring(0, 2)) + 12;
-				//    eventEndTime24 = hour.ToString() + eventEndTime.Substring(2, 3);
-				//}
+			
 
 				ev = new Events(title, venue, date, eventStartTime, eventEndTime, maxAttendees, description, picture, note, advertisement);
 				int result = ev.AddEvent();
 				Response.Redirect("createdEvent.aspx");
 			}
-		}
-
-		protected void UploadButton_Click(object sender, EventArgs e)
-		{
-
 		}
 
 	}
