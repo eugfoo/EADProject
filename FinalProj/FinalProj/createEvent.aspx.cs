@@ -16,10 +16,21 @@ namespace FinalProj
         {
             
         }
+		protected void changetoDefaultBorder()
+		{
+			eventTitle.BorderColor = System.Drawing.Color.LightGray;
+			eventAddress.BorderColor = System.Drawing.Color.LightGray;
+			eventDate.BorderColor = System.Drawing.Color.LightGray;
+			startTime.BorderColor = System.Drawing.Color.LightGray;
+			endTime.BorderColor = System.Drawing.Color.LightGray;
+			maxAttend.BorderColor = System.Drawing.Color.LightGray;
+			FileUploadControl.BackColor = System.Drawing.Color.White;
+			desc.BorderColor = System.Drawing.Color.LightGray;
 
+		}
         protected void createBtn_Click(object sender, EventArgs e)
         {
-            
+			changetoDefaultBorder();
 
             Events ev = new Events();
             string errmsg = "";
@@ -28,27 +39,38 @@ namespace FinalProj
             if (eventTitle.Text.ToString() == "")
             {
                 errmsg = "Title cannot be empty! <br>";
-            }
+				eventTitle.BorderColor = System.Drawing.Color.Red;
+				
+			}
             if (eventAddress.Text.ToString() == "")
             {
                 errmsg += "Address cannot be empty! <br>";
-            }
+				eventAddress.BorderColor = System.Drawing.Color.Red;
+			}
             if (eventDate.Text.ToString() == "")
             {
                 errmsg += "Date cannot be empty! <br>";
-            }
+				eventDate.BorderColor = System.Drawing.Color.Red;
+			}
             if (startTime.Text.ToString() == "")
             {
                 errmsg += "StartTime cannot be empty! <br>";
-            }
-            if (startTime.Text.ToString() == "")
+				startTime.BorderColor = System.Drawing.Color.Red;
+			}
+            if (endTime.Text.ToString() == "")
             {
                 errmsg += "EndTime cannot be empty! <br>";
-            }
+				endTime.BorderColor = System.Drawing.Color.Red;
+			}
             if (maxAttend.Text.ToString() == "")
             {
                 errmsg += "Maximum number of attendees cannot be empty! <br>";
-            }
+				maxAttend.BorderColor = System.Drawing.Color.Red;
+			}
+			if(desc.Text.ToString() == ""){
+				errmsg += "Description cannot be empty! <br>";
+				desc.BorderColor = System.Drawing.Color.Red;
+			}
             if (startTime.Text.ToString() != "" && endTime.Text.ToString() != "")
             {
                 string startTimeNumber = "";
@@ -65,7 +87,9 @@ namespace FinalProj
                 if (int.Parse(startTimeNumber) > int.Parse(endTimeNumber))
                 {
                     errmsg += "Please ensure that you entered a valid Start & End Time <br>";
-                }
+					startTime.BorderColor = System.Drawing.Color.Red;
+					endTime.BorderColor = System.Drawing.Color.Red;
+				}
             }
 
             if (eventDate.Text.ToString() != "")
@@ -77,13 +101,9 @@ namespace FinalProj
                 if (dt < DateTime.Now.Date)
                 {
                     errmsg += "Please enter a valid date <br>";
-                }
+					eventDate.BorderColor = System.Drawing.Color.Red;
+				}
 
-            }
-
-            if (FileUploadControl.HasFile == false)
-            {
-                errmsg += "Please Upload an Image <br>";
             }
             
             if (errmsg != "")
@@ -122,33 +142,37 @@ namespace FinalProj
                     string filename = Path.GetFileName(FileUploadControl.PostedFile.FileName);
                     FileUploadControl.SaveAs(Server.MapPath("~/Img/" + filename));
                     picture = filename;
-                    picChosen.Text = filename;
-               
-                    //string strFileName = DateTime.Now.ToString("MM-dd-yyyy_HHmmss");
-                    //string strFileType = System.IO.Path.GetExtension(FileUploadControl.FileName).ToString().ToLower();
-                    //FileUploadControl.SaveAs(Server.MapPath("folderpath" + strFileName + strFileType));
+                    picChosen.Text = filename;			
+
+				}
+				else if (FileUploadControl.HasFile == false)
+				{
+
+					string filename = "defaultPic.jpg";
 
 
+					picture = filename;
 
-                }
-
-                //string startampm = eventStartTime.Substring(6, 2);
-                //string endampm = eventEndTime.Substring(6, 2);
+				}
 
 
-                //if (startampm == "PM")
-                //{
-                //     hour = int.Parse(eventStartTime.Substring(0, 2)) + 12;
-                //     eventStartTime24 = hour.ToString() + eventStartTime.Substring(2, 3);
-                //}
+				//string startampm = eventStartTime.Substring(6, 2);
+				//string endampm = eventEndTime.Substring(6, 2);
 
-                //if (endampm == "PM")
-                //{
-                //    hour = int.Parse(eventEndTime.Substring(0, 2)) + 12;
-                //    eventEndTime24 = hour.ToString() + eventEndTime.Substring(2, 3);
-                //}
 
-                ev = new Events(title, venue, date, eventStartTime, eventEndTime, maxAttendees, description, picture, note, advertisement);
+				//if (startampm == "PM")
+				//{
+				//     hour = int.Parse(eventStartTime.Substring(0, 2)) + 12;
+				//     eventStartTime24 = hour.ToString() + eventStartTime.Substring(2, 3);
+				//}
+
+				//if (endampm == "PM")
+				//{
+				//    hour = int.Parse(eventEndTime.Substring(0, 2)) + 12;
+				//    eventEndTime24 = hour.ToString() + eventEndTime.Substring(2, 3);
+				//}
+
+				ev = new Events(title, venue, date, eventStartTime, eventEndTime, maxAttendees, description, picture, note, advertisement);
                 int result = ev.AddEvent();
                 Response.Redirect("createdEvent.aspx");
             }

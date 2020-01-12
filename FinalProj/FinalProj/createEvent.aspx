@@ -123,13 +123,13 @@
 						<%--autopostback="true" ontextchanged="desc_textchanged" // This is to be placed in the tag above--%>
 						<%--<asp:Label ID="charCounter" runat="server" Text="."></asp:Label>--%>
 					</div>
-					<div class="card-title" style="background-color: #22537C; font-family: 'Franklin Gothic'; padding: 1%; color: white; font-size: 1em;">&nbsp;Add a Photo*</div>
+					<div class="card-title" style="background-color: #22537C; font-family: 'Franklin Gothic'; padding: 1%; color: white; font-size: 1em;">&nbsp;Add a Photo</div>
 
 					<div class="input-group" style="margin: 2em auto;">
 
 
 						<div class="custom-file">
-							<asp:FileUpload ID="FileUploadControl" CssClass="custom-file-input" runat="server" />
+							<asp:FileUpload ID="FileUploadControl" CssClass=" custom-file-input" runat="server" />
 							<asp:Label ID="picChosen" runat="server" Text="Choose File" CssClass="custom-file-label"></asp:Label>
 						</div>
 
