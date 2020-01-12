@@ -8,31 +8,27 @@
         .author-col {
             min-width: 12em;
         }
-
         .post-col {
             min-width: 20em;
         }
-
         .auto-style1 {
             max-width: 100%;
             height: 245px;
             width: 213px;
         }
-
         .auto-style3 {
-            width: 250px;
+            width: 233px;
         }
-
         .auto-style4 {
             min-width: 12em;
-            width: 250px;
+            width: 233px;
         }
     </style>
     <div class="container my-3">
         <nav class="breadcrumb">
             <a href="forumPage1.aspx" class="breadcrumb-item">Board index</a>
             <a href="forumCatOverview.aspx" class="breadcrumb-item">Forum Category</a>
-            <span class="breadcrumb-item active">Shall we have this event next saturday?</span>
+            <span class="breadcrumb-item active"><asp:Label ID="LblPrefix" runat="server"></asp:Label>  <asp:Label ID="LblTitleBreadcrumb" runat="server"></asp:Label></span>
         </nav>
         <div class="row">
             <div class="col-12">
@@ -41,8 +37,7 @@
                     <div class="row text-white bg-info mb-0 p-4 rounded-top">
                         <div class="col-md-9">
                             <h2 class="h4">
-                                                <asp:Label ID="LblTitleBig" runat="server"></asp:Label>
-                                            </h2>
+                            <asp:Label ID="LblTitleBig" runat="server"></asp:Label></h2>
                         </div>
 
                     </div>
@@ -110,55 +105,7 @@
                     </table>
                 </form>
 
-                <table class="table table-striped table-bordered table-responsive-lg">
-                    <tbody>
-                        <tr>
-                            <td class="author-col">
-                                <div><a href="#0"><strong>Andy</strong></a></div>
-                            </td>
-                            <td class="post-col d-lg-flex justify-content-lg-between">
-                                <div><span class="font-weight-bold">Post subject:</span> Shall we have this event next saturday?</div>
-                                <div><span class="font-weight-bold">Posted: </span>02 Apr 2019, 13:33</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="https://st4.depositphotos.com/16405760/20140/i/1600/depositphotos_201404194-stock-photo-close-portrait-cute-asian-girl.jpg" class="img-fluid" />
-
-                                <div><span class="font-weight-bold">Joined: </span>02 Apr 2019, 23:59</div>
-                                <div><span class="font-weight-bold">Posts: </span>123</div>
-                            </td>
-                            <td>
-                                <div>
-                                    <p>
-                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                                    when an unknown printer took a galley of type and scrambled it to make a type
-                                    specimen book. It has survived not only five centuries, but also the leap 
-                                    into electronic typesetting, remaining essentially unchanged. It was popularised
-                                    in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages
-                                    , and more recently with desktop publishing software like Aldus PageMaker 
-                                    including versions of Lorem Ipsum.
-                                    </p>
-                                </div>
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-sm-9" style="height: 200px;"></div>
-                                        <div class="col-sm-3">
-                                            <div style="margin-top: 200px;" class="float-sm-right float-lg-right float-lg-right">
-                                                <a href="#" class="btn btn-primary"><span><strong>Edit</strong></span></a>
-                                                <a href="#" class="btn btn-danger"><span><strong>Delete</strong></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                
             </div>
         </div>
 

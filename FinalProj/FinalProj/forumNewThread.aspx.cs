@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -25,17 +26,20 @@ namespace FinalProj
 
             if(DdlPrefix.SelectedIndex == 0)
             {
-                LblMsg.Text += "Please Select a Prefix!";
+                LblMsg.Text += "Please Select a Prefix! <br/>";
+                LblMsg.ForeColor = Color.Red;
             }
 
             if (tbTitle.Text == "")
             {
-                LblMsg.Text += "Title is required!";
+                LblMsg.Text += "Title is required! <br/>";
+                LblMsg.ForeColor = Color.Red;
             }
 
             if (String.IsNullOrEmpty(tbContent.Text))
             {
-                LblMsg.Text += "Please fill in the content!";
+                LblMsg.Text += "Please fill in the content! <br/>";
+                LblMsg.ForeColor = Color.Red;
             }
 
             if (String.IsNullOrEmpty(LblMsg.Text))
@@ -97,16 +101,28 @@ namespace FinalProj
             Thread thread = new Thread();
 
             HFDate.Value = DateTime.Now.ToString();
+            string picture = "";
+
+            if (FileUploadControl.HasFile)
+            {
+
+                string filename = Path.GetFileName(FileUploadControl.PostedFile.FileName);
+                FileUploadControl.SaveAs(Server.MapPath("~/Img/" + filename));
+                picture = filename;
+                picChosen.Text = filename;
+
+                //string strFileName = DateTime.Now.ToString("MM-dd-yyyy_HHmmss");
+                //string strFileType = System.IO.Path.GetExtension(FileUploadControl.FileName).ToString().ToLower();
+                //FileUploadControl.SaveAs(Server.MapPath("folderpath" + strFileName + strFileType));
+            }
 
             if (ValidateInput())
             {
-                thread = new Thread(DdlPrefix.Text, BadgeColorIdentifier() ,tbTitle.Text, HFDate.Value, "Sample Image", tbContent.Text, "1");
+                thread = new Thread(DdlPrefix.Text, BadgeColorIdentifier() ,tbTitle.Text, "12am", picture, tbContent.Text, "1");
                 int result = thread.CreateThread();
                
                 if (result == 1)
                 {
-                    LblMsg.Text = "Hello World!";
-                    LblMsg.ForeColor = Color.Green;
                     queryCreatedThreadId();
                     Response.Redirect("forumPost.aspx?threadid=" + HFthreadId.Value);
                 }

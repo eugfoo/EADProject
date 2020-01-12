@@ -107,14 +107,37 @@
                 <img id='img-upload' />
                 <div class="form-group">
                     <label>Upload Image</label>
-                    <div class="input-group">
+                    <%--<div class="input-group">
                         <span class="input-group-btn">
                             <span class="btn btn-default btn-file">Browse…
                                 <input type="file" id="imgInp">
                             </span>
                         </span>
                         <input type="text" class="form-control" readonly>
-                    </div>
+                    </div>--%>
+
+
+                    <div class="custom-file">
+							<asp:FileUpload ID="FileUploadControl" CssClass="custom-file-input" runat="server" />
+							<asp:Label ID="picChosen" runat="server" Text="Choose File" CssClass="custom-file-label"></asp:Label>
+						</div>
+
+						<script>
+							var input = document.querySelector('.custom-file-input');	// selects element with .custom-file-input class
+							var label = document.querySelector('.custom-file-label'),	// selects element with .custom-file-label class
+								labelVal = "Choose File";								// default value
+
+							input.addEventListener('change', function (e) {				// creates an on change function on the input var
+								var fileName = '';
+								if (this.files["length"] > 0)								// checks if file is selected. eg. {0: File, length: 1} when file is selected, FileList {length: 0} when file isn't selected
+									fileName = this.files[0]["name"];						// selects the object with the key "0" and then selects the object that has the key "name"
+
+								if (fileName !== "")									// if a file was selected, the inner text will be the file's name
+									label.innerText = fileName;
+								else													// if a file wasn't selected, the inner text will be the default value of "Chosen Value"
+									label.innerText = labelVal;
+							});
+						</script>
                 </div>
 
                 <div class="form-group">
