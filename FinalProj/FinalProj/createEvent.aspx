@@ -68,6 +68,7 @@
 		}
 	</style>
 	<script>
+		
 		function countChars(obj) {
 			var maxLength = 3000;
 			var strLength = obj.value.length;
@@ -79,6 +80,9 @@
 				document.getElementById("charNum").innerHTML = charRemain + ' characters remaining';
 			}
 		}
+		window.addEventListener('load', (event) => {
+			countChars(document.getElementById("ContentPlaceHolder1_desc"));
+		});
 	</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -132,7 +136,7 @@
 					<div class="form-group">
 						<label for="desc">Description:</label>
 
-						<asp:TextBox ID="desc" CssClass="form-control" runat="server" Height="250" TextMode="MultiLine" onkeyup="countChars(this);" ></asp:TextBox>
+						<asp:TextBox ID="desc" CssClass="form-control" runat="server" Height="250" TextMode="MultiLine" onkeyup="countChars(this);"></asp:TextBox>
 						<p id="charNum">3000 characters remaining</p>
 						<%--autopostback="true" ontextchanged="desc_textchanged" // This is to be placed in the tag above--%>
 						<%--<asp:Label ID="charCounter" runat="server" Text="."></asp:Label>--%>
