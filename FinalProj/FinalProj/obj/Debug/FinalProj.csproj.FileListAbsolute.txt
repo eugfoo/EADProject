@@ -390,3 +390,13 @@ C:\Users\Andy Lee\source\repos\EADProject\FinalProj\FinalProj\obj\Debug\FinalPro
 C:\Users\Andy Lee\source\repos\EADProject\FinalProj\FinalProj\obj\Debug\FinalProj.csproj.CopyComplete
 C:\Users\Andy Lee\source\repos\EADProject\FinalProj\FinalProj\obj\Debug\FinalProj.dll
 C:\Users\Andy Lee\source\repos\EADProject\FinalProj\FinalProj\obj\Debug\FinalProj.pdb
+C:\Users\user\Documents\EADProject\FinalProj\FinalProj\bin\FinalProj.dll.config
+C:\Users\user\Documents\EADProject\FinalProj\FinalProj\bin\FinalProj.dll
+C:\Users\user\Documents\EADProject\FinalProj\FinalProj\bin\FinalProj.pdb
+C:\Users\user\Documents\EADProject\FinalProj\FinalProj\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\user\Documents\EADProject\FinalProj\FinalProj\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\user\Documents\EADProject\FinalProj\FinalProj\obj\Debug\FinalProj.csprojAssemblyReference.cache
+C:\Users\user\Documents\EADProject\FinalProj\FinalProj\obj\Debug\FinalProj.csproj.CoreCompileInputs.cache
+C:\Users\user\Documents\EADProject\FinalProj\FinalProj\obj\Debug\FinalProj.csproj.CopyComplete
+C:\Users\user\Documents\EADProject\FinalProj\FinalProj\obj\Debug\FinalProj.dll
+C:\Users\user\Documents\EADProject\FinalProj\FinalProj\obj\Debug\FinalProj.pdb
