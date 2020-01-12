@@ -16,6 +16,9 @@
         .event-topic-col {
             min-width: 23em;
         }
+        .auto-style1 {
+            height: 62px;
+        }
     </style>
     <div class="container my-3">
         <nav class="breadcrumb">
@@ -34,27 +37,30 @@
                     </div>
                 </div>
 
-                <table class="table table-striped table-bordered table-responsive">
-                    <thead class="thead-light">
-                        <tr>
-                            <th scope="col" class="event-topic-col">Topic</th>
-                            <th scope="col">Created</th>
-                            <th scope="col" style="min-width: 6em;">Replies/Views</th>
-                            <th scope="col" class="last-post-col">Last Post</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
+                <asp:Repeater ID="rptrConfirmedThreads" runat="server">
+                    <HeaderTemplate>
+                        <table class="table table-striped table-bordered table-responsive-lg">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col" class="topic-col">Topic</th>
+                                    <th scope="col" class="created-col">Created</th>
+                                    <th scope="col" style="min-width: 6em;">Replies/Views</th>
+                                    <th scope="col" class="last-post-col">Last Post</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    </HeaderTemplate>
+                    <ItemTemplate>
                         <tr>
                             <td>
-                                <h3 class="h6"><span class="badge badge-success">[EVENT]</span> <a href="#0">Project Clean The Beach</a></h3>
+                                <h3 class="h6"><span class="badge badge-success">EVENT</span> <a href="forumPost.aspx?threadid=<%# Eval("Id") %>"><%# Eval("eventTitle") %></a></h3>
                                 <div class="small">
-                                    Started by: GandyHaley
+                                    Started by: <%# Eval("user_name") %>
                                 </div>
                             </td>
 
                             <td>
-                                <div>by <a href="#0">GandyHaley</a></div>
+                                <div>by <a href="#0"><%# Eval("user_name") %></a></div>
                                 <div>02 Apr 2019, 13:33</div>
                             </td>
                             <td>
@@ -66,71 +72,12 @@
                                 <div>05 Apr 2017, 20:07</div>
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <h3 class="h6"><span class="badge badge-success">[EVENT]</span> <a href="#0">Purple Parade!</a></h3>
-                                <div class="small">
-                                    Started by: AndyLee
-                                </div>
-                            </td>
-
-                            <td>
-                                <div>by <a href="#0">AndyLee</a></div>
-                                <div>02 Apr 2019, 13:33</div>
-                            </td>
-                            <td>
-                                <div>32 replies</div>
-                                <div>274 Views</div>
-                            </td>
-                            <td>
-                                <div>by <a href="#0">Foogene</a></div>
-                                <div>05 Apr 2017, 20:07</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h3 class="h6"><span class="badge badge-success">[EVENT]</span> <a href="#0">Helping Bishan Home</a></h3>
-                                <div class="small">
-                                    Started by: Foogene
-                                </div>
-                            </td>
-
-                            <td>
-                                <div>by <a href="#0">Foogene</a></div>
-                                <div>02 Apr 2019, 13:33</div>
-                            </td>
-                            <td>
-                                <div>2 replies</div>
-                                <div>53 Views</div>
-                            </td>
-                            <td>
-                                <div>by <a href="#0">GandyHaley</a></div>
-                                <div>05 Apr 2017, 20:07</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h3 class="h6"><span class="badge badge-success">[EVENT]</span> <a href="#0">Pink Dot</a></h3>
-                                <div class="small">
-                                    Started by: GangZim
-                                </div>
-                            </td>
-
-                            <td>
-                                <div>by <a href="#0">GangZim</a></div>
-                                <div>02 Apr 2019, 13:33</div>
-                            </td>
-                            <td>
-                                <div>2 replies</div>
-                                <div>53 Views</div>
-                            </td>
-                            <td>
-                                <div>by <a href="#0">CutePie</a></div>
-                                <div>05 Apr 2017, 20:07</div>
-                            </td>
-                        </tr>
-                    </tbody>
+                    </ItemTemplate>
+                    <FooterTemplate>
+                        </tbody>
                 </table>
+                    </FooterTemplate>
+                </asp:Repeater>
 
                 <div class="container">
                     <div class="row text-white bg-info mb-0 p-4 rounded-top">

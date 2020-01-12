@@ -28,16 +28,18 @@ namespace FinalProj
                 DataSet ds = new DataSet();
                 da.Fill(ds);
 
-                
-             
+
+
 
                 if (ds.Tables[0].Rows.Count > 0)
                 {
 
                     LblTitle.Text = ds.Tables[0].Rows[0]["threadTitle"].ToString();
                     LblTitleBig.Text = ds.Tables[0].Rows[0]["threadTitle"].ToString();
+                    LblTitleBreadcrumb.Text = ds.Tables[0].Rows[0]["threadTitle"].ToString();
                     LblPostDate.Text = ds.Tables[0].Rows[0]["threadDate"].ToString();
                     LblContent.Text = ds.Tables[0].Rows[0]["threadContent"].ToString();
+                    LblPrefix.Text = ds.Tables[0].Rows[0]["threadPrefix"].ToString();
                 }
                 else
                 {
