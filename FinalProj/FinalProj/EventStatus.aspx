@@ -45,23 +45,62 @@
             </div>
 
             <div class="container">
-                <div class="row" id="row1">
+                <div class="row" class="row1">
                     <div class="col-sm-12 col-md-12 col-lg-6">
-                        <img id="eventdp" src="beach.jpg" />
+                        <img class="eventdp" src="beach.jpg" />
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-6">
                         <h3>Project Clean the Beach</h3>
                         <div class="col-sm-12 col-md-12 col-lg-12">
                             <img id="dp" src="picture.jpg" />
-                            <p id="organiser">Organised by: Kovi Tan</p>
-                            <p id="txtDate">Start date and time: </p>
-                            <p id="dateTime">25/10/2019 0800-1300</p>
-                            <p id="txtStatus">Status: </p>
-                            <p id="status">Complete</p>
+                            <p class="organiser">Organised by: Kovi Tan</p>
+                            <p class="txtDate">Start date and time: </p>
+                            <p class="dateTime">25/10/2019 0800-1300</p>
+                            <p class="txtStatus">Status: </p>
+                            <p class="status">Complete</p>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="container">
+                <div class="row1">
+                    <% foreach (var element in evStList)
+                        { %>
+
+                        <div class="col-sm-12 col-md-12 col-lg-6">
+                            <img class="eventdp" src="beach.jpg" />
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-6">
+                            <h3>Project Clean the Beach</h3>
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <img id="dp" src="picture.jpg" />
+                                <p class="organiser">Organised by: Kovi Tan</p>
+                                <p class="txtDate">Start date and time: </p>
+                                <p class="dateTime">25/10/2019 0800-1300</p>
+                                <p class="txtStatus">Status: </p>
+                                <p class="status">Complete</p>
+                            </div>
+                        </div>
+                        }
+                            %>
+                    <div class="col-sm-12 col-md-12 col-lg-6">
+                        <img class="eventdp" src="beach.jpg" />
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-6">
+                        <h3>Project Clean the Beach</h3>
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <img id="dp" src="picture.jpg" />
+                            <p class="organiser">Organised by: Kovi Tan</p>
+                            <p class="txtDate">Start date and time: </p>
+                            <p class="dateTime">25/10/2019 0800-1300</p>
+                            <p class="txtStatus">Status: </p>
+                            <p class="status">Complete</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
             <asp:ListView ID="ListView1" runat="server">
             </asp:ListView>
