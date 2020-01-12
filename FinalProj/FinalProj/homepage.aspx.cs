@@ -42,7 +42,6 @@ namespace FinalProj
 		
 		protected void DateClicked(object sender, EventArgs e)
 		{
-
 			Events ev = new Events();
 			DateTime currentDate;
 			currentDate = Convert.ToDateTime(hidingDate.Text);
@@ -65,7 +64,7 @@ namespace FinalProj
 			}
 
 		}
-
+	
 		protected void createEvent_Click(object sender, EventArgs e)
         {
             Response.Redirect("createEvent.aspx");
