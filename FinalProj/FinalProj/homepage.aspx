@@ -396,8 +396,8 @@
                     this.setCookie('selected_day', 1);
                     let stringday = document.querySelector(".selected").innerText.length > 1 ? document.querySelector(".selected").innerText : "0" + document.querySelector(".selected").innerText;
 					let stringmonth = month >= 9 ? month + 1 : "0" + (month + 1);
-                    document.getElementById("ContentPlaceHolder1_hidingDate").value = stringmonth + "/" + stringday + "/" + year;
-                    document.getElementById("ContentPlaceHolder1_hidingDate").innerText = stringmonth + "/" + stringday + "/" + year;
+                    document.getElementById("ContentPlaceHolder1_hidingDate").value = stringday + "/" +  stringmonth+ "/" + year;
+                    document.getElementById("ContentPlaceHolder1_hidingDate").innerText = stringday  + "/" + stringmonth + "/" + year;
 					document.getElementById("ContentPlaceHolder1_testbtn").click(); // to click invisible button
                    
                 }
