@@ -122,6 +122,7 @@
                     <asp:TextBox ID="tbContent" runat="server" CssClass="form-control" Height="250px" TextMode="MultiLine"></asp:TextBox>
                     <asp:HiddenField ID="HFDate" runat="server" />
                     <asp:HiddenField ID="HFthreadId" runat="server" />
+                    
                     <br />
                     <%--<textarea class="form-control" id="comment" rows="10" placeholder="Write more about the event..." required></textarea>--%>
                     <asp:Label ID="LblMsg" runat="server"></asp:Label>

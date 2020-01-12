@@ -65,6 +65,33 @@ namespace FinalProj
 
         }
 
+        private string BadgeColorIdentifier()
+        {
+            string badgeColorClass = "";
+            if (DdlPrefix.SelectedIndex == 1)
+            {
+                badgeColorClass = "warning";
+            }
+            else if (DdlPrefix.SelectedIndex == 2)
+            {
+                badgeColorClass = "info";
+            }
+            else if (DdlPrefix.SelectedIndex == 3)
+            {
+                badgeColorClass = "primary";
+            }
+            else if (DdlPrefix.SelectedIndex == 4)
+            {
+                badgeColorClass = "danger";
+            }
+            else if (DdlPrefix.SelectedIndex == 5)
+            {
+                badgeColorClass = "secondary";
+            }
+
+            return badgeColorClass;
+        }
+
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             Thread thread = new Thread();
@@ -73,7 +100,7 @@ namespace FinalProj
 
             if (ValidateInput())
             {
-                thread = new Thread(DdlPrefix.Text, tbTitle.Text, HFDate.Value, "Sample Image", tbContent.Text, "1");
+                thread = new Thread(DdlPrefix.Text, BadgeColorIdentifier() ,tbTitle.Text, HFDate.Value, "Sample Image", tbContent.Text, "1");
                 int result = thread.CreateThread();
                
                 if (result == 1)

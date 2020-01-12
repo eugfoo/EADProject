@@ -18,11 +18,12 @@ namespace FinalProj.DAL
             string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
             SqlConnection myConn = new SqlConnection(DBConnect);
 
-            string sqlStmt = "INSERT INTO Threads (threadPrefix, threadTitle, threadDate, threadImage, threadContent)" +
-                "VALUES (@paraThreadPrefix, @paraThreadTitle, @paraThreadDate, @paraThreadImage, @paraThreadContent)";
+            string sqlStmt = "INSERT INTO Threads (threadPrefix, threadBadgeColor, threadTitle, threadDate, threadImage, threadContent)" +
+                "VALUES (@paraThreadPrefix, @paraThreadBadgeColor, @paraThreadTitle, @paraThreadDate, @paraThreadImage, @paraThreadContent)";
             sqlCmd = new SqlCommand(sqlStmt, myConn);
 
             sqlCmd.Parameters.AddWithValue("@paraThreadPrefix", thread.Prefix);
+            sqlCmd.Parameters.AddWithValue("@paraThreadBadgeColor", thread.BadgeColor);
             sqlCmd.Parameters.AddWithValue("@paraThreadTitle", thread.Title);
             sqlCmd.Parameters.AddWithValue("@paraThreadDate", thread.Date);
             sqlCmd.Parameters.AddWithValue("@paraThreadImage", thread.Image);

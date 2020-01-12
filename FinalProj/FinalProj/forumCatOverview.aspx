@@ -32,27 +32,30 @@
                     </div>
                 </div>
 
-                <table class="table table-striped table-bordered table-responsive-lg">
-                    <thead class="thead-light">
-                        <tr>
-                            <th scope="col" class="topic-col">Topic</th>
-                            <th scope="col" class="created-col">Created</th>
-                            <th scope="col" style="min-width: 6em;">Replies/Views</th>
-                            <th scope="col" class="last-post-col">Last Post</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
+                <asp:Repeater ID="rptrThreads" runat="server">
+                    <HeaderTemplate>
+                        <table class="table table-striped table-bordered table-responsive-lg">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col" class="topic-col">Topic</th>
+                                    <th scope="col" class="created-col">Created</th>
+                                    <th scope="col" style="min-width: 6em;">Replies/Views</th>
+                                    <th scope="col" class="last-post-col">Last Post</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    </HeaderTemplate>
+                    <ItemTemplate>
                         <tr>
                             <td>
-                                <h3 class="h6"><span class="badge badge-warning">[Discussion]</span> <a href="forumPost.aspx">Shall we have this event next saturday?</a></h3>
+                                <h3 class="h6"><span class="badge badge-<%# Eval("threadBadgeColor") %>"><%# Eval("threadPrefix") %></span> <a href="forumPost.aspx?threadid=<%# Eval("Id") %>"><%# Eval("threadTitle") %></a></h3>
                                 <div class="small">
-                                    Started by: GandyHaley
+                                    Started by: <%# Eval("user_name") %>
                                 </div>
                             </td>
 
                             <td>
-                                <div>by <a href="#0">GandyHaley</a></div>
+                                <div>by <a href="#0"><%# Eval("user_name") %></a></div>
                                 <div>02 Apr 2019, 13:33</div>
                             </td>
                             <td>
@@ -64,218 +67,15 @@
                                 <div>05 Apr 2017, 20:07</div>
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <h3 class="h6"><span class="badge badge-primary">[News]</span> <a href="#0">The 'We Care' Drive</a></h3>
-                                <div class="small">
-                                    Started by: AndyLee
-                                </div>
-                            </td>
-
-                            <td>
-                                <div>by <a href="#0">AndyLee</a></div>
-                                <div>02 Apr 2019, 13:33</div>
-                            </td>
-                            <td>
-                                <div>32 replies</div>
-                                <div>274 Views</div>
-                            </td>
-                            <td>
-                                <div>by <a href="#0">Foogene</a></div>
-                                <div>05 Apr 2017, 20:07</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h3 class="h6"><span class="badge badge-primary">[News]</span> <a href="#0">Project Clean the Beach</a></h3>
-                                <div class="small">
-                                    Started by: Foogene
-                                </div>
-                            </td>
-
-                            <td>
-                                <div>by <a href="#0">Foogene</a></div>
-                                <div>02 Apr 2019, 13:33</div>
-                            </td>
-                            <td>
-                                <div>2 replies</div>
-                                <div>53 Views</div>
-                            </td>
-                            <td>
-                                <div>by <a href="#0">GandyHaley</a></div>
-                                <div>05 Apr 2017, 20:07</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h3 class="h6"><span class="badge badge-danger">[Help]</span> <a href="#0">How is this event good?</a></h3>
-                                <div class="small">
-                                    Started by: GangZim
-                                </div>
-                            </td>
-
-                            <td>
-                                <div>by <a href="#0">GangZim</a></div>
-                                <div>02 Apr 2019, 13:33</div>
-                            </td>
-                            <td>
-                                <div>2 replies</div>
-                                <div>53 Views</div>
-                            </td>
-                            <td>
-                                <div>by <a href="#0">CutePie</a></div>
-                                <div>05 Apr 2017, 20:07</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h3 class="h6"><span class="badge badge-info">[Request]</span> <a href="#0">Can someone go to this event with me?</a></h3>
-                                <div class="small">
-                                    Started by: Foogene
-                                </div>
-                            </td>
-
-                            <td>
-                                <div>by <a href="#0">Foogene</a></div>
-                                <div>02 Apr 2019, 13:33</div>
-                            </td>
-                            <td>
-                                <div>2 replies</div>
-                                <div>53 Views</div>
-                            </td>
-                            <td>
-                                <div>by <a href="#0">GandyHaley</a></div>
-                                <div>05 Apr 2017, 20:07</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h3 class="h6"><span class="badge badge-success">[TEST]</span> <a href="#0">THIS IS A TEST THREAD</a></h3>
-                                <div class="small">
-                                    Started by: TESTER
-                                </div>
-                            </td>
-
-                            <td>
-                                <div>by <a href="#0">TESTER</a></div>
-                                <div>02 Apr 2019, 13:33</div>
-                            </td>
-                            <td>
-                                <div>2 replies</div>
-                                <div>53 Views</div>
-                            </td>
-                            <td>
-                                <div>by <a href="#0">TESTER</a></div>
-                                <div>05 Apr 2017, 20:07</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h3 class="h6"><span class="badge badge-success">[TEST]</span> <a href="#0">THIS IS A TEST THREAD</a></h3>
-                                <div class="small">
-                                    Started by: TESTER
-                                </div>
-                            </td>
-
-                            <td>
-                                <div>by <a href="#0">TESTER</a></div>
-                                <div>02 Apr 2019, 13:33</div>
-                            </td>
-                            <td>
-                                <div>2 replies</div>
-                                <div>53 Views</div>
-                            </td>
-                            <td>
-                                <div>by <a href="#0">TESTER</a></div>
-                                <div>05 Apr 2017, 20:07</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h3 class="h6"><span class="badge badge-success">[TEST]</span> <a href="#0">THIS IS A TEST THREAD</a></h3>
-                                <div class="small">
-                                    Started by: TESTER
-                                </div>
-                            </td>
-
-                            <td>
-                                <div>by <a href="#0">TESTER</a></div>
-                                <div>02 Apr 2019, 13:33</div>
-                            </td>
-                            <td>
-                                <div>2 replies</div>
-                                <div>53 Views</div>
-                            </td>
-                            <td>
-                                <div>by <a href="#0">TESTER</a></div>
-                                <div>05 Apr 2017, 20:07</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h3 class="h6"><span class="badge badge-success">[TEST]</span> <a href="#0">THIS IS A TEST THREAD</a></h3>
-                                <div class="small">
-                                    Started by: TESTER
-                                </div>
-                            </td>
-
-                            <td>
-                                <div>by <a href="#0">TESTER</a></div>
-                                <div>02 Apr 2019, 13:33</div>
-                            </td>
-                            <td>
-                                <div>2 replies</div>
-                                <div>53 Views</div>
-                            </td>
-                            <td>
-                                <div>by <a href="#0">TESTER</a></div>
-                                <div>05 Apr 2017, 20:07</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h3 class="h6"><span class="badge badge-success">[TEST]</span> <a href="#0">THIS IS A TEST THREAD</a></h3>
-                                <div class="small">
-                                    Started by: TESTER
-                                </div>
-                            </td>
-
-                            <td>
-                                <div>by <a href="#0">TESTER</a></div>
-                                <div>02 Apr 2019, 13:33</div>
-                            </td>
-                            <td>
-                                <div>2 replies</div>
-                                <div>53 Views</div>
-                            </td>
-                            <td>
-                                <div>by <a href="#0">TESTER</a></div>
-                                <div>05 Apr 2017, 20:07</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h3 class="h6"><span class="badge badge-success">[TEST]</span> <a href="#0">THIS IS A TEST THREAD</a></h3>
-                                <div class="small">
-                                    Started by: TESTER
-                                </div>
-                            </td>
-
-                            <td>
-                                <div>by <a href="#0">TESTER</a></div>
-                                <div>02 Apr 2019, 13:33</div>
-                            </td>
-                            <td>
-                                <div>2 replies</div>
-                                <div>53 Views</div>
-                            </td>
-                            <td>
-                                <div>by <a href="#0">TESTER</a></div>
-                                <div>05 Apr 2017, 20:07</div>
-                            </td>
-                        </tr>
-                    </tbody>
+                    </ItemTemplate>
+                    <FooterTemplate>
+                        </tbody>
                 </table>
+                    </FooterTemplate>
+                </asp:Repeater>
+
+
+
             </div>
         </div>
 
