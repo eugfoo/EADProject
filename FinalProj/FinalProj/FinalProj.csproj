@@ -134,6 +134,7 @@
     <Compile Include="AttendanceSubmitted.aspx.designer.cs">
       <DependentUpon>AttendanceSubmitted.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BLL\EventStatus.cs" />
     <Compile Include="BLL\Events.cs" />
     <Compile Include="BLL\Thread.cs" />
     <Compile Include="bookmark.aspx.cs">
@@ -150,6 +151,7 @@
     <Compile Include="createdEvent.aspx.designer.cs">
       <DependentUpon>createdEvent.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DAL\eventStatusDAO.cs" />
     <Compile Include="DAL\eventDao.cs" />
     <Compile Include="DAL\ThreadDAO.cs" />
     <Compile Include="eventDetailsTabTwo.aspx.cs">

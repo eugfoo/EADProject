@@ -48,46 +48,46 @@ h3 {
     border-radius: 4px;
 }
 
-#row1, #row2 {
+.row1, #row2 {
     margin: 20px 0 20px 0;
     padding: 10px 0 10px 0;
     border-radius: 4px;
     box-shadow: 0px 1px 5px grey;
 }
 
-#eventdp {
+.eventdp {
     width: 90%;
     border-radius: 4px;
     margin: 10px 0px 10px 0px;
 }
 
-#dp {
+.dp {
     height: 40px;
     width: 40px;
     border-radius: 50%;
     float: left;
 }
 
-#organiser {
+.organiser {
     text-align: left;
 }
 
-#dateTime {
+.dateTime {
     color: dodgerblue;
     font-weight: bold;
     text-align: left;
 }
 
-#txtDate {
+.txtDate {
     float: left;
 }
 
-#status {
+.status {
     color: green;
     font-weight: bold;
     text-align: left;
 }
 
-#txtStatus {
+.txtStatus {
     float: left;
 }
