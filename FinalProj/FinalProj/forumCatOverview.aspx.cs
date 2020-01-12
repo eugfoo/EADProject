@@ -26,7 +26,7 @@ namespace FinalProj
             string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
             using (SqlConnection myConn = new SqlConnection(DBConnect))
             {
-                using (SqlCommand cmd = new SqlCommand("Select * From Threads", myConn))
+                using (SqlCommand cmd = new SqlCommand("Select * From Threads ORDER BY Id DESC", myConn))
                 {
                     using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
                     {
@@ -34,13 +34,9 @@ namespace FinalProj
                         sda.Fill(allThreads);
                         rptrThreads.DataSource = allThreads;
                         rptrThreads.DataBind();
-
                     }
-
                 }
-
             }
-
         }
 
         private DataSet GetData()
