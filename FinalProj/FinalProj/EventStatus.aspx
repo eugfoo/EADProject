@@ -3,7 +3,7 @@
     <link rel="stylesheet" type="text/css" href="EventStatus.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder3" runat="server">
-    <div style="height:87vh">    
+    <div style="height:240vh">    
         <form id="form1" runat="server">
             <div>
                 <h2 id="title">Events Status</h2>
@@ -45,59 +45,25 @@
             </div>
 
             <div class="container">
-                <div class="row" class="row1">
-                    <div class="col-sm-12 col-md-12 col-lg-6">
-                        <img class="eventdp" src="beach.jpg" />
-                    </div>
-                    <div class="col-sm-12 col-md-12 col-lg-6">
-                        <h3>Project Clean the Beach</h3>
-                        <div class="col-sm-12 col-md-12 col-lg-12">
-                            <img id="dp" src="picture.jpg" />
-                            <p class="organiser">Organised by: Kovi Tan</p>
-                            <p class="txtDate">Start date and time: </p>
-                            <p class="dateTime">25/10/2019 0800-1300</p>
-                            <p class="txtStatus">Status: </p>
-                            <p class="status">Complete</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container">
-                <div class="row1">
+                <div class="row" id="row1">
                     <% foreach (var element in evStList)
                         { %>
 
                         <div class="col-sm-12 col-md-12 col-lg-6">
-                            <img class="eventdp" src="beach.jpg" />
+                            <img id="eventdp"  src="<%= element.Pic %>"/>
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-6">
-                            <h3>Project Clean the Beach</h3>
+                            <h3><%= element.Title %></h3>
                             <div class="col-sm-12 col-md-12 col-lg-12">
                                 <img id="dp" src="picture.jpg" />
-                                <p class="organiser">Organised by: Kovi Tan</p>
-                                <p class="txtDate">Start date and time: </p>
-                                <p class="dateTime">25/10/2019 0800-1300</p>
-                                <p class="txtStatus">Status: </p>
-                                <p class="status">Complete</p>
+                                <p id="organiser">Organised by: Kovi Tan</p>
+                                <p id="txtDate">Start date and time: </p>
+                                <p id="dateTime"> <%= element.Date %>, <%= element.StartTime %> to <%= element.EndTime %></p>
+                                <p id="txtStatus">Status: </p>
+                                <p id="status">Complete</p>
                             </div>
                         </div>
-                       <% }
-                            %>
-                    <div class="col-sm-12 col-md-12 col-lg-6">
-                        <img class="eventdp" src="beach.jpg" />
-                    </div>
-                    <div class="col-sm-12 col-md-12 col-lg-6">
-                        <h3>Project Clean the Beach</h3>
-                        <div class="col-sm-12 col-md-12 col-lg-12">
-                            <img id="dp" src="picture.jpg" />
-                            <p class="organiser">Organised by: Kovi Tan</p>
-                            <p class="txtDate">Start date and time: </p>
-                            <p class="dateTime">25/10/2019 0800-1300</p>
-                            <p class="txtStatus">Status: </p>
-                            <p class="status">Complete</p>
-                        </div>
-                    </div>
+                       <% } %>
                 </div>
             </div>
 
