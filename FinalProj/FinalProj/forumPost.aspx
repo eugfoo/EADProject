@@ -65,6 +65,7 @@
                                             <div class="col-md-4">
                                                 <span class="font-weight-bold">Posted:</span>
                                                 <asp:Label ID="LblPostDate" runat="server" Text="02 Apr 2019, 13:33"></asp:Label>
+                    
                                             </div>
                                         </div>
                                     </div>
@@ -97,7 +98,8 @@
                                     from it? But who has any right to find fault with a man who chooses to enjoy a
                                     pleasure that has no annoying consequences, or one who avoids a pain that produces
                                     no resultant pleasure?"
-                                </p>--%>
+                                </p>--%>&nbsp;&nbsp;<asp:Image ID="Image2" runat="server" Height="289px" Width="489px"/>
+                                    <br />
                                     <asp:Label ID="LblContent" runat="server"></asp:Label>
                                 </td>
                             </tr>

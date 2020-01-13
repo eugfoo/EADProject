@@ -40,22 +40,22 @@ namespace FinalProj {
         protected global::System.Web.UI.WebControls.TextBox tbTitle;
         
         /// <summary>
-        /// FileUploadControl control.
+        /// FileImgSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUploadControl;
+        protected global::System.Web.UI.WebControls.FileUpload FileImgSave;
         
         /// <summary>
-        /// picChosen control.
+        /// image_upload_preview control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label picChosen;
+        protected global::System.Web.UI.WebControls.Image image_upload_preview;
         
         /// <summary>
         /// tbContent control.

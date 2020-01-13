@@ -28,7 +28,7 @@ namespace FinalProj
                 DataSet ds = new DataSet();
                 da.Fill(ds);
 
-
+                
 
 
                 if (ds.Tables[0].Rows.Count > 0)
@@ -40,7 +40,23 @@ namespace FinalProj
                     LblPostDate.Text = ds.Tables[0].Rows[0]["threadDate"].ToString();
                     LblContent.Text = ds.Tables[0].Rows[0]["threadContent"].ToString();
                     LblPrefix.Text = ds.Tables[0].Rows[0]["threadPrefix"].ToString();
+                    Image2.ImageUrl = "~/Img/" + ds.Tables[0].Rows[0]["threadImage"].ToString();
+
+                    if (ds.Tables[0].Rows[0]["threadImage"].ToString() == "")
+                    {
+                        Image2.Style.Add("display", "none");
+
+                    }
+                    else
+                    {
+                        Image2.Style.Add("display", "block");
+                        
+
+                    }
+
                 }
+
+                
                 else
                 {
                     //error msg here pls hehe

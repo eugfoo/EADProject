@@ -100,25 +100,20 @@ namespace FinalProj
         {
             Thread thread = new Thread();
 
-            HFDate.Value = DateTime.Now.ToString();
-            string picture = "";
+            HFDate.Value = DateTime.Now.ToString("hh:mm dddd, dd MM yyyy");
+            string threadImage = "";
 
-            if (FileUploadControl.HasFile)
+            if (FileImgSave.HasFile)
             {
-
-                string filename = Path.GetFileName(FileUploadControl.PostedFile.FileName);
-                FileUploadControl.SaveAs(Server.MapPath("~/Img/" + filename));
-                picture = filename;
-                picChosen.Text = filename;
-
-                //string strFileName = DateTime.Now.ToString("MM-dd-yyyy_HHmmss");
-                //string strFileType = System.IO.Path.GetExtension(FileUploadControl.FileName).ToString().ToLower();
-                //FileUploadControl.SaveAs(Server.MapPath("folderpath" + strFileName + strFileType));
+                string filename = Path.GetFileName(FileImgSave.PostedFile.FileName);
+                FileImgSave.SaveAs(Server.MapPath("~/Img/" + filename));
+                threadImage = filename;
             }
+           
 
             if (ValidateInput())
             {
-                thread = new Thread(DdlPrefix.Text, BadgeColorIdentifier() ,tbTitle.Text, "12am", picture, tbContent.Text, "1");
+                thread = new Thread(DdlPrefix.Text, BadgeColorIdentifier() ,tbTitle.Text, "12am", threadImage, tbContent.Text, "1");
                 int result = thread.CreateThread();
                
                 if (result == 1)
