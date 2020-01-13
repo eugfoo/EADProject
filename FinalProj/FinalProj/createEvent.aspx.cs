@@ -14,23 +14,23 @@ namespace FinalProj
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-        }
-		protected void changetoDefaultBorder()
-		{
-			eventTitle.BorderColor = System.Drawing.Color.LightGray;
-			eventAddress.BorderColor = System.Drawing.Color.LightGray;
-			eventDate.BorderColor = System.Drawing.Color.LightGray;
-			startTime.BorderColor = System.Drawing.Color.LightGray;
-			endTime.BorderColor = System.Drawing.Color.LightGray;
-			maxAttend.BorderColor = System.Drawing.Color.LightGray;
-			FileUploadControl.BackColor = System.Drawing.Color.White;
-			desc.BorderColor = System.Drawing.Color.LightGray;
 
-		}
+        }
+        protected void changetoDefaultBorder()
+        {
+            eventTitle.BorderColor = System.Drawing.Color.LightGray;
+            eventAddress.BorderColor = System.Drawing.Color.LightGray;
+            eventDate.BorderColor = System.Drawing.Color.LightGray;
+            startTime.BorderColor = System.Drawing.Color.LightGray;
+            endTime.BorderColor = System.Drawing.Color.LightGray;
+            maxAttend.BorderColor = System.Drawing.Color.LightGray;
+            FileUploadControl.BackColor = System.Drawing.Color.White;
+            desc.BorderColor = System.Drawing.Color.LightGray;
+
+        }
         protected void createBtn_Click(object sender, EventArgs e)
         {
-			changetoDefaultBorder();
+            changetoDefaultBorder();
 
             Events ev = new Events();
             string errmsg = "";
@@ -39,38 +39,42 @@ namespace FinalProj
             if (eventTitle.Text.ToString() == "")
             {
                 errmsg = "Title cannot be empty! <br>";
-				eventTitle.BorderColor = System.Drawing.Color.Red;
-				
-			}
+                eventTitle.BorderColor = System.Drawing.Color.Red;
+
+            }
             if (eventAddress.Text.ToString() == "")
             {
                 errmsg += "Address cannot be empty! <br>";
-				eventAddress.BorderColor = System.Drawing.Color.Red;
-			}
+                eventAddress.BorderColor = System.Drawing.Color.Red;
+            }
             if (eventDate.Text.ToString() == "")
             {
                 errmsg += "Date cannot be empty! <br>";
-				eventDate.BorderColor = System.Drawing.Color.Red;
-			}
+                eventDate.BorderColor = System.Drawing.Color.Red;
+            }
+            if (eventDate.Text.ToString() != "")
+            {
+                string date = eventDate.Text.ToString();
+                DateTime dt = Convert.ToDateTime(date);
+                System.Diagnostics.Debug.WriteLine(date);
+                System.Diagnostics.Debug.WriteLine(dt);
+                if (dt < DateTime.Now.Date)
+                {
+                    errmsg += "Please enter a valid date <br>";
+                    eventDate.BorderColor = System.Drawing.Color.Red;
+                }
+
+            }
             if (startTime.Text.ToString() == "")
             {
                 errmsg += "StartTime cannot be empty! <br>";
-				startTime.BorderColor = System.Drawing.Color.Red;
-			}
+                startTime.BorderColor = System.Drawing.Color.Red;
+            }
             if (endTime.Text.ToString() == "")
             {
                 errmsg += "EndTime cannot be empty! <br>";
-				endTime.BorderColor = System.Drawing.Color.Red;
-			}
-            if (maxAttend.Text.ToString() == "")
-            {
-                errmsg += "Maximum number of attendees cannot be empty! <br>";
-				maxAttend.BorderColor = System.Drawing.Color.Red;
-			}
-			if(desc.Text.ToString() == ""){
-				errmsg += "Description cannot be empty! <br>";
-				desc.BorderColor = System.Drawing.Color.Red;
-			}
+                endTime.BorderColor = System.Drawing.Color.Red;
+            }
             if (startTime.Text.ToString() != "" && endTime.Text.ToString() != "")
             {
                 string startTimeNumber = "";
@@ -87,34 +91,47 @@ namespace FinalProj
                 if (int.Parse(startTimeNumber) > int.Parse(endTimeNumber))
                 {
                     errmsg += "Please ensure that you entered a valid Start & End Time <br>";
-					startTime.BorderColor = System.Drawing.Color.Red;
-					endTime.BorderColor = System.Drawing.Color.Red;
-				}
+                    startTime.BorderColor = System.Drawing.Color.Red;
+                    endTime.BorderColor = System.Drawing.Color.Red;
+                }
             }
-
-            if (eventDate.Text.ToString() != "")
+            if (maxAttend.Text.ToString() == "")
             {
-                string date = eventDate.Text.ToString();
-                DateTime dt = Convert.ToDateTime(date);
-                System.Diagnostics.Debug.WriteLine(date);
-                System.Diagnostics.Debug.WriteLine(dt);
-                if (dt < DateTime.Now.Date)
-                {
-                    errmsg += "Please enter a valid date <br>";
-					eventDate.BorderColor = System.Drawing.Color.Red;
-				}
-
+                errmsg += "Maximum number of attendees cannot be empty! <br>";
+                maxAttend.BorderColor = System.Drawing.Color.Red;
             }
-            
+            if (desc.Text.ToString() == "")
+            {
+                errmsg += "Description cannot be empty! <br>";
+                desc.BorderColor = System.Drawing.Color.Red;
+            }
+
+            if (desc.Text.ToString() != "")
+            {
+                int enterCount = 0, index = 0;
+
+                while (index < desc.Text.Length)
+                {
+                    // check if current char is part of a word
+                    if (desc.Text[index] == '\r' && desc.Text[index + 1] == '\n')
+                        enterCount++;
+                    index++;
+                }
+                if (desc.Text.Length > 3000 + enterCount)
+                {
+                    errmsg += "Character Limit in Description Exceeded! <br>";
+                    desc.BorderColor = System.Drawing.Color.Red;
+                }
+            }
+  
             if (errmsg != "")
             {
                 errmsgTb.Text = errmsg;
                 PanelError.Visible = true;
-                
+
             }
             else
             {
-
                 string eventStartTime = startTime.Text.ToString();
                 string eventEndTime = endTime.Text.ToString();
                 string title = eventTitle.Text.ToString();
@@ -125,10 +142,6 @@ namespace FinalProj
                 string picture = "";
                 string note = noteText.Text.ToString();
                 int advertisement = 0;
-                //int hour = 0;
-                //string eventStartTime24 = "";
-                //string eventEndTime24 = "";
-
 
                 if (advCheck.Checked == true)
                 {
@@ -142,52 +155,26 @@ namespace FinalProj
                     string filename = Path.GetFileName(FileUploadControl.PostedFile.FileName);
                     FileUploadControl.SaveAs(Server.MapPath("~/Img/" + filename));
                     picture = filename;
-                    picChosen.Text = filename;			
+                    picChosen.Text = filename;
 
-				}
-				else if (FileUploadControl.HasFile == false)
-				{
+                }
+                else if (FileUploadControl.HasFile == false)
+                {
 
-					string filename = "defaultPic.jpg";
-
-
-					picture = filename;
-
-				}
+                    string filename = "defaultPic.jpg";
 
 
-				//string startampm = eventStartTime.Substring(6, 2);
-				//string endampm = eventEndTime.Substring(6, 2);
+                    picture = filename;
+
+                }
 
 
-				//if (startampm == "PM")
-				//{
-				//     hour = int.Parse(eventStartTime.Substring(0, 2)) + 12;
-				//     eventStartTime24 = hour.ToString() + eventStartTime.Substring(2, 3);
-				//}
 
-				//if (endampm == "PM")
-				//{
-				//    hour = int.Parse(eventEndTime.Substring(0, 2)) + 12;
-				//    eventEndTime24 = hour.ToString() + eventEndTime.Substring(2, 3);
-				//}
-
-				ev = new Events(title, venue, date, eventStartTime, eventEndTime, maxAttendees, description, picture, note, advertisement);
+                ev = new Events(title, venue, date, eventStartTime, eventEndTime, maxAttendees, description, picture, note, advertisement);
                 int result = ev.AddEvent();
                 Response.Redirect("createdEvent.aspx");
             }
         }
 
-        protected void UploadButton_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        //protected void desc_TextChanged(object sender, EventArgs e)
-        //{
-        //    charCounter.Text = desc.Text.Length.ToString();
-        //}
-
-        
     }
 }
