@@ -59,34 +59,36 @@
                         <asp:CheckBox ID="chkParticipate" runat="server" Text="Show events participated" />                    
                     </div>
                     <div class="col-sm-6 col-md-3 col-lg-3">
-                        <asp:DropDownList ID="ddlAlphabet" runat="server">
+                        <asp:DropDownList ID="ddlAlphabet" runat="server" Width="150px">
                             <asp:ListItem>A-Z</asp:ListItem>
-                            <asp:ListItem>Z-A</asp:ListItem>
-                        </asp:DropDownList>
-                        Sort Alphabetically
+                            <asp:ListItem>Earliest-Latest</asp:ListItem>
+                        </asp:DropDownList><br />
+                        Sort Alphabetically or by Date
                     </div>
                 </div>
             </div>
 
-            <table class="center" id="myTable">
-                <% foreach (var element in evStList)
-                    { %>
-                    <tr>
-                        <td>
-                            <img id="eventdp"  src="<%= element.Pic %>"/>
-                        </td>
-                        <td id="tableTD">
-                            <h3 class="title"><%= element.Title %><br /></h3>
-                            <img id="dp" src="picture.jpg" />
-                            <p id="organiser">Organised by: Kovi Tan</p>
-                            <p id="txtDate">Start date and time: </p>
-                            <p id="dateTime"> <%= element.Date %>, <%= element.StartTime %> to <%= element.EndTime %></p>
-                            <p id="txtStatus">Status: </p>
-                            <p id="status">Complete</p>
-                        </td>
-                    </tr>
-                    <% } %>
-            </table>
+            <div style="overflow-x:auto;">
+                <table class="center" id="myTable">
+                    <% foreach (var element in evStList)
+                        { %>
+                        <tr>
+                            <td>
+                                <img id="eventdp"  src="<%= element.Pic %>"/>
+                            </td>
+                            <td id="tableTD">
+                                <h3 class="title"><%= element.Title %><br /></h3>
+                                <img id="dp" src="picture.jpg" />
+                                <p id="organiser">Organised by: Kovi Tan</p>
+                                <p id="txtDate">Start date and time: </p>
+                                <p id="dateTime"> <%= element.Date %>, <%= element.StartTime %> to <%= element.EndTime %></p>
+                                <p id="txtStatus">Status: </p>
+                                <p id="status">Complete</p>
+                            </td>
+                        </tr>
+                        <% } %>
+                </table>
+            </div>
 
         </form>
     </div>
