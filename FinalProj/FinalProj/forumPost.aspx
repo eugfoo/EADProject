@@ -64,7 +64,7 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <span class="font-weight-bold">Posted:</span>
-                                                <asp:Label ID="LblPostDate" runat="server" Text="02 Apr 2019, 13:33"></asp:Label>
+                                                <asp:Label ID="LblPostDate" runat="server" Text="02 Apr 2019"></asp:Label>
                     
                                             </div>
                                         </div>

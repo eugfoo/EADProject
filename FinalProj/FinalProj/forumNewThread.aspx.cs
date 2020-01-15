@@ -17,7 +17,7 @@ namespace FinalProj
 
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            
         }
 
         private bool ValidateInput()
@@ -100,7 +100,7 @@ namespace FinalProj
         {
             Thread thread = new Thread();
 
-            HFDate.Value = DateTime.Now.ToString("hh:mm dddd, dd MM yyyy");
+            
             string threadImage = "";
 
             if (FileImgSave.HasFile)
@@ -113,7 +113,11 @@ namespace FinalProj
 
             if (ValidateInput())
             {
-                thread = new Thread(DdlPrefix.Text, BadgeColorIdentifier() ,tbTitle.Text, "12am", threadImage, tbContent.Text, "1");
+                DateTime now = DateTime.Now;
+                HFDate.Value = now.ToString("g");
+                DateTime mDate = Convert.ToDateTime(HFDate.Value);
+
+                thread = new Thread(DdlPrefix.Text, BadgeColorIdentifier() ,tbTitle.Text, HFDate.Value, threadImage, tbContent.Text, "1");
                 int result = thread.CreateThread();
                
                 if (result == 1)
