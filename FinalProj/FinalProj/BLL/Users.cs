@@ -24,8 +24,9 @@ namespace FinalProj.BLL
             passHash = uPassHash;
         }
 
-        public Users(int id, string uEmail, string uName, string uIsOrg, string uPassHash)
+        public Users(int uId, string uEmail, string uName, string uIsOrg, string uPassHash)
         {
+            id = uId;
             name = uName;
             email = uEmail;
             isOrg = uIsOrg;

@@ -24,12 +24,13 @@ namespace FinalProj.DAL
 
             // Step 2 - Instantiate SqlCommand instance to add record 
             //          with INSERT statement
-            string sqlStmt = "INSERT INTO Users(userEmail, userPasswordHash, userIsOrg) " +
-                "VALUES (@userEmail, @userPasswordHash, @userIsOrg)";
+            string sqlStmt = "INSERT INTO Users(userEmail, userName, userPasswordHash, userIsOrg) " +
+                "VALUES (@userEmail, @userName, @userPasswordHash, @userIsOrg)";
             sqlCmd = new SqlCommand(sqlStmt, myConn);
 
             // Step 3 : Add each parameterised variable with value
             sqlCmd.Parameters.AddWithValue("@userEmail", user.email);
+            sqlCmd.Parameters.AddWithValue("@userName", user.name);
             sqlCmd.Parameters.AddWithValue("@userPasswordHash", user.passHash);
             sqlCmd.Parameters.AddWithValue("@userIsOrg", user.isOrg);
 

@@ -16,6 +16,9 @@
             left: -540px;
             top: -269px;
         }
+        .vError {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -42,23 +45,23 @@
                     <h5 class="card-title text-muted font-italic">Create a new account</h5>
                     <div class="form-group">
                         <label for="formGroupExampleInput">Email</label>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tbEmail" EnableClientScript="False" ErrorMessage="*"></asp:RequiredFieldValidator>
-                        <asp:TextBox type="text" CssClass="form-control" ID="tbEmail" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator CssClass="vError" ID="RequiredFieldValidator1" runat="server" ControlToValidate="tbEmail" EnableClientScript="False" ErrorMessage="*"></asp:RequiredFieldValidator>
+                        <asp:TextBox type="email" CssClass="form-control" ID="tbEmail" runat="server" CausesValidation="True"></asp:TextBox>
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput">Display Name</label>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="tbName" EnableClientScript="False" ErrorMessage="*"></asp:RequiredFieldValidator>
-                        <asp:TextBox type="text" CssClass="form-control" ID="tbName" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator CssClass="vError" ID="RequiredFieldValidator4" runat="server" ControlToValidate="tbName" EnableClientScript="False" ErrorMessage="*"></asp:RequiredFieldValidator>
+                        <asp:TextBox type="text" CssClass="form-control" ID="tbName" runat="server" CausesValidation="True"></asp:TextBox>
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput2">Password</label>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="tbPass" EnableClientScript="False" ErrorMessage="*"></asp:RequiredFieldValidator>
-                        <asp:TextBox type="password" CssClass="form-control" ID="tbPass" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator CssClass="vError" ID="RequiredFieldValidator2" runat="server" ControlToValidate="tbPass" EnableClientScript="False" ErrorMessage="*"></asp:RequiredFieldValidator>
+                        <asp:TextBox type="password" CssClass="form-control" ID="tbPass" runat="server" CausesValidation="True"></asp:TextBox>
                     </div>
                     <div class="form-group">
                         <label for="formGroupExampleInput2">Confirm Password</label>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="tbCfmPass" EnableClientScript="False" ErrorMessage="*"></asp:RequiredFieldValidator>
-                        <asp:TextBox type="password" CssClass="form-control" ID="tbCfmPass" runat="server"></asp:TextBox>
+                        <asp:RequiredFieldValidator CssClass="vError" ID="RequiredFieldValidator3" runat="server" ControlToValidate="tbCfmPass" EnableClientScript="False" ErrorMessage="*"></asp:RequiredFieldValidator>
+                        <asp:TextBox type="password" CssClass="form-control" ID="tbCfmPass" runat="server" CausesValidation="True"></asp:TextBox>
                     </div>
                     <div class="form-group auto-style1" style="left: 0px; top: 0px;">
                         <asp:CheckBox CssClass="form-check-input" ID="cbIsOrg" runat="server" SkinID="gridCheck" />
@@ -67,6 +70,7 @@
                         </label>
                     </div>
                     <div class="align-bottom" style="text-align: right;">
+                        <asp:Label ID="lblError" CssClass="vError mr-3" runat="server" Visible="False" Font-Italic="False" Font-Size="Small">Email is already in use.</asp:Label>
                         <asp:Button ID="btnRegister" runat="server" CssClass="btn btn-primary" Text="Register" OnClick="btnRegister_Click" />
                     </div>
                 </div>

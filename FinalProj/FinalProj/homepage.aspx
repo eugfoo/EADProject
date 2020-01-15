@@ -498,7 +498,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <img src="Img/together.PNG" style="width: 100%; height: auto;" />
-    <form runat="server">
         <div class="container">
 
             <div class="row">
@@ -626,7 +625,6 @@
 
             </div>
         </div>
-    </form>
 </asp:Content>
 
 

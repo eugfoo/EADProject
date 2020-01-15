@@ -12,10 +12,26 @@ namespace FinalProj
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["user"] != null)
+            if (Session["user"] != null) // A user has signed in
             {
-                //lblProfile.Text = Session["user"].name;
+                Users user = (Users)Session["user"];
+                lblProfile.Text = user.name;
+                lblLogOut.Visible = true;
+                lblBookmark.Visible = true;
             }
+            else
+            {
+                lblProfile.Text = "Sign In";
+                lblProfile.NavigateUrl = "/LogIn.aspx";
+                lblLogOut.Visible = false;
+                lblBookmark.Visible = false;
+            }
+        }
+
+        protected void lblLogOut_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("/homepage.aspx");
         }
     }
 }
