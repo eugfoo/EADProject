@@ -28,7 +28,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder3" runat="server">
     <div style="height:300vh">    
-        <form id="form1" runat="server">
             <div>
                 <h2 id="title">Events Status</h2>
             </div>
@@ -89,7 +88,5 @@
                         <% } %>
                 </table>
             </div>
-
-        </form>
     </div>
 </asp:Content>
