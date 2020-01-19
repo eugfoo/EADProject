@@ -5,29 +5,35 @@
 
 #title {
     margin: 0 auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 30px;
+    margin-bottom: 40px;
     text-align: center;
     padding: 5px 0px 5px 0px;
     background-color: darkred;
     color: white;
     font-weight: bold;
     border-radius: 3px;
-    width: 250px;
+    width: 300px;
 }
 
 #myTable {
-    width: 100%;
+    width: 90%;
     border-collapse: collapse;
     border-spacing: 0;
     border: 1px solid #ddd;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 tr {
     margin: 20px 0 20px 0;
     padding: 10px 0 10px 0;
     border-radius: 4px;
+}
+
+#rowRepeat {
     box-shadow: 0px 0px 2px grey;
+    height: 500px;
 }
 
 #tableTD {
@@ -38,6 +44,12 @@ tr {
     font-weight: bold;
     margin: 0 auto;
     text-align: right;
+    font-size: 25px;
+    margin-bottom: 40px;
+}
+
+#totalStats td {
+    min-width: 25px;
 }
 
 #totalParticipate {
@@ -45,15 +57,33 @@ tr {
 }
 
 #totalComplete {
-    color: lightgreen;
+    color: green;
 }
 
 #totalCreate {
     color: saddlebrown;
 }
 
-#tbName, #chkboxCreate, #chkboxParticipate, #dropdlAlphabet {
+#tbName, #radioButtonList, #dropdlAlphabet {
     padding: 0px 15px 0px 15px;
+}
+
+#searchEventName {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#divRadioList {
+    text-align: center;
+}
+
+#ContentPlaceHolder3_radioButtonList {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+label {
+    margin: 10px 20px 10px 5px;
 }
 
 h3 {
@@ -68,7 +98,7 @@ h3 {
 }
 
 #row1, #row2 {
-    margin: 20px 0 20px 0;
+    margin: 20px 0 40px 0;
     padding: 10px 0 10px 0;
     border-radius: 4px;
     box-shadow: 0px 1px 5px grey;
@@ -82,19 +112,35 @@ h3 {
 
 #eventdp {
     width: 97%;
+    min-width: 250px;
     border-radius: 4px;
     margin: 10px 0px 10px 0px;
 }
 
+#containerItems {
+    font-size: 25px;
+    
+}
+
+.alignRight {
+    float:right;
+}
+
 #dp {
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
     border-radius: 50%;
     float: left;
 }
 
+#innerTable {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #organiser {
-    text-align: left;
+    float:left;
+    vertical-align: central;
 }
 
 #dateTime {
