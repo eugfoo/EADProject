@@ -24,8 +24,8 @@ namespace FinalProj.DAL
 
             // Step 2 - Instantiate SqlCommand instance to add record 
             //          with INSERT statement
-            string sqlStmt = "INSERT INTO Users(userEmail, userName, userPasswordHash, userIsOrg) " +
-                "VALUES (@userEmail, @userName, @userPasswordHash, @userIsOrg)";
+            string sqlStmt = "INSERT INTO Users(userEmail, userName, userPasswordHash, userIsOrg, userRegDate) " +
+                "VALUES (@userEmail, @userName, @userPasswordHash, @userIsOrg, @userRegDate)";
             sqlCmd = new SqlCommand(sqlStmt, myConn);
 
             // Step 3 : Add each parameterised variable with value
@@ -33,6 +33,7 @@ namespace FinalProj.DAL
             sqlCmd.Parameters.AddWithValue("@userName", user.name);
             sqlCmd.Parameters.AddWithValue("@userPasswordHash", user.passHash);
             sqlCmd.Parameters.AddWithValue("@userIsOrg", user.isOrg);
+            sqlCmd.Parameters.AddWithValue("@userRegDate", user.regDate);
 
             // Step 4 Open connection the execute NonQuery of sql command   
             myConn.Open();
@@ -63,7 +64,8 @@ namespace FinalProj.DAL
                 string Uemail = row["userEmail"].ToString();
                 string UisOrg = row["userIsOrg"].ToString();
                 string UpassHash = row["userPasswordHash"].ToString();
-                user = new Users(Uid, Uemail, Uname, UisOrg, UpassHash);
+                DateTime UregDate = Convert.ToDateTime(row["userRegDate"]);
+                user = new Users(Uid, Uemail, Uname, UisOrg, UpassHash, UregDate);
             }
             else
             {

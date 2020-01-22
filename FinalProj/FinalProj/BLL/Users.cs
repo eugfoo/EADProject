@@ -13,24 +13,29 @@ namespace FinalProj.BLL
         public string email { get; set; }
         public string isOrg { get; set; }
         public string passHash { get; set; }
+        public DateTime regDate { get; set; }
+
 
         public Users(){}
 
-        public Users(string uEmail, string uName, string uIsOrg, string uPassHash)
+        public Users(string uEmail, string uName, string uIsOrg, string uPassHash, DateTime uRegDate)
         {
             name = uName;
             email = uEmail;
             isOrg = uIsOrg;
             passHash = uPassHash;
+            regDate = uRegDate;
         }
 
-        public Users(int uId, string uEmail, string uName, string uIsOrg, string uPassHash)
+        public Users(int uId, string uEmail, string uName, string uIsOrg, string uPassHash, DateTime uRegDate)
         {
             id = uId;
             name = uName;
             email = uEmail;
             isOrg = uIsOrg;
             passHash = uPassHash;
+            regDate = uRegDate;
+
         }
 
         public int AddUser()

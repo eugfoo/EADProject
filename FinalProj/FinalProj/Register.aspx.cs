@@ -25,7 +25,8 @@ namespace FinalProj
                 if (tbPass.Text == tbCfmPass.Text) // If the passwords match...
                 {
                     string passHash = ComputeSha256Hash(tbPass.Text);
-                    Users user = new Users(tbEmail.Text, tbName.Text, cbIsOrg.Checked.ToString(), passHash);
+                    DateTime now = DateTime.Now;
+                    Users user = new Users(tbEmail.Text, tbName.Text, cbIsOrg.Checked.ToString(), passHash, now);
                     user.AddUser();
                     Response.Redirect("LogIn.aspx");
                 }
