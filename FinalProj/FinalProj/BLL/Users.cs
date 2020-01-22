@@ -9,10 +9,15 @@ namespace FinalProj.BLL
     public class Users
     {
         public int id { get; set; }
-        public string name { get; set; }
         public string email { get; set; }
-        public string isOrg { get; set; }
         public string passHash { get; set; }
+        public string name { get; set; }
+        public string image { get; set; }
+        public string desc { get; set; }
+        public int rating { get; set; }
+        public string isOrg { get; set; }
+        public int points { get; set; }
+        public int verified { get; set; }
         public DateTime regDate { get; set; }
 
 
@@ -27,15 +32,20 @@ namespace FinalProj.BLL
             regDate = uRegDate;
         }
 
-        public Users(int uId, string uEmail, string uName, string uIsOrg, string uPassHash, DateTime uRegDate)
+        public Users(int uId, string uEmail, string uPassHash, string uName, string uImage, 
+            string uDesc, int uRating, string uIsOrg, int uPoints, int uVerified, DateTime uRegDate)
         {
             id = uId;
-            name = uName;
             email = uEmail;
-            isOrg = uIsOrg;
             passHash = uPassHash;
+            name = uName;
+            image = uImage;
+            desc = uDesc;
+            rating = uRating;
+            isOrg = uIsOrg;
+            points = uPoints;
+            verified = uVerified;
             regDate = uRegDate;
-
         }
 
         public int AddUser()

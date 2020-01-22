@@ -60,12 +60,17 @@ namespace FinalProj.DAL
             {
                 DataRow row = ds.Tables[0].Rows[0];
                 int Uid = Convert.ToInt32(row["Id"]);
-                string Uname = row["userName"].ToString();
                 string Uemail = row["userEmail"].ToString();
-                string UisOrg = row["userIsOrg"].ToString();
                 string UpassHash = row["userPasswordHash"].ToString();
+                string Uname = row["userName"].ToString();
+                string Uimage = row["userImage"].ToString();
+                string Udesc = row["userDesc"].ToString();
+                int Urating = Convert.ToInt32(row["userRating"]);
+                string UisOrg = row["userIsOrg"].ToString();
+                int Upoints = Convert.ToInt32(row["userPoints"]);
+                int Uverified = Convert.ToInt32(row["userIsVerified"]);
                 DateTime UregDate = Convert.ToDateTime(row["userRegDate"]);
-                user = new Users(Uid, Uemail, Uname, UisOrg, UpassHash, UregDate);
+                user = new Users(Uid, Uemail, UpassHash, Uname, Uimage, Udesc, Urating, UisOrg, Upoints, Uverified, UregDate);
             }
             else
             {

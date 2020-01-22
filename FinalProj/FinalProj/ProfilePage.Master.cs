@@ -10,6 +10,7 @@ namespace FinalProj
 {
     public partial class ProfilePage : System.Web.UI.MasterPage
     {
+        public int rating;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["user"] != null) // A user has signed in
@@ -18,6 +19,9 @@ namespace FinalProj
                 lblProfile.Text = user.name;
                 lblLogOut.Visible = true;
                 lblBookmark.Visible = true;
+                lblUserName.Text = user.name;
+                rating = user.rating;
+                lblRatingNum.Text = user.rating.ToString();
             }
             else
             {

@@ -87,19 +87,19 @@
                 <div class="col-md-2">
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <asp:HyperLink ID="hlFacebook" style="text-decoration: none;" class="text-dark" navigateurl="https://www.facebook.com" runat="server">
+                            <asp:HyperLink ID="hlFacebook" Style="text-decoration: none;" class="text-dark" NavigateUrl="https://www.facebook.com" runat="server">
                                 <img style="max-height: 20px;" class="img " src="https://image.flaticon.com/icons/svg/124/124010.svg" alt="f icon" />
                                 Facebook
                             </asp:HyperLink>
                         </li>
                         <li class="list-group-item">
-                             <asp:HyperLink ID="hlInstagram" style="text-decoration: none;" class="text-dark" navigateurl="https://www.instagram.com" runat="server">
+                            <asp:HyperLink ID="hlInstagram" Style="text-decoration: none;" class="text-dark" NavigateUrl="https://www.instagram.com" runat="server">
                             <img style="max-height: 20px;" class="img " src="https://image.flaticon.com/icons/svg/2111/2111463.svg" alt="i icon" />
                                 Instagram
                             </asp:HyperLink>
                         </li>
                         <li class="list-group-item">
-                            <asp:HyperLink ID="hlTwitter" style="text-decoration: none;" class="text-dark" navigateurl="https://www.twitter.com" runat="server">
+                            <asp:HyperLink ID="hlTwitter" Style="text-decoration: none;" class="text-dark" NavigateUrl="https://www.twitter.com" runat="server">
                                 <img style="max-height: 20px;" class="img " src="https://image.flaticon.com/icons/svg/124/124021.svg" alt="t icon" />
                                 Twitter
                             </asp:HyperLink>
@@ -111,13 +111,20 @@
                         <asp:Image CssClass="card-img-top" ID="imgBP" runat="server" />
                         <div class="text-center card-body">
                             <div>
-                                <asp:Image CssClass="img img-thumbnail" style="min-height: 100px; min-width: 100px;" ID="imgDP" runat="server" /><br />
+                                <asp:Image CssClass="img img-thumbnail" Style="min-height: 100px; min-width: 100px;" ID="imgDP" runat="server" /><br />
                                 <asp:Label ID="lblUserName" runat="server" Text="PH" CssClass="card-title"></asp:Label>
                                 <div>
-                                    <asp:Label ID="lblRating" runat="server" Text="Label">★★★★☆</asp:Label>
+                                    <asp:Label ID="lblRating" runat="server" Text="">
+                                        <% for (int i = 0; i < rating; i++)
+                                            { %>
+                                                <span><i class="text-warning fa fa-star"></i></span>
+                                            <% } %>
+                                    </asp:Label>
                                     <p>
-                                        <asp:Label ID="lblRatingNum" runat="server" Text="PH"></asp:Label> Stars over
-                                        <asp:Label ID="lblEventCount" runat="server" Text="PH"></asp:Label> events
+                                        <asp:Label ID="lblRatingNum" runat="server" Text="PH"></asp:Label>
+                                        Stars over
+                                        <asp:Label ID="lblEventCount" runat="server" Text="PH"></asp:Label>
+                                        events
                                     </p>
                                 </div>
                             </div>
