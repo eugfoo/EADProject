@@ -87,7 +87,6 @@
                 </div>
             </div>
 
-            <form id="form1" runat="server">
                 <div class="form-group">
                     <label for="prefix">Prefix:</label>
                     <asp:DropDownList ID="DdlPrefix" runat="server" CssClass="form-control">
@@ -127,7 +126,6 @@
 
                 <%-- <button type="submit" class="btn btn-primary">Submit</button>--%>
                 <button type="reset" class="btn btn-danger">Reset</button>
-            </form>
         </div>
     </div>
 

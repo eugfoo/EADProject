@@ -65,8 +65,6 @@ namespace FinalProj
             myConn.Close();
 
             HFthreadId.Value = i.ToString();
-
-
         }
 
         private string BadgeColorIdentifier()

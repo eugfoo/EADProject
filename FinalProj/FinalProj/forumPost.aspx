@@ -8,17 +8,21 @@
         .author-col {
             min-width: 12em;
         }
+
         .post-col {
             min-width: 20em;
         }
+
         .auto-style1 {
             max-width: 100%;
             height: 245px;
             width: 213px;
         }
+
         .auto-style3 {
             width: 233px;
         }
+
         .auto-style4 {
             min-width: 12em;
             width: 233px;
@@ -28,89 +32,174 @@
         <nav class="breadcrumb">
             <a href="forumPage1.aspx" class="breadcrumb-item">Board index</a>
             <a href="forumCatOverview.aspx" class="breadcrumb-item">Forum Category</a>
-            <span class="breadcrumb-item active"><asp:Label ID="LblPrefix" runat="server"></asp:Label>  <asp:Label ID="LblTitleBreadcrumb" runat="server"></asp:Label></span>
+            <span class="breadcrumb-item active">
+                <asp:Label ID="LblPrefix" runat="server"></asp:Label>
+                <asp:Label ID="LblTitleBreadcrumb" runat="server"></asp:Label></span>
         </nav>
         <div class="row">
             <div class="col-12">
-                <form id="form1" runat="server">
+
                 <div class="container">
                     <div class="row text-white bg-info mb-0 p-4 rounded-top">
                         <div class="col-md-9">
                             <h2 class="h4">
-                            <asp:Label ID="LblTitleBig" runat="server"></asp:Label></h2>
+                                <asp:Label ID="LblTitleBig" runat="server"></asp:Label></h2>
                         </div>
 
                     </div>
                 </div>
-                    <table class="table table-striped table-bordered table-responsive-lg">
-                        <thead class="thead-light">
-                            <tr>
-                                <th scope="col" class="auto-style3"></th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
+                <table class="table table-striped table-bordered table-responsive-lg">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col" class="auto-style3"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
 
-                        <tbody>
-                            <tr>
-                                <td class="auto-style4">
-                                    <div><a href="#0"><strong>GandyHaley</strong></a></div>
-                                </td>
-                                <td class="post-col d-lg-flex justify-content-lg-between">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                <span class="font-weight-bold">Post subject:</span>
-                                                <asp:Label ID="LblTitle" runat="server"></asp:Label>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <span class="font-weight-bold">Posted:</span>
-                                                <asp:Label ID="LblPostDate" runat="server" Text="02 Apr 2019"></asp:Label>
-                    
-                                            </div>
+                    <tbody>
+                        <tr>
+                            <td class="auto-style4 threadBox">
+                                <div><a href="#0"><strong>GandyHaley</strong></a></div>
+                            </td>
+                            <td class="post-col d-lg-flex justify-content-lg-between threadBox">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <span class="font-weight-bold">Post subject:</span>
+                                            <asp:Label ID="LblTitle" runat="server"></asp:Label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <span class="font-weight-bold">Posted:</span>
+                                            <asp:Label ID="LblPostDate" runat="server" Text="02 Apr 2019"></asp:Label>
+
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div>
+                                <div>
+                                </div>
+                                <div></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="max-width: 100px;" class="auto-style3">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/1200px-Donald_Trump_official_portrait.jpg" class="auto-style1" />
+
+                                <div><span class="font-weight-bold">Joined: </span>02 Apr 2019, 23:59</div>
+                                <div><span class="font-weight-bold">Posts:</span>123</div>
+                            </td>
+                            <td>&nbsp;&nbsp;<asp:Image ID="Image2" runat="server" Height="289px" Width="489px" />
+                                <br />
+                                <asp:Label ID="LblContent" runat="server"></asp:Label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <asp:Repeater ID="rptrComments" runat="server">
+
+                    <HeaderTemplate>
+                        <br>
+                        <br />
+                        <br />
+                        <table class="table table-striped table-bordered table-responsive-lg">
+
+                            <%--<thead class="thead-light">
+                                <tr>
+                                    <th scope="col" class="auto-style3"></th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>--%>
+                            <tbody>
+                    </HeaderTemplate>
+
+                    <ItemTemplate>
+                        <tr>
+                            <td class="auto-style4">
+                                <div><a href="#0"><strong>GandyHaley</strong></a></div>
+                            </td>
+                            <td class="post-col d-lg-flex justify-content-lg-between">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <span class="font-weight-bold">Post subject:</span>
+                                            <asp:Label ID="LblTitle" runat="server"></asp:Label>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <span class="font-weight-bold">Posted:</span>
+                                            <asp:Label ID="LblPostDate" runat="server"><%# Eval("postDate") %></asp:Label>
+
+                                        </div>
                                     </div>
-                                    <div></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="max-width: 100px;" class="auto-style3">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/1200px-Donald_Trump_official_portrait.jpg" class="auto-style1" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="max-width: 100px;" class="auto-style3">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/1200px-Donald_Trump_official_portrait.jpg" class="auto-style1" />
 
-                                    <div><span class="font-weight-bold">Joined: </span>02 Apr 2019, 23:59</div>
-                                    <div><span class="font-weight-bold">Posts:</span>123</div>
-                                </td>
-                                <td>
-                                    <%--<p>
-                                    "But I must explain to you how all this mistaken idea of denouncing pleasure
-                                    and praising pain was born and I will give you a complete account of the system,
-                                    and expound the actual teachings of the great explorer of the truth, the 
-                                    master-builder of human happiness. No one rejects, dislikes, or avoids pleasure 
-                                    itself, because it is pleasure, but because those who do not know how to pursue
-                                    pleasure rationally encounter consequences that are extremely painful. Nor again
-                                    is there anyone who loves or pursues or desires to obtain pain of itself, 
-                                    <img src="https://i.ytimg.com/vi/oIzDvFWVFxI/maxresdefault.jpg" class="img-fluid" />
-                                    because it is pain, but because occasionally circumstances occur in which toil
-                                    and pain can procure him some great pleasure. To take a trivial example, which 
-                                    of us ever undertakes laborious physical exercise, except to obtain some advantage
-                                    from it? But who has any right to find fault with a man who chooses to enjoy a
-                                    pleasure that has no annoying consequences, or one who avoids a pain that produces
-                                    no resultant pleasure?"
-                                </p>--%>&nbsp;&nbsp;<asp:Image ID="Image2" runat="server" Height="289px" Width="489px"/>
-                                    <br />
-                                    <asp:Label ID="LblContent" runat="server"></asp:Label>
-                                </td>
-                            </tr>
+                                <div><span class="font-weight-bold">Joined: </span>02 Apr 2019, 23:59</div>
+                                <div><span class="font-weight-bold">Posts:</span>123</div>
+                            </td>
+                            <td>
+                                <asp:Label ID="LblContent" runat="server"><%# Eval("postContent") %></asp:Label>
+                            </td>
+                        </tr>
+                        <tr style="height: 30px;"></tr>
+                    </ItemTemplate>
+
+
+                    <FooterTemplate>
                         </tbody>
-                    </table>
-                </form>
+                        </table>
+                    </FooterTemplate>
+                </asp:Repeater>
 
-                
+                <style>
+                    .threadBox {
+                        background-color: #A9A9A9;
+                    }
+                </style>
+
+
+
+
+
+
             </div>
         </div>
 
+
+
+
+
+        <div class="form-group">
+            <label for="comment">Reply to this post:</label>
+            <asp:TextBox ID="tbReplyContent" runat="server" CssClass="form-control" Height="250px" TextMode="MultiLine"></asp:TextBox>
+            <asp:Label ID="LblMsg" runat="server" ForeColor="Red"></asp:Label>
+                <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="lnkPage"
+                            Style="padding: 8px; margin: 2px; background: lightgray; border: solid 1px #666; color: black; font-weight: bold"
+                            CommandName="Page" CommandArgument="<%# Container.DataItem %>" runat="server" Font-Bold="True"><%# Container.DataItem %>  
+                        </asp:LinkButton>
+                    </ItemTemplate>
+                </asp:Repeater>
+
+
+
+
+
+
+        </div>
+        <asp:Button ID="btnReply" runat="server" Text="Reply" CssClass="btn btn-primary" OnClick="btnReply_Click" />
+        <button type="reset" class="btn btn-danger">Clear</button>
+
+
+        <asp:HiddenField ID="HFthreadId" runat="server" />
+
+
+        <asp:HiddenField ID="HFDate" runat="server" />
 
 
         <div class="mb-3 clearfix">
@@ -126,15 +215,9 @@
                 </ul>
             </nav>
         </div>
-        <form class="mb-3">
-            <div class="form-group">
-                <label for="comment">Reply to this post:</label>
-                <textarea class="form-control" id="comment" rows="10" placeholder="Write your comment here." required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Reply</button>
-            <button type="reset" class="btn btn-danger">Clear</button>
-        </form>
     </div>
+
+
 
 
 </asp:Content>
