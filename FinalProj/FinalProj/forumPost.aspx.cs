@@ -15,7 +15,27 @@ namespace FinalProj
 {
     public partial class forumPost : System.Web.UI.Page
     {
+        readonly PagedDataSource _pgsource = new PagedDataSource();
+        int _firstIndex, _lastIndex;
+        private int _pageSize = 3;
+        private int CurrentPage
+        {
+            get
+            {
+                if(ViewState["CurrentPage"] == null)
+                {
+                    return 0;
+                }
+                return ((int)ViewState["CurrentPage"]);
+            }
+            set
+            {
+                ViewState["CurrentPage"] = value;
+            }
+        }
+
         private int iPageSize = 3;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request.QueryString["threadid"] != null)
@@ -70,20 +90,24 @@ namespace FinalProj
 
             }
 
+            if (Page.IsPostBack) return;
+            BindDataIntoRepeater();
+            
+
+
             if (!IsPostBack)
             {
                 //RepliesRptr(HFthreadId.Value);
-                GetComments(HFthreadId.Value);
+                //GetComments(HFthreadId.Value);
             }
 
         }
 
-        private void GetComments(string threadId)
+        static DataTable GetDataFromDb(string threadId)
         {
-            DataTable allComments = new DataTable();
-
             string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
             SqlConnection myConn = new SqlConnection(DBConnect);
+            DataTable allComments = new DataTable();
 
             myConn.Open();
             string sqlCmd = "Select * From ThreadReplies WHERE threadId = @paraThreadId";
@@ -91,44 +115,149 @@ namespace FinalProj
             sqlDa.SelectCommand.Parameters.AddWithValue("@paraThreadId", threadId);
             sqlDa.Fill(allComments);
             myConn.Close();
-
-            PagedDataSource pdsData = new PagedDataSource();
-
-            DataView dv = new DataView(allComments);
-            pdsData.DataSource = dv;
-            pdsData.AllowPaging = true;
-            pdsData.PageSize = iPageSize;
-
-            if (ViewState["PageNumber"] != null)
-                pdsData.CurrentPageIndex = Convert.ToInt32(ViewState["PageNumber"]);
-            else
-                pdsData.CurrentPageIndex = 0;
-
-            if(pdsData.PageCount > 1)
-            {
-                Repeater1.Visible = true;
-                ArrayList allPages = new ArrayList();
-                for (int i = 1; i <= pdsData.PageCount; i++)
-                    allPages.Add((i).ToString());
-                //allPages.RemoveAt(allPages.Count - 1);
-                Repeater1.DataSource = allPages;
-                Repeater1.DataBind();
-            }
-            else
-            {
-                Repeater1.Visible = false;
-            }
-            rptrComments.DataSource = pdsData;
-            rptrComments.DataBind();
+            return allComments;
         }
 
-        protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
+        private void BindDataIntoRepeater()
         {
-            ViewState["PageNumber"] = Convert.ToInt32(e.CommandArgument);
-            GetComments(HFthreadId.Value);
-            //string url = e.CommandArgument.ToString();
-            //Response.Redirect("forumPost.aspx?threadid=" + HFthreadId.Value + "/" + url);
+            var dt = GetDataFromDb(HFthreadId.Value);
+            _pgsource.DataSource = dt.DefaultView;
+            _pgsource.AllowPaging = true;
+
+            _pgsource.PageSize = _pageSize;
+            _pgsource.CurrentPageIndex = CurrentPage;
+
+            ViewState["TotalPages"] = _pgsource.PageCount;
+
+            lblpage.Text = "Page " + (CurrentPage + 1) + " of " + _pgsource.PageCount;
+
+            lbPrevious.Enabled = !_pgsource.IsFirstPage;
+            lbNext.Enabled = !_pgsource.IsLastPage;
+            lbFirst.Enabled = !_pgsource.IsFirstPage;
+            lbLast.Enabled = !_pgsource.IsLastPage;
+            rptrComments.DataSource = _pgsource;
+            rptrComments.DataBind();
+
+
+            HandlePaging();
         }
+
+        private void HandlePaging()
+        {
+            var dt = new DataTable();
+            dt.Columns.Add("PageIndex");
+            dt.Columns.Add("PageText");
+
+            _firstIndex = CurrentPage - 5;
+            if (CurrentPage > 5)
+                _lastIndex = CurrentPage + 5;
+            else
+                _lastIndex = 10;
+
+
+
+            if(_lastIndex > Convert.ToInt32(ViewState["TotalPages"]))
+            {
+                _lastIndex = Convert.ToInt32(ViewState["TotalPages"]);
+                _firstIndex = _lastIndex - 10;
+            }
+
+            if (_firstIndex < 0)
+                _firstIndex = 0;
+
+            for(var i = _firstIndex; i < _lastIndex; i++)
+            {
+                var dr = dt.NewRow();
+                dr[0] = i;
+                dr[1] = i + 1;
+                dt.Rows.Add(dr);
+            }
+
+            rptPaging.DataSource = dt;
+            rptPaging.DataBind();
+        }
+
+        protected void lbFirst_Click(object sender, EventArgs e)
+        {
+            CurrentPage = 0;
+            BindDataIntoRepeater();
+        }
+
+        protected void lbLast_Click(object sender, EventArgs e)
+        {
+            CurrentPage = (Convert.ToInt32(ViewState["TotalPages"]) - 1);
+            BindDataIntoRepeater();
+        }
+
+        protected void lbPrevious_Click(object sender, EventArgs e)
+        {
+            CurrentPage -= 1;
+            BindDataIntoRepeater();
+        }
+
+        protected void lbNext_Click(object sender, EventArgs e)
+        {
+            CurrentPage += 1;
+            BindDataIntoRepeater();
+        }
+
+       
+
+
+
+
+
+        //private void GetComments(string threadId)
+        //{
+        //    DataTable allComments = new DataTable();
+
+        //    string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
+        //    SqlConnection myConn = new SqlConnection(DBConnect);
+
+        //    myConn.Open();
+        //    string sqlCmd = "Select * From ThreadReplies WHERE threadId = @paraThreadId";
+        //    SqlDataAdapter sqlDa = new SqlDataAdapter(sqlCmd, myConn);
+        //    sqlDa.SelectCommand.Parameters.AddWithValue("@paraThreadId", threadId);
+        //    sqlDa.Fill(allComments);
+        //    myConn.Close();
+
+        //    PagedDataSource pdsData = new PagedDataSource();
+
+        //    DataView dv = new DataView(allComments);
+        //    pdsData.DataSource = dv;
+        //    pdsData.AllowPaging = true;
+        //    pdsData.PageSize = iPageSize;
+
+        //    if (ViewState["PageNumber"] != null)
+        //        pdsData.CurrentPageIndex = Convert.ToInt32(ViewState["PageNumber"]);
+        //    else
+        //        pdsData.CurrentPageIndex = 0;
+
+        //    if(pdsData.PageCount > 1)
+        //    {
+        //        Repeater1.Visible = true;
+        //        ArrayList allPages = new ArrayList();
+        //        for (int i = 1; i <= pdsData.PageCount; i++)
+        //            allPages.Add((i).ToString());
+        //        //allPages.RemoveAt(allPages.Count - 1);
+        //        Repeater1.DataSource = allPages;
+        //        Repeater1.DataBind();
+        //    }
+        //    else
+        //    {
+        //        Repeater1.Visible = false;
+        //    }
+        //    rptrComments.DataSource = pdsData;
+        //    rptrComments.DataBind();
+        //}
+
+        //protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
+        //{
+        //    ViewState["PageNumber"] = Convert.ToInt32(e.CommandArgument);
+        //    GetComments(HFthreadId.Value);
+        //    //string url = e.CommandArgument.ToString();
+        //    //Response.Redirect("forumPost.aspx?threadid=" + HFthreadId.Value + "/" + url);
+        //}
 
 
 
@@ -162,6 +291,23 @@ namespace FinalProj
             //    }
             //}
         }
+
+        protected void rptPaging_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            if (!e.CommandName.Equals("newPage")) return;
+            CurrentPage = Convert.ToInt32(e.CommandArgument.ToString());
+            BindDataIntoRepeater();
+        }
+
+        protected void rptPaging_ItemDataBound(object sender, DataListItemEventArgs e)
+        {
+            var lnkPage = (LinkButton)e.Item.FindControl("lbPaging");
+            if (lnkPage.CommandArgument != CurrentPage.ToString()) return;
+            lnkPage.Enabled = false;
+            lnkPage.BackColor = Color.FromName("#00FF00");
+        }
+
+
 
 
 

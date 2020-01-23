@@ -76,6 +76,24 @@ namespace FinalProj {
         protected global::System.Web.UI.WebControls.Label LblContent;
         
         /// <summary>
+        /// MainScriptManager control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager MainScriptManager;
+        
+        /// <summary>
+        /// pnlHelloWorld control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel pnlHelloWorld;
+        
+        /// <summary>
         /// rptrComments control.
         /// </summary>
         /// <remarks>
@@ -83,6 +101,60 @@ namespace FinalProj {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptrComments;
+        
+        /// <summary>
+        /// lbFirst control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbFirst;
+        
+        /// <summary>
+        /// lbPrevious control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbPrevious;
+        
+        /// <summary>
+        /// rptPaging control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataList rptPaging;
+        
+        /// <summary>
+        /// lbNext control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbNext;
+        
+        /// <summary>
+        /// lbLast control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lbLast;
+        
+        /// <summary>
+        /// lblpage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblpage;
         
         /// <summary>
         /// tbReplyContent control.
@@ -101,15 +173,6 @@ namespace FinalProj {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LblMsg;
-        
-        /// <summary>
-        /// Repeater1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Repeater1;
         
         /// <summary>
         /// btnReply control.

@@ -96,77 +96,125 @@
                     </tbody>
                 </table>
 
-                <asp:Repeater ID="rptrComments" runat="server">
 
-                    <HeaderTemplate>
-                        <br>
-                        <br />
-                        <br />
-                        <table class="table table-striped table-bordered table-responsive-lg">
 
-                            <%--<thead class="thead-light">
+                <asp:ScriptManager ID="MainScriptManager" runat="server" />
+                <asp:UpdatePanel ID="pnlHelloWorld" runat="server">
+                    <ContentTemplate>
+
+                        <asp:Repeater ID="rptrComments" runat="server">
+                            <HeaderTemplate>
+                                <br>
+                                <br />
+                                <br />
+                                <table class="table table-striped table-bordered table-responsive-lg">
+
+                                    <%--<thead class="thead-light">
                                 <tr>
                                     <th scope="col" class="auto-style3"></th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>--%>
-                            <tbody>
-                    </HeaderTemplate>
+                                    <tbody>
+                            </HeaderTemplate>
 
-                    <ItemTemplate>
-                        <tr>
-                            <td class="auto-style4">
-                                <div><a href="#0"><strong>GandyHaley</strong></a></div>
-                            </td>
-                            <td class="post-col d-lg-flex justify-content-lg-between">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <span class="font-weight-bold">Post subject:</span>
-                                            <asp:Label ID="LblTitle" runat="server"></asp:Label>
+                            <ItemTemplate>
+                                <tr>
+                                    <td class="auto-style4">
+                                        <div><a href="#0"><strong>GandyHaley</strong></a></div>
+                                    </td>
+                                    <td class="post-col d-lg-flex justify-content-lg-between">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <span class="font-weight-bold">Post subject:</span>
+                                                    <asp:Label ID="LblTitle" runat="server"></asp:Label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <span class="font-weight-bold">Posted:</span>
+                                                    <asp:Label ID="LblPostDate" runat="server"><%# Eval("postDate") %></asp:Label>
+
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <span class="font-weight-bold">Posted:</span>
-                                            <asp:Label ID="LblPostDate" runat="server"><%# Eval("postDate") %></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="max-width: 100px;" class="auto-style3">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/1200px-Donald_Trump_official_portrait.jpg" class="auto-style1" />
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="max-width: 100px;" class="auto-style3">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Donald_Trump_official_portrait.jpg/1200px-Donald_Trump_official_portrait.jpg" class="auto-style1" />
+                                        <div><span class="font-weight-bold">Joined: </span>02 Apr 2019, 23:59</div>
+                                        <div><span class="font-weight-bold">Posts:</span>123</div>
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="LblContent" runat="server"><%# Eval("postContent") %></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr style="height: 30px;"></tr>
+                            </ItemTemplate>
 
-                                <div><span class="font-weight-bold">Joined: </span>02 Apr 2019, 23:59</div>
-                                <div><span class="font-weight-bold">Posts:</span>123</div>
-                            </td>
-                            <td>
-                                <asp:Label ID="LblContent" runat="server"><%# Eval("postContent") %></asp:Label>
-                            </td>
-                        </tr>
-                        <tr style="height: 30px;"></tr>
-                    </ItemTemplate>
+                            <FooterTemplate>
+                                </tbody>
+                                    </table>
+                            </FooterTemplate>
+                        </asp:Repeater>
+
+                        <div style="margin-top: 20px;">
+                            <table style="width: 600px; float:right;">
+                                <tr>
+                                    <td>
+                                        <asp:LinkButton ID="lbFirst" 
+                                            Style="padding: 8px; margin: 2px; background: lightgray; border: solid 1px #666; color: black; font-weight: bold"
+                                            runat="server" OnClick="lbFirst_Click">First</asp:LinkButton>
+                                    </td>
+                                    <td>
+                                        <asp:LinkButton ID="lbPrevious" runat="server" 
+                                            Style="padding: 8px; margin: 2px; background: lightgray; border: solid 1px #666; color: black; font-weight: bold"
+                                            OnClick="lbPrevious_Click">Previous</asp:LinkButton>
+                                    </td>
+                                    <td>
+                                        <asp:DataList ID="rptPaging" runat="server"
+                                            OnItemCommand="rptPaging_ItemCommand"
+                                            OnItemDataBound="rptPaging_ItemDataBound" RepeatDirection="Horizontal">
+                                            <ItemTemplate>
+                                                <asp:LinkButton ID="lbPaging" runat="server"
+                                                    CommandArgument='<%# Eval("PageIndex") %>'
+                                                    CommandName="newPage"
+                                                    Text='<%# Eval("PageText") %> ' Width="20px">
+                                                </asp:LinkButton>
+                                            </ItemTemplate>
+                                        </asp:DataList>
+                                    </td>
+                                    <td>
+                                        <asp:LinkButton ID="lbNext" runat="server"
+                                            Style="padding: 8px; margin: 2px; background: lightgray; border: solid 1px #666; color: black; font-weight: bold"
+                                            OnClick="lbNext_Click">Next</asp:LinkButton>
+                                    </td>
+                                    <td>
+                                        <asp:LinkButton ID="lbLast" runat="server"
+                                            Style="padding: 8px; margin: 2px; background: lightgray; border: solid 1px #666; color: black; font-weight: bold"
+                                            OnClick="lbLast_Click">Last</asp:LinkButton>
+                                    </td>
+                                    <td>
+                                        <asp:Label ID="lblpage" runat="server" Text=""></asp:Label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
 
 
 
-                    <FooterTemplate>
-                        </tbody>
-                        </table>
-                    </FooterTemplate>
-                </asp:Repeater>
+
+
+
 
                 <style>
                     .threadBox {
                         background-color: #A9A9A9;
                     }
                 </style>
-
-
-
-
-
-
             </div>
         </div>
 
@@ -174,15 +222,8 @@
             <label for="comment">Reply to this post:</label>
             <asp:TextBox ID="tbReplyContent" runat="server" CssClass="form-control" Height="250px" TextMode="MultiLine"></asp:TextBox>
             <asp:Label ID="LblMsg" runat="server" ForeColor="Red"></asp:Label>
-            <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
-                <ItemTemplate>
-                    <asp:LinkButton ID="lnkPage"
-                        Style="padding: 8px; margin: 2px; background: lightgray; border: solid 1px #666; color: black; font-weight: bold"
-                        CommandName="Page" CommandArgument="<%# Container.DataItem %>" runat="server" Font-Bold="True"><%# Container.DataItem %>  
-                    </asp:LinkButton>
-                </ItemTemplate>
-            </asp:Repeater>
         </div>
+
         <asp:Button ID="btnReply" runat="server" Text="Reply" CssClass="btn btn-primary" OnClick="btnReply_Click" />
         <button type="reset" class="btn btn-danger">Clear</button>
 
@@ -192,8 +233,7 @@
 
         <asp:HiddenField ID="HFDate" runat="server" />
 
-
-        <div class="mb-3 clearfix">
+        <%--<div class="mb-3 clearfix">
             <nav aria-label="Navigate post pages" class="float-lg-right">
                 <ul class="pagination pagination-sm mb-lg-0">
                     <li class="page-item active"><a href="#0" class="page-link">1 <span class="sr-only">(current)</span></a></li>
@@ -205,7 +245,7 @@
                     <li class="page-item"><a href="#0" class="page-link">Next</a></li>
                 </ul>
             </nav>
-        </div>
+        </div>--%>
     </div>
 
 
