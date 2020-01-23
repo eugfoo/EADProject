@@ -149,6 +149,7 @@
                     </ItemTemplate>
 
 
+
                     <FooterTemplate>
                         </tbody>
                         </table>
@@ -169,28 +170,18 @@
             </div>
         </div>
 
-
-
-
-
         <div class="form-group">
             <label for="comment">Reply to this post:</label>
             <asp:TextBox ID="tbReplyContent" runat="server" CssClass="form-control" Height="250px" TextMode="MultiLine"></asp:TextBox>
             <asp:Label ID="LblMsg" runat="server" ForeColor="Red"></asp:Label>
-                <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
-                    <ItemTemplate>
-                        <asp:LinkButton ID="lnkPage"
-                            Style="padding: 8px; margin: 2px; background: lightgray; border: solid 1px #666; color: black; font-weight: bold"
-                            CommandName="Page" CommandArgument="<%# Container.DataItem %>" runat="server" Font-Bold="True"><%# Container.DataItem %>  
-                        </asp:LinkButton>
-                    </ItemTemplate>
-                </asp:Repeater>
-
-
-
-
-
-
+            <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
+                <ItemTemplate>
+                    <asp:LinkButton ID="lnkPage"
+                        Style="padding: 8px; margin: 2px; background: lightgray; border: solid 1px #666; color: black; font-weight: bold"
+                        CommandName="Page" CommandArgument="<%# Container.DataItem %>" runat="server" Font-Bold="True"><%# Container.DataItem %>  
+                    </asp:LinkButton>
+                </ItemTemplate>
+            </asp:Repeater>
         </div>
         <asp:Button ID="btnReply" runat="server" Text="Reply" CssClass="btn btn-primary" OnClick="btnReply_Click" />
         <button type="reset" class="btn btn-danger">Clear</button>

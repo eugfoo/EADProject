@@ -110,7 +110,7 @@ namespace FinalProj
                 ArrayList allPages = new ArrayList();
                 for (int i = 1; i <= pdsData.PageCount; i++)
                     allPages.Add((i).ToString());
-                allPages.RemoveAt(allPages.Count - 1);
+                //allPages.RemoveAt(allPages.Count - 1);
                 Repeater1.DataSource = allPages;
                 Repeater1.DataBind();
             }
