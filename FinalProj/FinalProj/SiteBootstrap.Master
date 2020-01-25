@@ -72,14 +72,14 @@
 <body>
     <form runat="server">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarnav" aria-controls="navbarnav" aria-expanded="false" aria-label="toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarnav" 
+                aria-controls="navbarnav" aria-expanded="false" aria-label="toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="ml-2 navbar-brand text-center" href="/homepage.aspx" onclick="deleteAllCookies()">Clear View
-            </a>
-            &nbsp;<div class="hexagon"><span></span></div>
+            <a class="ml-2 navbar-brand text-center" href="/homepage.aspx" onclick="deleteAllCookies()">Clear View</a>
+            <div class="hexagon"><span></span></div>
             <div class="collapse navbar-collapse justify-content-end" id="navbarnav">
-                <ul class="navbar-nav">
+                <ul class="nav navbar-nav">
                     <li class="nav-item">
                         <asp:HyperLink ID="lblBookmark" CssClass="nav-link" runat="server" NavigateUrl="/bookmark.aspx">Bookmarks</asp:HyperLink>
                     </li>

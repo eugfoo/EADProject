@@ -49,33 +49,6 @@ namespace FinalProj {
         protected global::System.Web.UI.WebControls.Button lblLogOut;
         
         /// <summary>
-        /// hlFacebook control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlFacebook;
-        
-        /// <summary>
-        /// hlInstagram control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlInstagram;
-        
-        /// <summary>
-        /// hlTwitter control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlTwitter;
-        
-        /// <summary>
         /// imgBP control.
         /// </summary>
         /// <remarks>
@@ -110,15 +83,6 @@ namespace FinalProj {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblRating;
-        
-        /// <summary>
-        /// lblRatingNum control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRatingNum;
         
         /// <summary>
         /// lblEventCount control.

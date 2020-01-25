@@ -79,6 +79,7 @@
     <Content Include="beach.jpg" />
     <Content Include="bookmark.aspx" />
     <Content Include="createdEvent.aspx" />
+    <Content Include="EditProfile.aspx" />
     <Content Include="eventDetailsTabTwo.aspx" />
     <Content Include="EventStatus.aspx" />
     <Content Include="EventStatus.css" />
@@ -160,6 +161,13 @@
     <Compile Include="DAL\ThreadReplyDAO.cs" />
     <Compile Include="DAL\ThreadDAO.cs" />
     <Compile Include="DAL\userDAO.cs" />
+    <Compile Include="EditProfile.aspx.cs">
+      <DependentUpon>EditProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditProfile.aspx.designer.cs">
+      <DependentUpon>EditProfile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="eventDetailsTabTwo.aspx.cs">
       <DependentUpon>eventDetailsTabTwo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

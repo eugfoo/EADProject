@@ -84,7 +84,7 @@
         </nav>
         <div class="container">
             <div class="row">
-                <div class="col-md-2">
+                <%--<div class="col-md-2">
                     <ul class="list-group">
                         <li class="list-group-item">
                             <asp:HyperLink ID="hlFacebook" Style="text-decoration: none;" class="text-dark" NavigateUrl="https://www.facebook.com" runat="server">
@@ -105,14 +105,22 @@
                             </asp:HyperLink>
                         </li>
                     </ul>
-                </div>
-                <div class="col-md-8">
-                    <div class="card">
-                        <asp:Image CssClass="card-img-top" ID="imgBP" runat="server" />
+                </div>--%>
+                <div class="col-md-12">
+                    <div style="max-width: 1100px; position: relative;" class="card">
+                        <div style="top: 0;">
+                            <asp:Image CssClass="card-img-top" Style="max-width: 1100px; min-height: 200px; min-width: 300px;" ID="imgBP" runat="server" />
+                        </div>
+                        <div style="position: absolute; top: 125px; left: 45%; margin-left: 6px;" class="text-center">
+                            <asp:Image CssClass="img img-thumbnail text-center" Style="max-width: 100px; max-height: 100px; min-height: 100px; min-width: 100px;" ID="imgDP" runat="server" />
+                        </div>
+                        <br />
                         <div class="text-center card-body">
                             <div>
-                                <asp:Image CssClass="img img-thumbnail" Style="min-height: 100px; min-width: 100px;" ID="imgDP" runat="server" /><br />
-                                <asp:Label ID="lblUserName" runat="server" Text="PH" CssClass="card-title"></asp:Label>
+                                    <asp:Label ID="lblUserName" Style="font-size: 30px;" runat="server" Text="PH" CssClass="card-title"></asp:Label>
+                                    <a class="ml-1 "style="color: black; text-decoration:none;" href="/EditProfile.aspx">
+                                        <span class="fas fa-edit"></span>
+                                    </a>
                                 <div>
                                     <asp:Label ID="lblRating" runat="server" Text="">
                                         <% for (int i = 0; i < rating; i++)
@@ -120,11 +128,10 @@
                                                 <span><i class="text-warning fa fa-star"></i></span>
                                             <% } %>
                                     </asp:Label>
-                                    <p>
-                                        <asp:Label ID="lblRatingNum" runat="server" Text="PH"></asp:Label>
-                                        Stars over
-                                        <asp:Label ID="lblEventCount" runat="server" Text="PH"></asp:Label>
-                                        events
+                                    <p class="font-small text-muted">
+                                        <span>(
+                                            <asp:Label ID="lblEventCount" runat="server" Text="PH"></asp:Label>
+                                        </span>)
                                     </p>
                                 </div>
                             </div>
@@ -133,9 +140,6 @@
                             </p>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-2">
-                    <button class="btn" data-toggle="modal" data-target="#editProfile"><i class="fas fa-ellipsis-v"></i></button>
                 </div>
             </div>
         </div>
@@ -146,29 +150,6 @@
             <li class="list-inline-item mx-0"><a class="btn bg-light text-dark" href="/PPRating.aspx">Rating</a></li>
             <li class="list-inline-item mx-0"><a class="btn bg-light text-dark" href="/PPPoints.aspx">Points</a></li>
         </ul>
-
-        <!-- Edit Profile Modal -->
-        <div class="modal fade" id="editProfile" tabindex="-1" role="dialog" aria-labelledby="editProfileLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="editProfileLabel">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Edit Profile Modal End -->
-
         <div style="min-height: 70vh">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder3" runat="server">
             </asp:ContentPlaceHolder>

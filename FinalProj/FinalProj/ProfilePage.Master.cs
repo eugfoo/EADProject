@@ -21,7 +21,6 @@ namespace FinalProj
                 lblBookmark.Visible = true;
                 lblUserName.Text = user.name;
                 rating = user.rating;
-                lblRatingNum.Text = user.rating.ToString();
             }
             else
             {
