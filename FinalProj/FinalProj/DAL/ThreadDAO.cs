@@ -18,17 +18,23 @@ namespace FinalProj.DAL
             string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
             SqlConnection myConn = new SqlConnection(DBConnect);
 
-            string sqlStmt = "INSERT INTO Threads (threadPrefix, threadBadgeColor, threadTitle, threadDate, threadImage, threadContent, user_id)" +
-                "VALUES (@paraThreadPrefix, @paraThreadBadgeColor, @paraThreadTitle, @paraThreadDate, @paraThreadImage, @paraThreadContent, @paraUserId)";
+            string sqlStmt = "INSERT INTO Threads (threadPrefix, threadBadgeColor, threadTitle, threadDate, threadImage1, threadImage2, " +
+                "threadImage3, threadImage4, threadContent, user_id, user_name)" +
+                "VALUES (@paraThreadPrefix, @paraThreadBadgeColor, @paraThreadTitle, @paraThreadDate, @paraThreadImage1, " +
+                "@paraThreadImage2, @paraThreadImage3, @paraThreadImage4, @paraThreadContent, @paraUserId, @paraUserName)";
             sqlCmd = new SqlCommand(sqlStmt, myConn);
 
             sqlCmd.Parameters.AddWithValue("@paraThreadPrefix", thread.Prefix);
             sqlCmd.Parameters.AddWithValue("@paraThreadBadgeColor", thread.BadgeColor);
             sqlCmd.Parameters.AddWithValue("@paraThreadTitle", thread.Title);
             sqlCmd.Parameters.AddWithValue("@paraThreadDate", thread.Date);
-            sqlCmd.Parameters.AddWithValue("@paraThreadImage", thread.Image);
+            sqlCmd.Parameters.AddWithValue("@paraThreadImage1", thread.ThreadImage1);
+            sqlCmd.Parameters.AddWithValue("@paraThreadImage2", thread.ThreadImage2);
+            sqlCmd.Parameters.AddWithValue("@paraThreadImage3", thread.ThreadImage3);
+            sqlCmd.Parameters.AddWithValue("@paraThreadImage4", thread.ThreadImage4);
             sqlCmd.Parameters.AddWithValue("@paraThreadContent", thread.Content);
             sqlCmd.Parameters.AddWithValue("@paraUserId", thread.UserId);
+            sqlCmd.Parameters.AddWithValue("@paraUserName", thread.UserName);
 
             myConn.Open();
             result = sqlCmd.ExecuteNonQuery();

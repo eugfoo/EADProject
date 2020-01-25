@@ -58,10 +58,10 @@
 
                     <tbody>
                         <tr>
-                            <td class="auto-style4 threadBox">
+                            <td class="auto-style4 table-secondary">
                                 <div><a href="#0"><strong>GandyHaley</strong></a></div>
                             </td>
-                            <td class="post-col d-lg-flex justify-content-lg-between threadBox">
+                            <td class="post-col d-lg-flex justify-content-lg-between table-secondary" style="height: 60px;">
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-8">
@@ -88,17 +88,54 @@
                                 <div><span class="font-weight-bold">Joined: </span>02 Apr 2019, 23:59</div>
                                 <div><span class="font-weight-bold">Posts:</span>123</div>
                             </td>
-                            <td>&nbsp;&nbsp;<asp:Image ID="Image2" runat="server" Height="289px" Width="489px" />
+                            <td>
+                                <asp:ListView ID="LVImages" runat="server">
+                                    <ItemTemplate>
+                                        <div class="container ml-4">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <asp:Image ID="Image1" runat="server" ImageUrl='<%# "~/Img/"+ Eval("threadImage1") %>' Height="246px" Width="329px" onerror="this.style.display='none';"/>
+                                                </div>
+                                                <div class="col">
+                                                    <asp:Image ID="Image2" runat="server" ImageUrl='<%# "~/Img/"+ Eval("threadImage2") %>' Height="246px" Width="329px" onerror="this.style.display='none';"/>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col">
+                                                    <asp:Image ID="Image3" runat="server" ImageUrl='<%# "~/Img/"+ Eval("threadImage3") %>' Height="246px" Width="329px" onerror="this.style.display='none';"/>
+                                                </div>
+                                                <div class="col">
+                                                    <asp:Image ID="Image4" runat="server" ImageUrl='<%# "~/Img/"+ Eval("threadImage4") %>' Height="246px" Width="329px" onerror="this.style.display='none';"/>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </ItemTemplate>
+                                </asp:ListView>
+
+
                                 <br />
                                 <asp:Label ID="LblContent" runat="server"></asp:Label>
+
+                                <br />
+                                <br />
+                                <br />
+
+                                &nbsp;&nbsp;<br />
+                                <br />
                             </td>
                         </tr>
                     </tbody>
                 </table>
+                <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-danger float-right" Text="Cancel" />
+                <asp:Button ID="btnEdit" runat="server" CssClass="btn btn-primary float-right mr-1" Text="Edit" />
 
 
 
                 <asp:ScriptManager ID="MainScriptManager" runat="server" />
+
+
+
                 <asp:UpdatePanel ID="pnlHelloWorld" runat="server">
                     <ContentTemplate>
 
@@ -107,23 +144,23 @@
                                 <br>
                                 <br />
                                 <br />
-                                <table class="table table-striped table-bordered table-responsive-lg">
+                                <table class="table table-striped table-bordered">
 
                                     <%--<thead class="thead-light">
-                                <tr>
-                                    <th scope="col" class="auto-style3"></th>
-                                    <th scope="col"></th>
-                                </tr>
-                            </thead>--%>
+                                        <tr>
+                                            <th scope="col" class="auto-style3"></th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>--%>
                                     <tbody>
                             </HeaderTemplate>
 
                             <ItemTemplate>
                                 <tr>
-                                    <td class="auto-style4">
+                                    <td class="auto-style4 table-active">
                                         <div><a href="#0"><strong>GandyHaley</strong></a></div>
                                     </td>
-                                    <td class="post-col d-lg-flex justify-content-lg-between">
+                                    <td class="post-col d-lg-flex justify-content-lg-between table-active">
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-8">
@@ -150,25 +187,25 @@
                                         <asp:Label ID="LblContent" runat="server"><%# Eval("postContent") %></asp:Label>
                                     </td>
                                 </tr>
-                                <tr style="height: 30px;"></tr>
                             </ItemTemplate>
 
                             <FooterTemplate>
                                 </tbody>
                                     </table>
                             </FooterTemplate>
+
                         </asp:Repeater>
 
                         <div style="margin-top: 20px;">
-                            <table style="width: 600px; float:right;">
+                            <table style="width: 600px; float: right;">
                                 <tr>
                                     <td>
-                                        <asp:LinkButton ID="lbFirst" 
+                                        <asp:LinkButton ID="lbFirst"
                                             Style="padding: 8px; margin: 2px; background: lightgray; border: solid 1px #666; color: black; font-weight: bold"
                                             runat="server" OnClick="lbFirst_Click">First</asp:LinkButton>
                                     </td>
                                     <td>
-                                        <asp:LinkButton ID="lbPrevious" runat="server" 
+                                        <asp:LinkButton ID="lbPrevious" runat="server"
                                             Style="padding: 8px; margin: 2px; background: lightgray; border: solid 1px #666; color: black; font-weight: bold"
                                             OnClick="lbPrevious_Click">Previous</asp:LinkButton>
                                     </td>
@@ -233,19 +270,12 @@
 
         <asp:HiddenField ID="HFDate" runat="server" />
 
-        <%--<div class="mb-3 clearfix">
-            <nav aria-label="Navigate post pages" class="float-lg-right">
-                <ul class="pagination pagination-sm mb-lg-0">
-                    <li class="page-item active"><a href="#0" class="page-link">1 <span class="sr-only">(current)</span></a></li>
-                    <li class="page-item"><a href="#0" class="page-link">2</a></li>
-                    <li class="page-item"><a href="#0" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#0" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#0" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#0" class="page-link">&hellip; 31</a></li>
-                    <li class="page-item"><a href="#0" class="page-link">Next</a></li>
-                </ul>
-            </nav>
-        </div>--%>
+        <%--<thead class="thead-light">
+                                        <tr>
+                                            <th scope="col" class="auto-style3"></th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>--%>
     </div>
 
 

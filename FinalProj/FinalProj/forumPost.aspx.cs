@@ -22,7 +22,7 @@ namespace FinalProj
         {
             get
             {
-                if(ViewState["CurrentPage"] == null)
+                if (ViewState["CurrentPage"] == null)
                 {
                     return 0;
                 }
@@ -34,7 +34,7 @@ namespace FinalProj
             }
         }
 
-        private int iPageSize = 3;
+        //private int iPageSize = 3;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -63,24 +63,25 @@ namespace FinalProj
                     LblPostDate.Text = ds.Tables[0].Rows[0]["threadDate"].ToString();
                     LblContent.Text = ds.Tables[0].Rows[0]["threadContent"].ToString();
                     LblPrefix.Text = ds.Tables[0].Rows[0]["threadPrefix"].ToString();
-                    Image2.ImageUrl = "~/Img/" + ds.Tables[0].Rows[0]["threadImage"].ToString();
+                    //Image1.ImageUrl = "~/Img/" + ds.Tables[0].Rows[0]["threadImage1"].ToString();
+                    //Image2.ImageUrl = "~/Img/" + ds.Tables[0].Rows[0]["threadImage2"].ToString();
+                    //Image3.ImageUrl = "~/Img/" + ds.Tables[0].Rows[0]["threadImage3"].ToString();
+                    //Image4.ImageUrl = "~/Img/" + ds.Tables[0].Rows[0]["threadImage4"].ToString();
                     HFthreadId.Value = ds.Tables[0].Rows[0]["Id"].ToString();
 
-                    if (ds.Tables[0].Rows[0]["threadImage"].ToString() == "")
-                    {
-                        Image2.Style.Add("display", "none");
+                    //if (ds.Tables[0].Rows[0]["threadImage1"].ToString() == "")
+                    //{
+                    //    Image1.Style.Add("display", "none");
 
-                    }
-                    else
-                    {
-                        Image2.Style.Add("display", "block");
-                        
+                    //}
+                    //else
+                    //{
+                    //    Image1.Style.Add("display", "block");
 
-                    }
+
+                    //}
 
                 }
-
-                
                 else
                 {
                     //error msg here pls hehe
@@ -92,13 +93,15 @@ namespace FinalProj
 
             if (Page.IsPostBack) return;
             BindDataIntoRepeater();
-            
+
 
 
             if (!IsPostBack)
             {
                 //RepliesRptr(HFthreadId.Value);
                 //GetComments(HFthreadId.Value);
+                getImage1(HFthreadId.Value);
+
             }
 
         }
@@ -156,7 +159,7 @@ namespace FinalProj
 
 
 
-            if(_lastIndex > Convert.ToInt32(ViewState["TotalPages"]))
+            if (_lastIndex > Convert.ToInt32(ViewState["TotalPages"]))
             {
                 _lastIndex = Convert.ToInt32(ViewState["TotalPages"]);
                 _firstIndex = _lastIndex - 10;
@@ -165,7 +168,7 @@ namespace FinalProj
             if (_firstIndex < 0)
                 _firstIndex = 0;
 
-            for(var i = _firstIndex; i < _lastIndex; i++)
+            for (var i = _firstIndex; i < _lastIndex; i++)
             {
                 var dr = dt.NewRow();
                 dr[0] = i;
@@ -200,12 +203,6 @@ namespace FinalProj
             CurrentPage += 1;
             BindDataIntoRepeater();
         }
-
-       
-
-
-
-
 
         //private void GetComments(string threadId)
         //{
@@ -291,6 +288,25 @@ namespace FinalProj
             //    }
             //}
         }
+
+        private void getImage1(string threadId)
+        {
+            DataTable allImages = new DataTable();
+
+            string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
+            SqlConnection myConn = new SqlConnection(DBConnect);
+
+            myConn.Open();
+            string sqlCmd = "Select * From Threads WHERE Id = @paraThreadId";
+            SqlDataAdapter sqlDa = new SqlDataAdapter(sqlCmd, myConn);
+            sqlDa.SelectCommand.Parameters.AddWithValue("@paraThreadId", threadId);
+            sqlDa.Fill(allImages);
+            LVImages.DataSource = allImages;
+            LVImages.DataBind();
+            myConn.Close();
+
+        }
+
 
         protected void rptPaging_ItemCommand(object source, DataListCommandEventArgs e)
         {

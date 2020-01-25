@@ -12,25 +12,37 @@ namespace FinalProj.BLL
         public string BadgeColor { get; set; }
         public string Title { get; set; }
         public string Date { get; set; }
+        public string ThreadImage1 { get; set; }
+        public string ThreadImage2 { get; set; }
+        public string ThreadImage3 { get; set; }
+        public string ThreadImage4 { get; set; }
         public string Image { get; set; }
         public string Content { get; set; }
         public string UserId { get; set; }
+        public string UserName { get; set; }
+
 
         public Thread()
         {
 
         }
 
-        public Thread(string threadPrefix, string threadBadgeColor, string threadTitle, string threadDate, string threadImage, string threadContent,
-            string userId)
+        public Thread(string threadPrefix, string threadBadgeColor, string threadTitle, string threadDate
+            ,string Image1, string Image2, string Image3, string Image4
+            ,string threadContent
+            ,string userId, string userName)
         {
             Prefix = threadPrefix;
             BadgeColor = threadBadgeColor;
             Title = threadTitle;
             Date = threadDate;
-            Image = threadImage;
+            ThreadImage1 = Image1;
+            ThreadImage2 = Image2;
+            ThreadImage3 = Image3;
+            ThreadImage4 = Image4;
             Content = threadContent;
             UserId = userId;
+            UserName = userName;
         }
 
       
