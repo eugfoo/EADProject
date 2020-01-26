@@ -315,6 +315,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Img\User\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>

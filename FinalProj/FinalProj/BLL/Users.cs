@@ -12,7 +12,8 @@ namespace FinalProj.BLL
         public string email { get; set; }
         public string passHash { get; set; }
         public string name { get; set; }
-        public string image { get; set; }
+        public string DPimage { get; set; }
+        public string BPimage { get; set; }
         public string desc { get; set; }
         public int rating { get; set; }
         public string isOrg { get; set; }
@@ -32,14 +33,15 @@ namespace FinalProj.BLL
             regDate = uRegDate;
         }
 
-        public Users(int uId, string uEmail, string uPassHash, string uName, string uImage, 
+        public Users(int uId, string uEmail, string uPassHash, string uName, string uDPImage, string uBPImage,
             string uDesc, int uRating, string uIsOrg, int uPoints, int uVerified, DateTime uRegDate)
         {
             id = uId;
             email = uEmail;
             passHash = uPassHash;
             name = uName;
-            image = uImage;
+            DPimage = uDPImage;
+            BPimage = uBPImage;
             desc = uDesc;
             rating = uRating;
             isOrg = uIsOrg;
@@ -59,6 +61,30 @@ namespace FinalProj.BLL
         {
             userDAO user = new userDAO();
             return user.SelectByEmail(email);
+        }
+
+        public int UpdateNameByID(int id, string name)
+        {
+            userDAO user = new userDAO();
+            return user.UpdateName(id, name);
+        }
+
+        public int UpdateDescByID(int id, string desc)
+        {
+            userDAO user = new userDAO();
+            return user.UpdateDesc(id, desc);
+        }
+
+        public int UpdateDPByID(int id, string DP)
+        {
+            userDAO user = new userDAO();
+            return user.UpdateDP(id, DP);
+        }
+
+        public int UpdateBPByID(int id, string BP)
+        {
+            userDAO user = new userDAO();
+            return user.UpdateBP(id, BP);
         }
     }
 }

@@ -20,6 +20,7 @@ namespace FinalProj
                 lblLogOut.Visible = true;
                 lblBookmark.Visible = true;
                 lblUserName.Text = user.name;
+                lblDesc.Text = user.desc;
                 rating = user.rating;
             }
             else

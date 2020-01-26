@@ -63,14 +63,15 @@ namespace FinalProj.DAL
                 string Uemail = row["userEmail"].ToString();
                 string UpassHash = row["userPasswordHash"].ToString();
                 string Uname = row["userName"].ToString();
-                string Uimage = row["userImage"].ToString();
+                string UDPimage = row["userDPImage"].ToString();
+                string UBPimage = row["userBPImage"].ToString();
                 string Udesc = row["userDesc"].ToString();
                 int Urating = Convert.ToInt32(row["userRating"]);
                 string UisOrg = row["userIsOrg"].ToString();
                 int Upoints = Convert.ToInt32(row["userPoints"]);
                 int Uverified = Convert.ToInt32(row["userIsVerified"]);
                 DateTime UregDate = Convert.ToDateTime(row["userRegDate"]);
-                user = new Users(Uid, Uemail, UpassHash, Uname, Uimage, Udesc, Urating, UisOrg, Upoints, Uverified, UregDate);
+                user = new Users(Uid, Uemail, UpassHash, Uname, UDPimage, UBPimage, Udesc, Urating, UisOrg, Upoints, Uverified, UregDate);
             }
             else
             {
@@ -78,6 +79,70 @@ namespace FinalProj.DAL
             }
 
             return user;
+        }
+
+        public int UpdateName(int id, string name)
+        {
+            string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
+            SqlConnection myConn = new SqlConnection(DBConnect);
+            string sqlStmt = "UPDATE Users SET userName = @paraName where id = @paraId";
+            int result = 0;
+            SqlCommand sqlCmd = new SqlCommand(sqlStmt, myConn);
+            sqlCmd = new SqlCommand(sqlStmt.ToString(), myConn);
+            sqlCmd.Parameters.AddWithValue("@paraName", name);
+            sqlCmd.Parameters.AddWithValue("@paraId", id);
+            myConn.Open();
+            result = sqlCmd.ExecuteNonQuery();
+            myConn.Close();
+            return result;
+        }
+
+        public int UpdateDesc(int id, string desc)
+        {
+            string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
+            SqlConnection myConn = new SqlConnection(DBConnect);
+            string sqlStmt = "UPDATE Users SET userDesc = @paraDesc where id = @paraId";
+            int result = 0;
+            SqlCommand sqlCmd = new SqlCommand(sqlStmt, myConn);
+            sqlCmd = new SqlCommand(sqlStmt.ToString(), myConn);
+            sqlCmd.Parameters.AddWithValue("@paraDesc", desc);
+            sqlCmd.Parameters.AddWithValue("@paraId", id);
+            myConn.Open();
+            result = sqlCmd.ExecuteNonQuery();
+            myConn.Close();
+            return result;
+        }
+
+        public int UpdateDP(int id, string filepath)
+        {
+            string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
+            SqlConnection myConn = new SqlConnection(DBConnect);
+            string sqlStmt = "UPDATE Users SET userDPImage = @paraDP where id = @paraId";
+            int result = 0;
+            SqlCommand sqlCmd = new SqlCommand(sqlStmt, myConn);
+            sqlCmd = new SqlCommand(sqlStmt.ToString(), myConn);
+            sqlCmd.Parameters.AddWithValue("@paraDP", filepath);
+            sqlCmd.Parameters.AddWithValue("@paraId", id);
+            myConn.Open();
+            result = sqlCmd.ExecuteNonQuery();
+            myConn.Close();
+            return result;
+        }
+
+        public int UpdateBP(int id, string filepath)
+        {
+            string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
+            SqlConnection myConn = new SqlConnection(DBConnect);
+            string sqlStmt = "UPDATE Users SET userBPImage = @paraBP where id = @paraId";
+            int result = 0;
+            SqlCommand sqlCmd = new SqlCommand(sqlStmt, myConn);
+            sqlCmd = new SqlCommand(sqlStmt.ToString(), myConn);
+            sqlCmd.Parameters.AddWithValue("@paraBP", filepath);
+            sqlCmd.Parameters.AddWithValue("@paraId", id);
+            myConn.Open();
+            result = sqlCmd.ExecuteNonQuery();
+            myConn.Close();
+            return result;
         }
     }
 }
