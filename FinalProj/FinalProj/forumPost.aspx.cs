@@ -18,6 +18,7 @@ namespace FinalProj
         readonly PagedDataSource _pgsource = new PagedDataSource();
         int _firstIndex, _lastIndex;
         private int _pageSize = 3;
+
         private int CurrentPage
         {
             get
@@ -33,8 +34,6 @@ namespace FinalProj
                 ViewState["CurrentPage"] = value;
             }
         }
-
-        //private int iPageSize = 3;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -63,30 +62,8 @@ namespace FinalProj
                     LblPostDate.Text = ds.Tables[0].Rows[0]["threadDate"].ToString();
                     LblContent.Text = ds.Tables[0].Rows[0]["threadContent"].ToString();
                     LblPrefix.Text = ds.Tables[0].Rows[0]["threadPrefix"].ToString();
-                    //Image1.ImageUrl = "~/Img/" + ds.Tables[0].Rows[0]["threadImage1"].ToString();
-                    //Image2.ImageUrl = "~/Img/" + ds.Tables[0].Rows[0]["threadImage2"].ToString();
-                    //Image3.ImageUrl = "~/Img/" + ds.Tables[0].Rows[0]["threadImage3"].ToString();
-                    //Image4.ImageUrl = "~/Img/" + ds.Tables[0].Rows[0]["threadImage4"].ToString();
                     HFthreadId.Value = ds.Tables[0].Rows[0]["Id"].ToString();
-
-                    //if (ds.Tables[0].Rows[0]["threadImage1"].ToString() == "")
-                    //{
-                    //    Image1.Style.Add("display", "none");
-
-                    //}
-                    //else
-                    //{
-                    //    Image1.Style.Add("display", "block");
-
-
-                    //}
-
                 }
-                else
-                {
-                    //error msg here pls hehe
-                }
-
                 myConn.Close();
 
             }
@@ -94,15 +71,28 @@ namespace FinalProj
             if (Page.IsPostBack) return;
             BindDataIntoRepeater();
 
-
-
             if (!IsPostBack)
             {
-                //RepliesRptr(HFthreadId.Value);
-                //GetComments(HFthreadId.Value);
-                getImage1(HFthreadId.Value);
-
+                getImages(HFthreadId.Value);
             }
+
+        }
+
+        private void getImages(string threadId)
+        {
+            DataTable allImages = new DataTable();
+
+            string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
+            SqlConnection myConn = new SqlConnection(DBConnect);
+
+            myConn.Open();
+            string sqlCmd = "Select * From Threads WHERE Id = @paraThreadId";
+            SqlDataAdapter sqlDa = new SqlDataAdapter(sqlCmd, myConn);
+            sqlDa.SelectCommand.Parameters.AddWithValue("@paraThreadId", threadId);
+            sqlDa.Fill(allImages);
+            LVImages.DataSource = allImages;
+            LVImages.DataBind();
+            myConn.Close();
 
         }
 
@@ -146,7 +136,7 @@ namespace FinalProj
         }
 
         private void HandlePaging()
-        {
+         {
             var dt = new DataTable();
             dt.Columns.Add("PageIndex");
             dt.Columns.Add("PageText");
@@ -204,6 +194,63 @@ namespace FinalProj
             BindDataIntoRepeater();
         }
 
+        protected void rptPaging_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            if (!e.CommandName.Equals("newPage")) return;
+            CurrentPage = Convert.ToInt32(e.CommandArgument.ToString());
+            BindDataIntoRepeater();
+        }
+
+        protected void rptPaging_ItemDataBound(object sender, DataListItemEventArgs e)
+        {
+            var lnkPage = (LinkButton)e.Item.FindControl("lbPaging");
+            if (lnkPage.CommandArgument != CurrentPage.ToString()) return;
+            lnkPage.Enabled = false;
+            lnkPage.BackColor = Color.FromName("#8db0c7");
+        }
+
+
+
+        protected void btnReply_Click(object sender, EventArgs e)
+        {
+            ThreadReply threadReply = new ThreadReply();
+
+            if (String.IsNullOrEmpty(tbReplyContent.Text))
+            {
+                LblMsg.Text = "Please write something in the reply! <br/>";
+                LblMsg.ForeColor = Color.Red;
+            }
+            else
+            {
+                DateTime now = DateTime.Now;
+                HFDate.Value = now.ToString("g");
+                DateTime mDate = Convert.ToDateTime(HFDate.Value);
+
+                threadReply = new ThreadReply(HFthreadId.Value, HFDate.Value, tbReplyContent.Text, "1");
+                int result = threadReply.ReplyThread();
+                if (result == 1)
+                {
+                    Response.Redirect("forumPost.aspx?threadid=" + HFthreadId.Value);
+                }
+
+
+            }
+        }
+
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            Session["LblPrefix"] = LblPrefix.Text;
+            Session["LblTitle"] = LblTitle.Text;
+            Session["LblContent"] = LblContent.Text;
+            Response.Redirect("editForumPost.aspx?threadid=" + HFthreadId.Value);
+        }
+
+        protected void btnGoBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("forumCatOverview.aspx");
+
+        }
+
         //private void GetComments(string threadId)
         //{
         //    DataTable allComments = new DataTable();
@@ -256,107 +303,36 @@ namespace FinalProj
         //    //Response.Redirect("forumPost.aspx?threadid=" + HFthreadId.Value + "/" + url);
         //}
 
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        //private void RepliesRptr(string threadId)
+        //{
+        //    string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
+        //    SqlConnection myConn = new SqlConnection(DBConnect);
 
-        private void RepliesRptr(string threadId)
-        {
-            string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
-            SqlConnection myConn = new SqlConnection(DBConnect);
+        //    string sqlStmt = "Select * From ThreadReplies WHERE threadId = @paraThreadId";
 
-            string sqlStmt = "Select * From ThreadReplies WHERE threadId = @paraThreadId";
+        //    using (SqlDataAdapter da = new SqlDataAdapter(sqlStmt, myConn))
+        //    {
+        //        da.SelectCommand.Parameters.AddWithValue("@paraThreadId", threadId);
+        //        DataTable allThreads = new DataTable();
+        //        da.Fill(allThreads);
+        //        rptrComments.DataSource = allThreads;
+        //        rptrComments.DataBind();
+        //    }
 
-            using (SqlDataAdapter da = new SqlDataAdapter(sqlStmt, myConn))
-            {
-                da.SelectCommand.Parameters.AddWithValue("@paraThreadId", threadId);
-                DataTable allThreads = new DataTable();
-                da.Fill(allThreads);
-                rptrComments.DataSource = allThreads;
-                rptrComments.DataBind();
-            }
-
-            //using (SqlConnection myConn = new SqlConnection(DBConnect))
-            //{
-            //    using (SqlCommand cmd = new SqlCommand("Select * From ThreadReplies WHERE threadId= ORDER BY Id", myConn))
-            //    {
-            //        using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-            //        {
-            //            DataTable allThreads = new DataTable();
-            //            sda.Fill(allThreads);
-            //            rptrComments.DataSource = allThreads;
-            //            rptrComments.DataBind();
-            //        }
-            //    }
-            //}
-        }
-
-        private void getImage1(string threadId)
-        {
-            DataTable allImages = new DataTable();
-
-            string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
-            SqlConnection myConn = new SqlConnection(DBConnect);
-
-            myConn.Open();
-            string sqlCmd = "Select * From Threads WHERE Id = @paraThreadId";
-            SqlDataAdapter sqlDa = new SqlDataAdapter(sqlCmd, myConn);
-            sqlDa.SelectCommand.Parameters.AddWithValue("@paraThreadId", threadId);
-            sqlDa.Fill(allImages);
-            LVImages.DataSource = allImages;
-            LVImages.DataBind();
-            myConn.Close();
-
-        }
-
-
-        protected void rptPaging_ItemCommand(object source, DataListCommandEventArgs e)
-        {
-            if (!e.CommandName.Equals("newPage")) return;
-            CurrentPage = Convert.ToInt32(e.CommandArgument.ToString());
-            BindDataIntoRepeater();
-        }
-
-        protected void rptPaging_ItemDataBound(object sender, DataListItemEventArgs e)
-        {
-            var lnkPage = (LinkButton)e.Item.FindControl("lbPaging");
-            if (lnkPage.CommandArgument != CurrentPage.ToString()) return;
-            lnkPage.Enabled = false;
-            lnkPage.BackColor = Color.FromName("#00FF00");
-        }
-
-        
-
-        protected void btnReply_Click(object sender, EventArgs e)
-        {
-            ThreadReply threadReply = new ThreadReply();
-
-            if (String.IsNullOrEmpty(tbReplyContent.Text))
-            {
-                LblMsg.Text = "Please write something in the reply! <br/>";
-                LblMsg.ForeColor = Color.Red;
-            }
-            else
-            {
-                DateTime now = DateTime.Now;
-                HFDate.Value = now.ToString("g");
-                DateTime mDate = Convert.ToDateTime(HFDate.Value);
-
-                threadReply = new ThreadReply(HFthreadId.Value, HFDate.Value, tbReplyContent.Text, "1");
-                int result = threadReply.ReplyThread();
-                if (result == 1)
-                {
-                    Response.Redirect("forumPost.aspx?threadid=" + HFthreadId.Value);
-                }
-
-
-            }
-        }
-
-        protected void btnEdit_Click(object sender, EventArgs e)
-        {
-            Session["LblPrefix"] = LblPrefix.Text;
-            Session["LblTitle"] = LblTitle.Text;
-            Session["LblContent"] = LblContent.Text;
-            Response.Redirect("editforumThread.aspx?threadid=" + HFthreadId.Value);
-        }
+        //using (SqlConnection myConn = new SqlConnection(DBConnect))
+        //{
+        //    using (SqlCommand cmd = new SqlCommand("Select * From ThreadReplies WHERE threadId= ORDER BY Id", myConn))
+        //    {
+        //        using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+        //        {
+        //            DataTable allThreads = new DataTable();
+        //            sda.Fill(allThreads);
+        //            rptrComments.DataSource = allThreads;
+        //            rptrComments.DataBind();
+        //        }
+        //    }
+        //}
     }
 }

@@ -43,5 +43,39 @@ namespace FinalProj.DAL
 
             return result;
         }
+
+        public int Update(int id, Thread thread)
+        {
+            int result = 0;
+            SqlCommand sqlCmd = new SqlCommand();
+           
+            string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
+            SqlConnection myConn = new SqlConnection(DBConnect);
+      
+
+            string sqlStmt = "UPDATE Threads SET threadPrefix = @paraThreadPrefix, threadBadgeColor = @paraThreadBadgeColor, threadTitle = @paraThreadTitle, " +
+                "threadDate = @paraThreadDate, threadContent = @paraThreadContent, " +
+                "user_id = @paraUserId, user_name = @paraUserName WHERE Id = @parathreadId";
+
+            
+
+
+            sqlCmd = new SqlCommand(sqlStmt, myConn);
+            sqlCmd.Parameters.AddWithValue("@paraThreadPrefix", thread.Prefix);
+            sqlCmd.Parameters.AddWithValue("@paraThreadBadgeColor", thread.BadgeColor);
+            sqlCmd.Parameters.AddWithValue("@paraThreadTitle", thread.Title);
+            sqlCmd.Parameters.AddWithValue("@paraThreadDate", thread.Date);
+            sqlCmd.Parameters.AddWithValue("@paraThreadContent", thread.Content);
+            sqlCmd.Parameters.AddWithValue("@paraUserId", thread.UserId);
+            sqlCmd.Parameters.AddWithValue("@paraUserName", thread.UserName);
+            sqlCmd.Parameters.AddWithValue("@parathreadId", id);
+
+            myConn.Open();
+            result = sqlCmd.ExecuteNonQuery();
+
+            myConn.Close();
+
+            return result;
+        }
     }
 }
