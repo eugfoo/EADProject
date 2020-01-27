@@ -128,7 +128,7 @@
                     </tbody>
                 </table>
                 <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-danger float-right" Text="Cancel" />
-                <asp:Button ID="btnEdit" runat="server" CssClass="btn btn-primary float-right mr-1" Text="Edit" />
+                <asp:Button ID="btnEdit" runat="server" CssClass="btn btn-primary float-right mr-1" Text="Edit" OnClick="btnEdit_Click" />
 
 
 

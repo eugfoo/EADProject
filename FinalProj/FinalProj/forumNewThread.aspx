@@ -48,7 +48,7 @@
                 <br />
                 <asp:DataList ID="DataList1" runat="server" RepeatColumns="4">
                     <ItemTemplate>
-                        <asp:Image ID="Image1" runat="server" Height="250px" ImageUrl='<%# Eval("path") %>' Width="283px" BorderWidth="2px" />
+                        <asp:Image ID="Image1" runat="server" Height="250px" ImageUrl='<%# Eval("path") %>' Width="283px" BorderWidth="2px"/>
                         <br />
                         <asp:LinkButton ID="LKDelete" runat="server" CommandArgument='<%# Eval("path") %>' OnCommand="LKDelete_Command">Delete</asp:LinkButton>
                     </ItemTemplate>

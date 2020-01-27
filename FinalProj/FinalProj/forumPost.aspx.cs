@@ -323,9 +323,7 @@ namespace FinalProj
             lnkPage.BackColor = Color.FromName("#00FF00");
         }
 
-
-
-
+        
 
         protected void btnReply_Click(object sender, EventArgs e)
         {
@@ -351,6 +349,14 @@ namespace FinalProj
 
 
             }
+        }
+
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            Session["LblPrefix"] = LblPrefix.Text;
+            Session["LblTitle"] = LblTitle.Text;
+            Session["LblContent"] = LblContent.Text;
+            Response.Redirect("editforumThread.aspx?threadid=" + HFthreadId.Value);
         }
     }
 }
