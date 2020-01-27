@@ -15,6 +15,7 @@ namespace FinalProj.BLL
         public string DPimage { get; set; }
         public string BPimage { get; set; }
         public string desc { get; set; }
+        public string participate { get; set; }
         public int rating { get; set; }
         public string isOrg { get; set; }
         public int points { get; set; }
@@ -34,7 +35,7 @@ namespace FinalProj.BLL
         }
 
         public Users(int uId, string uEmail, string uPassHash, string uName, string uDPImage, string uBPImage,
-            string uDesc, int uRating, string uIsOrg, int uPoints, int uVerified, DateTime uRegDate)
+            string uDesc, int uRating, string uIsOrg, int uPoints, string uParticipate, int uVerified, DateTime uRegDate)
         {
             id = uId;
             email = uEmail;
@@ -46,6 +47,7 @@ namespace FinalProj.BLL
             rating = uRating;
             isOrg = uIsOrg;
             points = uPoints;
+            participate = uParticipate;
             verified = uVerified;
             regDate = uRegDate;
         }

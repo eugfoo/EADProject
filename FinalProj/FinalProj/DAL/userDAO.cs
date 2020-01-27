@@ -69,9 +69,10 @@ namespace FinalProj.DAL
                 int Urating = Convert.ToInt32(row["userRating"]);
                 string UisOrg = row["userIsOrg"].ToString();
                 int Upoints = Convert.ToInt32(row["userPoints"]);
+                string Uparticipate = row["userParticipated"].ToString();
                 int Uverified = Convert.ToInt32(row["userIsVerified"]);
                 DateTime UregDate = Convert.ToDateTime(row["userRegDate"]);
-                user = new Users(Uid, Uemail, UpassHash, Uname, UDPimage, UBPimage, Udesc, Urating, UisOrg, Upoints, Uverified, UregDate);
+                user = new Users(Uid, Uemail, UpassHash, Uname, UDPimage, UBPimage, Udesc, Urating, UisOrg, Upoints, Uparticipate, Uverified, UregDate);
             }
             else
             {
