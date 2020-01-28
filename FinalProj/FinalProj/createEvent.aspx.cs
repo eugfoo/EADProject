@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -14,8 +15,11 @@ namespace FinalProj
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
+			if (Session["user"] == null) // A user has signed in
+			{
+				Response.Redirect("/homepage.aspx");
+			}
+		}
         protected void changetoDefaultBorder()
         {
             eventTitle.BorderColor = System.Drawing.Color.LightGray;
@@ -132,7 +136,8 @@ namespace FinalProj
             }
             else
             {
-                string eventStartTime = startTime.Text.ToString();
+				Users user = (Users)Session["user"];
+				string eventStartTime = startTime.Text.ToString();
                 string eventEndTime = endTime.Text.ToString();
                 string title = eventTitle.Text.ToString();
                 string venue = eventAddress.Text.ToString();
@@ -142,6 +147,8 @@ namespace FinalProj
                 string picture = "";
                 string note = noteText.Text.ToString();
                 int advertisement = 0;
+				int user_id = user.id;
+
 
                 if (advCheck.Checked == true)
                 {
@@ -168,7 +175,7 @@ namespace FinalProj
 
             
 
-                ev = new Events(title, venue, date, eventStartTime, eventEndTime, maxAttendees, description, picture, note, advertisement);
+                ev = new Events(title, venue, date, eventStartTime, eventEndTime, maxAttendees, description, picture, note, advertisement, user_id);
                 int result = ev.AddEvent();
                 Response.Redirect("createdEvent.aspx");
             }

@@ -529,7 +529,7 @@
                             </div>
                             <div class="card-footer text-muted">
                                 Posted by
-							<a href="#">Kovi Tan</a>
+							<a href="#"><%= userList[element.User_id] %></a>
                             </div>
                         </div>
                         <% } %>

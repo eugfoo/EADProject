@@ -19,13 +19,15 @@ namespace FinalProj.BLL
         public string Pic { get; set; }
         public string Note { get; set; }
         public int Advertisement { get; set; }
+		public int User_id { get; set; }
 
-        public Events()
+
+		public Events()
         {
 
         }
         // Define a constructor to initialize all the properties
-        public Events(string eventTitle, string eventVenue, string eventDate , string eventStartTime, string eventEndTime, int eventMaxAttendees, string eventDesc, string eventPic, string eventNote, int eventAdv)
+        public Events(string eventTitle, string eventVenue, string eventDate , string eventStartTime, string eventEndTime, int eventMaxAttendees, string eventDesc, string eventPic, string eventNote, int eventAdv, int user_id)
         {
             Title = eventTitle;
             Name = eventVenue;
@@ -37,6 +39,8 @@ namespace FinalProj.BLL
             Pic = eventPic;
             Note = eventNote;
             Advertisement = eventAdv;
+			User_id = user_id;
+			
         }
 
         public int AddEvent()
@@ -52,5 +56,10 @@ namespace FinalProj.BLL
             return ev.SelectAllByDate(date);
         }
 
-    }
+		public string GetAllUserNameByUserId(int userId)
+		{
+			eventDao ev = new eventDao();
+			return ev.SelectUserNameByUserId(userId);
+		}
+	}
 }

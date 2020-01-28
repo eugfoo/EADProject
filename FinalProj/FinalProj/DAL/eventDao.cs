@@ -46,7 +46,10 @@ namespace FinalProj.DAL
                 string eventPic = row["eventPic"].ToString();
                 string eventNote = row["eventNote"].ToString();
                 int eventAdv = int.Parse(row["eventAdv"].ToString());
-                Events obj = new Events(eventTitle, eventVenue, eventDate ,eventStartTime, eventEndTime, eventMaxAttendees, eventDesc, eventPic, eventNote, eventAdv);
+				int user_id = int.Parse(row["user_id"].ToString());
+				
+
+				Events obj = new Events(eventTitle, eventVenue, eventDate ,eventStartTime, eventEndTime, eventMaxAttendees, eventDesc, eventPic, eventNote, eventAdv, user_id);
                 evList.Add(obj);
             }
 
@@ -66,8 +69,8 @@ namespace FinalProj.DAL
 
             // Step 2 - Instantiate SqlCommand instance to add record 
             //          with INSERT statement
-            string sqlStmt = "INSERT INTO tdEvent(eventTitle, eventVenue, eventDate, eventStartTime, eventEndTime, eventMaxAttendees, eventDesc, eventPic, eventNote, eventAdv) " +
-                "VALUES (@eventTitle, @eventVenue, @eventDate, @eventStartTime, @eventEndTime, @eventMaxAttendees, @eventDesc, @eventPic, @eventNote, @eventAdv)";
+            string sqlStmt = "INSERT INTO tdEvent(eventTitle, eventVenue, eventDate, eventStartTime, eventEndTime, eventMaxAttendees, eventDesc, eventPic, eventNote, eventAdv, user_id) " +
+                "VALUES (@eventTitle, @eventVenue, @eventDate, @eventStartTime, @eventEndTime, @eventMaxAttendees, @eventDesc, @eventPic, @eventNote, @eventAdv, @user_id)";
             sqlCmd = new SqlCommand(sqlStmt, myConn);
 
             // Step 3 : Add each parameterised variable with value
@@ -81,10 +84,13 @@ namespace FinalProj.DAL
             sqlCmd.Parameters.AddWithValue("@eventPic", ev.Pic);
             sqlCmd.Parameters.AddWithValue("@eventNote", ev.Note);
             sqlCmd.Parameters.AddWithValue("@eventAdv", ev.Advertisement);
+			sqlCmd.Parameters.AddWithValue("@user_id", ev.User_id);
+			
 
 
-            // Step 4 Open connection the execute NonQuery of sql command   
-            myConn.Open();
+
+			// Step 4 Open connection the execute NonQuery of sql command   
+			myConn.Open();
             result = sqlCmd.ExecuteNonQuery();
 
             // Step 5 :Close connection
@@ -92,5 +98,30 @@ namespace FinalProj.DAL
 
             return result;
         }
-    }
+
+		public string SelectUserNameByUserId(int id)
+		{
+			string DBConnect = ConfigurationManager.ConnectionStrings["ConnStr"].ConnectionString;
+			SqlConnection myConn = new SqlConnection(DBConnect);
+			string sqlStmt = "Select * from Users where id = @paraUserId";
+			SqlDataAdapter da = new SqlDataAdapter(sqlStmt, myConn);
+			da.SelectCommand.Parameters.AddWithValue("@paraUserId", id);
+			DataSet ds = new DataSet();
+			da.Fill(ds);
+
+			string user = null;
+			int rec_cnt = ds.Tables[0].Rows.Count;
+			if (rec_cnt == 1)
+			{
+				DataRow row = ds.Tables[0].Rows[0];
+				user = row["userName"].ToString();
+			}
+			else
+			{
+				user = null;
+			}
+
+			return user;
+		}
+	}
 }

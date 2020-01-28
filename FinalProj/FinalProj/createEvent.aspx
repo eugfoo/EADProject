@@ -92,7 +92,7 @@
 
 
 
-	<form runat="server">
+
 		<asp:Panel ID="PanelError" runat="server" Visible="false" CssClass="stuff alert alert-danger ">
 			<asp:Label ID="errmsgTb" runat="server"></asp:Label>
 		</asp:Panel>
@@ -183,5 +183,5 @@
 				</div>
 			</div>
 		</div>
-	</form>
+
 </asp:Content>
