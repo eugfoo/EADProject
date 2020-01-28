@@ -22,7 +22,7 @@ namespace FinalProj.BLL
 
         }
         // Define a constructor to initialize all the properties
-        public EventsStatus(string eventTitle, string eventVenue, string eventDate , string eventStartTime, string eventEndTime, string eventDesc, string eventPic)
+        public EventsStatus(string eventTitle, string eventVenue, string eventDate, string eventStartTime, string eventEndTime, string eventDesc, string eventPic)
         {
             Title = eventTitle;
             Name = eventVenue;

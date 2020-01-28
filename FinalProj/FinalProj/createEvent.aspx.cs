@@ -162,13 +162,11 @@ namespace FinalProj
                 {
 
                     string filename = "defaultPic.jpg";
-
-
                     picture = filename;
 
                 }
 
-
+            
 
                 ev = new Events(title, venue, date, eventStartTime, eventEndTime, maxAttendees, description, picture, note, advertisement);
                 int result = ev.AddEvent();
