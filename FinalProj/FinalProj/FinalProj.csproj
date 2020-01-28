@@ -111,7 +111,9 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\npm.js" />
+    <Content Include="AddVoucher.css" />
     <Content Include="Voucher.css" />
+    <Content Include="AddVoucher.aspx" />
     <Content Include="VoucherRedemption.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -142,6 +144,7 @@
     <Compile Include="BLL\Thread.cs" />
     <Compile Include="BLL\ThreadReply.cs" />
     <Compile Include="BLL\Users.cs" />
+    <Compile Include="BLL\Voucher.cs" />
     <Compile Include="bookmark.aspx.cs">
       <DependentUpon>bookmark.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -161,6 +164,7 @@
     <Compile Include="DAL\ThreadReplyDAO.cs" />
     <Compile Include="DAL\ThreadDAO.cs" />
     <Compile Include="DAL\userDAO.cs" />
+    <Compile Include="DAL\voucherDAO.cs" />
     <Compile Include="EditProfile.aspx.cs">
       <DependentUpon>EditProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -291,6 +295,13 @@
     <Compile Include="SiteBootstrap.Master.designer.cs">
       <DependentUpon>SiteBootstrap.Master</DependentUpon>
     </Compile>
+    <Compile Include="AddVoucher.aspx.cs">
+      <DependentUpon>AddVoucher.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddVoucher.aspx.designer.cs">
+      <DependentUpon>AddVoucher.aspx</DependentUpon>
+    </Compile>
     <Compile Include="VoucherRedemption.aspx.cs">
       <DependentUpon>VoucherRedemption.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -316,6 +327,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Img\User\" />
+    <Folder Include="Img\Voucher\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
