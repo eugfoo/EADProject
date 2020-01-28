@@ -225,7 +225,6 @@ namespace FinalProj
 
 
 
-
                 if (uploadedImgNames.Count == 1)
                 {
                     firstImage = uploadedImgNames[0];

@@ -21,7 +21,6 @@ namespace FinalProj.BLL
         public string UserId { get; set; }
         public string UserName { get; set; }
 
-
         public Thread()
         {
 
@@ -45,14 +44,21 @@ namespace FinalProj.BLL
             UserName = userName;
         }
 
-      
-
         public int CreateThread()
         {
             ThreadDAO dao = new ThreadDAO();
             int result = dao.Insert(this);
             return result;
         }
+
+        public int UpdateThread(int id)
+        {
+            ThreadDAO dao = new ThreadDAO();
+            int result = dao.Update(id ,this);
+            return result;
+        }
+
+
     }
     
 

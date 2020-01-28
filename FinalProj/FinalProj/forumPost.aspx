@@ -94,18 +94,18 @@
                                         <div class="container ml-4">
                                             <div class="row">
                                                 <div class="col">
-                                                    <asp:Image ID="Image1" runat="server" ImageUrl='<%# "~/Img/"+ Eval("threadImage1") %>' Height="246px" Width="329px" onerror="this.style.display='none';"/>
+                                                    <asp:Image ID="Image1" runat="server" ImageUrl='<%# "~/Img/"+ Eval("threadImage1") %>' Height="246px" Width="329px" onerror="this.style.display='none';" />
                                                 </div>
                                                 <div class="col">
-                                                    <asp:Image ID="Image2" runat="server" ImageUrl='<%# "~/Img/"+ Eval("threadImage2") %>' Height="246px" Width="329px" onerror="this.style.display='none';"/>
+                                                    <asp:Image ID="Image2" runat="server" ImageUrl='<%# "~/Img/"+ Eval("threadImage2") %>' Height="246px" Width="329px" onerror="this.style.display='none';" />
                                                 </div>
                                             </div>
                                             <div class="row mt-3">
                                                 <div class="col">
-                                                    <asp:Image ID="Image3" runat="server" ImageUrl='<%# "~/Img/"+ Eval("threadImage3") %>' Height="246px" Width="329px" onerror="this.style.display='none';"/>
+                                                    <asp:Image ID="Image3" runat="server" ImageUrl='<%# "~/Img/"+ Eval("threadImage3") %>' Height="246px" Width="329px" onerror="this.style.display='none';" />
                                                 </div>
                                                 <div class="col">
-                                                    <asp:Image ID="Image4" runat="server" ImageUrl='<%# "~/Img/"+ Eval("threadImage4") %>' Height="246px" Width="329px" onerror="this.style.display='none';"/>
+                                                    <asp:Image ID="Image4" runat="server" ImageUrl='<%# "~/Img/"+ Eval("threadImage4") %>' Height="246px" Width="329px" onerror="this.style.display='none';" />
                                                 </div>
                                             </div>
                                         </div>
@@ -117,6 +117,9 @@
                                 <br />
                                 <asp:Label ID="LblContent" runat="server"></asp:Label>
 
+
+                                <br />
+
                                 <br />
                                 <br />
                                 <br />
@@ -127,8 +130,8 @@
                         </tr>
                     </tbody>
                 </table>
-                <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-danger float-right" Text="Cancel" />
-                <asp:Button ID="btnEdit" runat="server" CssClass="btn btn-primary float-right mr-1" Text="Edit" />
+                <asp:Button ID="btnGoBack" runat="server" CssClass="btn btn-danger float-right" Text="Back" OnClick="btnGoBack_Click" />
+                <asp:Button ID="btnEdit" runat="server" CssClass="btn btn-primary float-right mr-1" Text="Edit" OnClick="btnEdit_Click" />
 
 
 
@@ -197,16 +200,17 @@
                         </asp:Repeater>
 
                         <div style="margin-top: 20px;">
-                            <table style="width: 600px; float: right;">
+
+                            <table style="width: 485px; float: right;">
                                 <tr>
                                     <td>
                                         <asp:LinkButton ID="lbFirst"
-                                            Style="padding: 8px; margin: 2px; background: lightgray; border: solid 1px #666; color: black; font-weight: bold"
+                                            Style="padding: 8px; margin: 2px; background: #6b91ab; border: solid 1px #d5e3ed; color: white; font-weight: bold"
                                             runat="server" OnClick="lbFirst_Click">First</asp:LinkButton>
                                     </td>
                                     <td>
                                         <asp:LinkButton ID="lbPrevious" runat="server"
-                                            Style="padding: 8px; margin: 2px; background: lightgray; border: solid 1px #666; color: black; font-weight: bold"
+                                            Style="padding: 8px; margin: 2px; background: #6b91ab; border: solid 1px #d5e3ed; color: white; font-weight: bold"
                                             OnClick="lbPrevious_Click">Previous</asp:LinkButton>
                                     </td>
                                     <td>
@@ -224,19 +228,22 @@
                                     </td>
                                     <td>
                                         <asp:LinkButton ID="lbNext" runat="server"
-                                            Style="padding: 8px; margin: 2px; background: lightgray; border: solid 1px #666; color: black; font-weight: bold"
+                                            Style="padding: 8px; margin: 2px; background: #6b91ab; border: solid 1px #d5e3ed; color: white; font-weight: bold"
                                             OnClick="lbNext_Click">Next</asp:LinkButton>
                                     </td>
                                     <td>
                                         <asp:LinkButton ID="lbLast" runat="server"
-                                            Style="padding: 8px; margin: 2px; background: lightgray; border: solid 1px #666; color: black; font-weight: bold"
+                                            Style="padding: 8px; margin: 2px; background: #6b91ab; border: solid 1px #d5e3ed; color: white; font-weight: bold"
                                             OnClick="lbLast_Click">Last</asp:LinkButton>
                                     </td>
                                     <td>
-                                        <asp:Label ID="lblpage" runat="server" Text=""></asp:Label>
+                                        <asp:Label ID="lblpage" runat="server" Text="" Style="background: #6b91ab; padding: 10px; color: white"></asp:Label>
                                     </td>
                                 </tr>
                             </table>
+
+
+
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
