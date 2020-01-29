@@ -79,6 +79,8 @@
     <Content Include="beach.jpg" />
     <Content Include="bookmark.aspx" />
     <Content Include="createdEvent.aspx" />
+    <Content Include="editForumPost.aspx" />
+    <Content Include="editforumThread.aspx" />
     <Content Include="EditProfile.aspx" />
     <Content Include="eventDetailsTabTwo.aspx" />
     <Content Include="EventStatus.aspx" />
@@ -164,7 +166,24 @@
     <Compile Include="DAL\ThreadReplyDAO.cs" />
     <Compile Include="DAL\ThreadDAO.cs" />
     <Compile Include="DAL\userDAO.cs" />
+<<<<<<< Updated upstream
     <Compile Include="DAL\voucherDAO.cs" />
+=======
+    <Compile Include="editForumPost.aspx.cs">
+      <DependentUpon>editForumPost.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="editForumPost.aspx.designer.cs">
+      <DependentUpon>editForumPost.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="editforumThread.aspx.cs">
+      <DependentUpon>editforumThread.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="editforumThread.aspx.designer.cs">
+      <DependentUpon>editforumThread.aspx</DependentUpon>
+    </Compile>
+>>>>>>> Stashed changes
     <Compile Include="EditProfile.aspx.cs">
       <DependentUpon>EditProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

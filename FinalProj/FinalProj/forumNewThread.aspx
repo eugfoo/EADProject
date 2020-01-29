@@ -58,7 +58,7 @@
             </div>
 
             <div class="form-group">
-                <label for="comment">Content:ent:</label>
+                <label for="comment">Content:</label>
                 <asp:TextBox ID="tbContent" runat="server" CssClass="form-control" Height="250px" TextMode="MultiLine"></asp:TextBox>
                 <asp:HiddenField ID="HFDate" runat="server" />
                 <asp:HiddenField ID="HFthreadId" runat="server" />
@@ -71,7 +71,7 @@
             <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="btnSubmit_Click" />
 
             <%-- <button type="submit" class="btn btn-primary">Submit</button>--%>
-            <button type="reset" class="btn btn-danger">Reset</button>
+            <asp:Button ID="btnClear" runat="server" Text="Clear" CssClass="btn btn-danger" OnClick="btnClear_Click"/>
         </div>
     </div>
 
